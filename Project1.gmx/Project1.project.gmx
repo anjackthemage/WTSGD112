@@ -20,6 +20,10 @@
     <background>background\background_cave</background>
   </backgrounds>
   <paths name="paths"/>
+  <fonts name="fonts">
+    <font>fonts\font_title</font>
+    <font>fonts\font_body</font>
+  </fonts>
   <objects name="objects">
     <object>objects\object_boss</object>
     <object>objects\object_dragon</object>
@@ -27,9 +31,13 @@
     <object>objects\object_demon</object>
     <object>objects\object_baby</object>
     <object>objects\object_draw_score</object>
+    <object>objects\object_drawHighScore</object>
+    <object>objects\object_drawHelp</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room_help</room>
     <room>rooms\room_first_level</room>
+    <room>rooms\room_highScore</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
