@@ -15,6 +15,7 @@
     <sprite>sprites\sprite_dragon_baby</sprite>
     <sprite>sprites\sprite_fireball</sprite>
     <sprite>sprites\sprite_boss</sprite>
+    <sprite>sprites\sprite_evilBaby</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_cave</background>
@@ -33,6 +34,7 @@
     <object>objects\object_draw_score</object>
     <object>objects\object_drawHighScore</object>
     <object>objects\object_drawHelp</object>
+    <object>objects\object_evilBaby</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_help</room>
