@@ -44,9 +44,4 @@
   <help>
     <rtf>help.rtf</rtf>
   </help>
-  <TutorialState>
-    <IsTutorial>0</IsTutorial>
-    <TutorialName></TutorialName>
-    <TutorialPage>0</TutorialPage>
-  </TutorialState>
 </assets>
