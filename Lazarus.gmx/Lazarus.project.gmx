@@ -13,6 +13,11 @@
     <sprite>sprites\spr_laz_jump_left</sprite>
     <sprite>sprites\spr_laz_afraid</sprite>
     <sprite>sprites\spr_laz_squished</sprite>
+    <sprite>sprites\spr_wall</sprite>
+    <sprite>sprites\spr_box_stone</sprite>
+    <sprite>sprites\spr_box_metal</sprite>
+    <sprite>sprites\spr_box_wood</sprite>
+    <sprite>sprites\spr_box_card</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -23,7 +28,16 @@
     <object>objects\obj_laz_jump_right</object>
     <object>objects\obj_laz_jump_left</object>
     <object>objects\obj_laz_squished</object>
+    <object>objects\obj_wall</object>
+    <object>objects\obj_box_stone</object>
+    <object>objects\obj_box_metal</object>
+    <object>objects\obj_box_wood</object>
+    <object>objects\obj_box_card</object>
+    <object>objects\obj_next_box</object>
   </objects>
+  <rooms name="rooms">
+    <room>rooms\room_test</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
