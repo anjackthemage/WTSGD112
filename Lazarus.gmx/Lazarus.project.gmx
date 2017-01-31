@@ -5,9 +5,25 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprite>sprites\spr_laz_stand</sprite>
+    <sprite>sprites\spr_laz_right</sprite>
+    <sprite>sprites\spr_laz_jump_right</sprite>
+    <sprite>sprites\spr_laz_left</sprite>
+    <sprite>sprites\spr_laz_jump_left</sprite>
+    <sprite>sprites\spr_laz_afraid</sprite>
+    <sprite>sprites\spr_laz_squished</sprite>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <objects name="objects">
+    <object>objects\obj_laz_stand</object>
+    <object>objects\obj_laz_right</object>
+    <object>objects\obj_laz_left</object>
+    <object>objects\obj_laz_jump_right</object>
+    <object>objects\obj_laz_jump_left</object>
+    <object>objects\obj_laz_squished</object>
+  </objects>
   <help>
     <rtf>help.rtf</rtf>
   </help>
