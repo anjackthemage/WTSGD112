@@ -4,7 +4,14 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\sound_music</sound>
+    <sound>sound\sound_wall</sound>
+    <sound>sound\sound_crush</sound>
+    <sound>sound\sound_squished</sound>
+    <sound>sound\sound_move</sound>
+    <sound>sound\sound_button</sound>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_laz_stand</sprite>
     <sprite>sprites\spr_laz_right</sprite>
@@ -18,25 +25,46 @@
     <sprite>sprites\spr_box_metal</sprite>
     <sprite>sprites\spr_box_wood</sprite>
     <sprite>sprites\spr_box_card</sprite>
+    <sprite>sprites\spr_button</sprite>
+    <sprite>sprites\spr_title</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\background_main</background>
+  </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\get_next_box.gml</script>
+  </scripts>
+  <fonts name="fonts">
+    <font>fonts\font_title</font>
+    <font>fonts\font_body</font>
+  </fonts>
   <objects name="objects">
-    <object>objects\obj_laz_stand</object>
-    <object>objects\obj_laz_right</object>
-    <object>objects\obj_laz_left</object>
-    <object>objects\obj_laz_jump_right</object>
-    <object>objects\obj_laz_jump_left</object>
-    <object>objects\obj_laz_squished</object>
-    <object>objects\obj_wall</object>
-    <object>objects\obj_box_stone</object>
-    <object>objects\obj_box_metal</object>
-    <object>objects\obj_box_wood</object>
-    <object>objects\obj_box_card</object>
     <object>objects\obj_next_box</object>
+    <object>objects\obj_button</object>
+    <objects name="Player">
+      <object>objects\obj_laz_stand</object>
+      <object>objects\obj_laz_squished</object>
+    </objects>
+    <objects name="Boxes">
+      <object>objects\obj_wall</object>
+      <object>objects\obj_box_stone</object>
+      <object>objects\obj_box_metal</object>
+      <object>objects\obj_box_wood</object>
+      <object>objects\obj_box_card</object>
+    </objects>
+    <object>objects\obj_draw_help</object>
+    <object>objects\obj_title</object>
+    <object>objects\obj_comptroller</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room_test</room>
+    <room>rooms\room_opening</room>
+    <room>rooms\room_level_1</room>
+    <room>rooms\room_level_2</room>
+    <room>rooms\room_level_3</room>
+    <room>rooms\room_level_4</room>
+    <room>rooms\room_closing</room>
+    <room>rooms\room_help</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
