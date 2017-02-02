@@ -24,10 +24,7 @@ if (box_next != noone and box_next.type != box_type.wall)
         // Delta between type of next_box and type of current_box
         var cur_increment = box_next.type - box_current.type;
         // Delta between type of current_box and type of the previous box
-        // *********************************************************************
-        // **********FIX THIS CODE: Comparing delta to box_type is BAD**********
-        // *********************************************************************
-        var prev_increment = box_current.type - linear_history[| ds_list_size(linear_history) - 1];
+        var prev_increment = linear_history[| ds_list_size(linear_history) - 1];
         // If the delta is 0 or 1 and matches the previous deltas, we keep going
         if (abs(cur_increment) <= 1 and cur_increment == prev_increment)
         {

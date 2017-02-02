@@ -12,6 +12,8 @@ var line_map =  argument[1];
 var box_width = 40;
 var box_height = 40;
 var linear_history = ds_list_create();
+// TODO: Create another list to store references to each box in the line
+//       Can use that to set state of box and create firework effect
 
 var x_modifier = box_width * ds_stack_pop(line_map);
 var y_modifier = box_height * ds_stack_pop(line_map);
@@ -36,7 +38,7 @@ if(!ds_list_empty(second_line))
         // Score it
         score += 100;
     }
-    else if (ds_list_size(second_line <=2 and second_line[| 0] == 0))
+    else if (ds_list_size(second_line >=2 and second_line[| 0] == 0))
     {
         // A delta of 0 indicates matched boxes, with two or more deltas, we have at
         // least 3 boxes, so it scores
