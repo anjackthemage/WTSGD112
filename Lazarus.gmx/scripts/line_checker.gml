@@ -11,37 +11,55 @@ var box_active = argument[0];
 var line_map =  argument[1];
 var box_width = 40;
 var box_height = 40;
-var linear_history = ds_list_create();
-// TODO: Create another list to store references to each box in the line
-//       Can use that to set state of box and create firework effect
+var matched_boxes = ds_list_create();
+ds_list_add(matched_boxes, box_active);
 
 var x_modifier = box_width * ds_stack_pop(line_map);
 var y_modifier = box_height * ds_stack_pop(line_map);
 
+var check_pos = ds_list_create();
+check_pos[| 0] = box_active.x + x_modifier;
+check_pos[| 1] = box_active.y + y_modifier;
+
+linear_box_check(matched_boxes, check_pos);
+
 var new_pos = ds_list_create();
-new_pos[| 0] = box_active.x + x_modifier;
-new_pos[| 1] = box_active.y + y_modifier;
-
-var first_line = linear_box_check(box_active, new_pos, linear_history);
-
 new_pos[| 0] = box_active.x + (x_modifier * -1);
 new_pos[| 1] = box_active.y + (y_modifier * -1);
 
-var second_line = linear_box_check(box_active, new_pos, first_line);
+var temp_list = ds_list_create();
+for ( var iterator = ds_list_size(matched_boxes) -1; iterator >= 0; iterator--)
+{
+    ds_list_add(temp_list, matched_boxes[| iterator]);
+}
+
+ds_list_copy(matched_boxes, temp_list);
+
+linear_box_check(matched_boxes, new_pos);
 
 // If we got a non-empty list back, then we might have a line
-if(!ds_list_empty(second_line))
+if(!ds_list_empty(matched_boxes))
 {
-    if(ds_list_size(second_line) == 3 and abs(second_line[| 0]) == 1)
+    if(ds_list_size(matched_boxes) == 4 and matched_boxes[| 0].type != matched_boxes[| 1].type)
     {
-        // 3 deltas means 4 boxes, if the deltas are 1 or -1, that's a straight
+        // 4 boxes with different types should only happen if it's a straight
         // Score it
+        for (var iterator = 0; iterator < ds_list_size(matched_boxes); iterator++)
+        {
+            matched_boxes[| iterator].matched = 1;
+            effect_create_above(ef_firework, matched_boxes[| iterator].x+20, matched_boxes[| iterator].y+20, 0, c_aqua);
+        }
         score += 100;
     }
-    else if (ds_list_size(second_line >=2 and second_line[| 0] == 0))
+    else if (ds_list_size(matched_boxes) >=3 and matched_boxes[| 0].type == matched_boxes[| 1].type)
     {
-        // A delta of 0 indicates matched boxes, with two or more deltas, we have at
-        // least 3 boxes, so it scores
+        // They're all the same type and we have at least 3 boxes
+        // it scores
+        for (var iterator = 0; iterator < ds_list_size(matched_boxes); iterator++)
+        {
+            matched_boxes[| iterator].matched = 1;
+            effect_create_above(ef_firework, matched_boxes[| iterator].x+20, matched_boxes[| iterator].y+20, 0, c_aqua);
+        }
         score += 100;
     }
 }

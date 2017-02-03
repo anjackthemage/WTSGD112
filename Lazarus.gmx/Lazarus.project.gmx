@@ -60,6 +60,7 @@
     <object>objects\obj_title</object>
     <object>objects\obj_comptroller</object>
     <object>objects\obj_score</object>
+    <object>objects\obj_highScore</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_opening</room>
