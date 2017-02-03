@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>13</kind>
-            <string>8421504</string>
+            <string>0</string>
           </argument>
         </arguments>
       </action>
@@ -70,7 +70,7 @@ draw_set_alpha(1);
         <arguments>
           <argument>
             <kind>13</kind>
-            <string>0</string>
+            <string>16777215</string>
           </argument>
         </arguments>
       </action>
@@ -122,7 +122,7 @@ draw_set_alpha(1);
           </argument>
           <argument>
             <kind>0</kind>
-            <string>30</string>
+            <string>40</string>
           </argument>
         </arguments>
       </action>
@@ -166,32 +166,9 @@ draw_set_alpha(1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(room_width/2, 80, "
-You know, like... Do stuff?
+            <string>draw_text(room_width/2, 70, "
+
 ")
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>room_goto(global.current_room);
 </string>
           </argument>
         </arguments>

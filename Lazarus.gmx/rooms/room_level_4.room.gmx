@@ -6,7 +6,7 @@
   <vsnap>40</vsnap>
   <hsnap>40</hsnap>
   <isometric>0</isometric>
-  <speed>40</speed>
+  <speed>30</speed>
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
@@ -104,6 +104,8 @@
     <instance objName="obj_wall" x="600" y="160" name="inst_D4505E5A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="600" y="120" name="inst_72DEF6C0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_box_wood" x="40" y="400" name="inst_6DBAF2B3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_score" x="0" y="0" name="inst_352086B1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lives" x="320" y="0" name="inst_134E62E8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

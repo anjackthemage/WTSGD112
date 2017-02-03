@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>10</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,43 +25,32 @@
         <arguments>
           <argument>
             <kind>13</kind>
-            <string>8421504</string>
+            <string>0</string>
           </argument>
         </arguments>
       </action>
       <action>
         <libid>1</libid>
-        <id>511</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_draw_rectangle</functionname>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
-        <relative>-1</relative>
+        <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>120</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>50</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
-            <string>0</string>
+            <kind>1</kind>
+            <string>draw_set_alpha(.5);
+
+draw_rectangle(0, 0, room_width, room_height, false);
+
+draw_set_alpha(1);
+</string>
           </argument>
         </arguments>
       </action>
@@ -87,33 +76,21 @@
       </action>
       <action>
         <libid>1</libid>
-        <id>511</id>
+        <id>526</id>
         <kind>0</kind>
-        <userelative>-1</userelative>
+        <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
+        <useapplyto>0</useapplyto>
         <exetype>1</exetype>
-        <functionname>action_draw_rectangle</functionname>
+        <functionname>action_font</functionname>
         <codestring></codestring>
         <whoName>self</whoName>
-        <relative>-1</relative>
+        <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>120</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>50</string>
+            <kind>12</kind>
+            <font>font_title</font>
           </argument>
           <argument>
             <kind>4</kind>
@@ -123,21 +100,29 @@
       </action>
       <action>
         <libid>1</libid>
-        <id>524</id>
+        <id>514</id>
         <kind>0</kind>
-        <userelative>0</userelative>
+        <userelative>-1</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
+        <useapplyto>-1</useapplyto>
         <exetype>1</exetype>
-        <functionname>action_color</functionname>
+        <functionname>action_draw_text</functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>13</kind>
-            <string>16777215</string>
+            <kind>2</kind>
+            <string>The Story So Far...</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>room_width/2</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>40</string>
           </argument>
         </arguments>
       </action>
@@ -181,36 +166,44 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_valign(fa_middle);
+            <string>draw_text(room_width/2, 70, "
+    Lazarus was abducted by the 'Blob Mob', who were intent upon ending
+his life in the squishiest way possibile. Taken to an abandoned warehouse,
+Lazarus had to rely upon superior cunning in order to trick the mobsters
+into helping him escape. He thought he was done with their shenanigans,
+but the 'Blob Mob' just won't leave poor Lazarus alone.
+
+    No longer content to simply escape the pits, Lazarus has decided to
+humiliate his captors even further. To this end, he'd like to either
+arrange the boxes into sets of the same type (stone, wood, etc.) or set
+the boxes into a line (stone-&gt;metal-&gt;wood-&gt;cardboard or vise versa).
+
+    Hopefully, once the 'Blob Mob' is thoroughly embarassed, they'll
+finally leave Lazarus alone!
+")
 </string>
           </argument>
         </arguments>
       </action>
+    </event>
+    <event eventtype="9" enumb="1">
       <action>
         <libid>1</libid>
-        <id>703</id>
+        <id>224</id>
         <kind>0</kind>
-        <userelative>-1</userelative>
+        <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>0</useapplyto>
         <exetype>1</exetype>
-        <functionname>action_draw_score</functionname>
+        <functionname>action_another_room</functionname>
         <codestring></codestring>
         <whoName>self</whoName>
-        <relative>-1</relative>
+        <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>0</kind>
-            <string>60</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>25</string>
-          </argument>
-          <argument>
-            <kind>1</kind>
-            <string>Score: </string>
+            <kind>11</kind>
+            <room>room_opening</room>
           </argument>
         </arguments>
       </action>

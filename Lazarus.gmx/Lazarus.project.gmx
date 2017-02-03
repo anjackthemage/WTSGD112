@@ -57,10 +57,13 @@
       <object>objects\obj_box_card</object>
     </objects>
     <object>objects\obj_draw_help</object>
+    <object>objects\obj_draw_story</object>
     <object>objects\obj_title</object>
     <object>objects\obj_comptroller</object>
     <object>objects\obj_score</object>
+    <object>objects\obj_lives</object>
     <object>objects\obj_highScore</object>
+    <object>objects\obj_floating_number</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_opening</room>
@@ -69,6 +72,7 @@
     <room>rooms\room_level_3</room>
     <room>rooms\room_level_4</room>
     <room>rooms\room_closing</room>
+    <room>rooms\room_story</room>
     <room>rooms\room_help</room>
   </rooms>
   <help>

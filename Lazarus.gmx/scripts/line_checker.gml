@@ -46,10 +46,13 @@ if(!ds_list_empty(matched_boxes))
         // Score it
         for (var iterator = 0; iterator < ds_list_size(matched_boxes); iterator++)
         {
-            matched_boxes[| iterator].matched = 1;
-            effect_create_above(ef_firework, matched_boxes[| iterator].x+20, matched_boxes[| iterator].y+20, 0, c_aqua);
+            var box_instance = matched_boxes[| iterator];
+            box_instance.matched= 1;
+            effect_create_above(ef_firework, box_instance.x+20, box_instance.y+20, 0, c_aqua);
+            var floating_number = instance_create(box_instance.x + 20, box_instance.y + 20, obj_floating_number);
+            floating_number.point_value = 50;
+            score += 50;
         }
-        score += 100;
     }
     else if (ds_list_size(matched_boxes) >=3 and matched_boxes[| 0].type == matched_boxes[| 1].type)
     {
@@ -57,10 +60,13 @@ if(!ds_list_empty(matched_boxes))
         // it scores
         for (var iterator = 0; iterator < ds_list_size(matched_boxes); iterator++)
         {
-            matched_boxes[| iterator].matched = 1;
-            effect_create_above(ef_firework, matched_boxes[| iterator].x+20, matched_boxes[| iterator].y+20, 0, c_aqua);
+            var box_instance = matched_boxes[| iterator];
+            box_instance.matched = 1;
+            effect_create_above(ef_firework, box_instance.x+20, box_instance.y+20, 0, c_aqua);
+            floating_number = instance_create(box_instance.x + 20, box_instance.y + 20, obj_floating_number);
+            floating_number.point_value = 30;
+            score += 30;
         }
-        score += 100;
     }
 }
 

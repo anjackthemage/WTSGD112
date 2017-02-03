@@ -30,10 +30,28 @@
 falling_box = noone;
 next_box = noone;
 
-falling_box = instance_create(obj_laz_stand.x, -40, get_next_box())
+if(room != room_opening)
+{
+    falling_box = instance_create(obj_laz_stand.x, -40, get_next_box());
+}
+else
+{
+    falling_box = instance_create(irandom_range(1, 14) * 40, -40, get_next_box());
+}
 with (falling_box)
 {
-    speed = 5;
+    switch(room)
+    {
+        case room_level_3:
+            speed = 7;
+            break;
+        case room_level_4:
+            speed = 10;
+            break;
+        default:
+            speed = 5;
+            break;
+    }
     direction = 270;
 }
 
@@ -60,18 +78,46 @@ next_box = instance_create(0, 440, get_next_box());
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-if (falling_box.speed == 0 and instance_exists(obj_laz_stand))
+            <string>if(falling_box.speed == 0)
 {
-    with (next_box)
+    if (room != room_opening)
     {
-        x = obj_laz_stand.x;
-        y = -40;
-        speed = 5;
-        direction = 270;
+        if (instance_exists(obj_laz_stand))
+        {
+            with (next_box)
+            {
+                x = obj_laz_stand.x;
+                y = -40;
+                switch(room)
+                {
+                    case room_level_3:
+                        speed = 7;
+                        break;
+                    case room_level_4:
+                        speed = 10;
+                        break;
+                    default:
+                        speed = 5;
+                        break;
+                }
+                direction = 270;
+            }
+            falling_box = next_box;
+            next_box = instance_create(0, 440, get_next_box());
+        }
     }
-    falling_box = next_box;
-    next_box = instance_create(0, 440, get_next_box());
+    else
+    {
+        with (next_box)
+        {
+            x = irandom_range(1, 14) * 40;
+            y = -40;
+            speed = 5;
+            direction = 270;
+        }
+        falling_box = next_box;
+        next_box = instance_create(0, 440, get_next_box());
+    }
 }
 </string>
           </argument>
