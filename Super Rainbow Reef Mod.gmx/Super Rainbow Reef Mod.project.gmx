@@ -39,6 +39,9 @@
     <sprite>sprites\spr_block_split</sprite>
     <sprite>sprites\spr_block_life</sprite>
     <sprite>sprites\sprite_block_coin</sprite>
+    <sprite>sprites\sprite_silver_sparkle</sprite>
+    <sprite>sprites\sprite_mud_drip</sprite>
+    <sprite>sprites\sprite_block_bomb</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_1</background>
@@ -69,6 +72,9 @@
     <object>objects\obj_comptroller</object>
     <objects name="blocks">
       <object>objects\obj_block_1</object>
+      <object>objects\obj_block_bomb</object>
+      <object>objects\obj_block_speed</object>
+      <object>objects\obj_block_slow</object>
       <object>objects\obj_block_2</object>
       <object>objects\obj_block_3</object>
       <object>objects\obj_block_4</object>
