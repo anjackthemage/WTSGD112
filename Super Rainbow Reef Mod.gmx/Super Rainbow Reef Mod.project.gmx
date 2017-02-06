@@ -38,6 +38,7 @@
     <sprite>sprites\spr_block_double</sprite>
     <sprite>sprites\spr_block_split</sprite>
     <sprite>sprites\spr_block_life</sprite>
+    <sprite>sprites\sprite_block_coin</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_1</background>
@@ -74,6 +75,7 @@
       <object>objects\obj_block_5</object>
       <object>objects\obj_block_6</object>
       <object>objects\obj_block_7</object>
+      <object>objects\obj_block_coin</object>
       <object>objects\obj_block_solid</object>
       <object>objects\obj_block_solid_invis</object>
       <object>objects\obj_block_double</object>
@@ -88,6 +90,7 @@
       <object>objects\obj_bigleg_move_small</object>
     </objects>
     <object>objects\obj_draw_score</object>
+    <object>objects\obj_text_float</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_main_menu</room>
