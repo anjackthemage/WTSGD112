@@ -103,7 +103,7 @@
 var running = false;
 var my_center_x = x + (sprite_width / 2);
 var my_center_y = y + (sprite_height / 2);
-var my_radius = point_distance(my_center_x, my_center_y, x, y);
+//var my_radius = point_distance(my_center_x, my_center_y, x, y);
 
 with(obj_pop)
 {
