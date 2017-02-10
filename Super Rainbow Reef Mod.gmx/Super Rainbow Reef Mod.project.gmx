@@ -49,6 +49,7 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\script_get_player_name.gml</script>
+    <script>scripts\script_get_block.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_body</font>
@@ -97,10 +98,13 @@
     </objects>
     <object>objects\obj_draw_score</object>
     <object>objects\obj_text_float</object>
+    <object>objects\obj_explosion_m</object>
+    <object>objects\obj_explosion_s</object>
+    <object>objects\obj_block_rotator</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room_main_menu</room>
     <room>rooms\room_test</room>
+    <room>rooms\room_main_menu</room>
     <room>rooms\mod_level_1</room>
     <room>rooms\mod_level_2</room>
     <room>rooms\mod_level_3</room>

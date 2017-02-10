@@ -8,7 +8,7 @@
   <parentName>obj_block_1</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="4" ename="obj_pop">
+    <event eventtype="1" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -28,7 +28,7 @@
             <string>
 for(var iterator = 0; iterator &lt;= 1; iterator++)
 {
-    var new_pop = instance_create(obj_pop.x, obj_pop.y, obj_pop);
+    var new_pop = instance_create(x + (sprite_width / 2), y + (sprite_height / 2), obj_pop);
     
     new_pop.direction = random(60) + 60;
     new_pop.speed = 12;
