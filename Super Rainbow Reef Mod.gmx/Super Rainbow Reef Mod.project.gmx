@@ -40,6 +40,7 @@
     <sprite>sprites\spr_block_life</sprite>
     <sprite>sprites\sprite_block_coin</sprite>
     <sprite>sprites\sprite_silver_sparkle</sprite>
+    <sprite>sprites\sprite_silver_sparkle_btn</sprite>
     <sprite>sprites\sprite_mud_drip</sprite>
     <sprite>sprites\sprite_block_bomb</sprite>
   </sprites>
@@ -101,17 +102,24 @@
     <object>objects\obj_explosion_m</object>
     <object>objects\obj_explosion_s</object>
     <object>objects\obj_block_rotator</object>
+    <object>objects\obj_director</object>
+    <object>objects\obj_speech_bubble</object>
+    <object>objects\obj_draw_help</object>
+    <object>objects\obj_placeholder</object>
   </objects>
+  <timelines name="timelines">
+    <timeline>timelines\timeline_dialog</timeline>
+  </timelines>
   <rooms name="rooms">
-    <room>rooms\room_test</room>
+    <room>rooms\room_help</room>
     <room>rooms\room_main_menu</room>
     <room>rooms\mod_level_1</room>
     <room>rooms\mod_level_2</room>
     <room>rooms\mod_level_3</room>
     <room>rooms\mod_level_4</room>
     <room>rooms\room_completed</room>
-    <room>rooms\room_help</room>
     <room>rooms\room_highscores</room>
+    <room>rooms\room_test</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

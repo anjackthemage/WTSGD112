@@ -25,21 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-angle_delta = 0.2;
+            <string>bob = instance_create(560, 600, obj_bigleg_small);
+frank = instance_create(50, 600, obj_bigleg_small);
 
+bob.state = 0;
+bob.new_x = 320;
+bob.new_y = 180;
+bob.speed = 3;
 
-
-for (var a_index = 2; a_index &gt;= 0; a_index--)
-{
-    for (var item = 16; item &gt;= 1; item--)
-    {
-        temp_x = x + lengthdir_x(120 + (22 * a_index), item * 22.5);
-        temp_y = y + lengthdir_y(120 + (22 * a_index), item * 22.5);
-        
-        block_lists[a_index, item] = instance_create(temp_x, temp_y, script_get_block());
-    }
-}
+frank.state = 0;
+frank.new_x = 280;
+frank.new_y = 180;
+frank.speed = 3;
 </string>
           </argument>
         </arguments>
@@ -62,23 +59,90 @@ for (var a_index = 2; a_index &gt;= 0; a_index--)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(var a_index = 0; a_index &lt; array_height_2d(block_lists); a_index++)
+            <string>///Entity movement
+
+me = id;
+
+with(bob)
 {
-    for(var b_index = 1; b_index &lt; array_length_2d(block_lists, a_index); b_index++)
+    if(speed &gt; 0)
     {
-        if (instance_exists(block_lists[a_index, b_index]))
+        if((x != new_x or y != new_y) and distance_to_point(new_x, new_y) &gt;= speed)
         {
-            var angle = point_direction(x, y, block_lists[a_index, b_index].x, block_lists[a_index, b_index].y);
-                
-            var radius = 120 + (22 * a_index);
-            
-            angle += angle_delta * power(-1, a_index);
-                
-            block_lists[a_index, b_index].image_angle = angle - 100; // WHY DOES THIS WORK?!?!
-            block_lists[a_index, b_index].x = x + lengthdir_x(radius, angle);
-            block_lists[a_index, b_index].y = y + lengthdir_y(radius, angle);;
+            move_towards_point(new_x, new_y, speed);
+        }
+        else
+        {
+            speed = 0;
         }
     }
+}
+
+with(frank)
+{
+    if(speed &gt; 0)
+    {
+        if ((x != new_x or y != new_y) and distance_to_point(new_x, new_y) &gt;= speed)
+        {
+            move_towards_point(new_x, new_y, speed);
+        }
+        else
+        {
+            speed = 0;
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Entity state change
+if((bob.speed == 0 and frank.speed == 0))
+{
+    if (bob.state == 0 and frank.state == 0)
+    {
+        bob.state = 1;
+        frank.state = 1;
+        bob.timeline_index = timeline_dialog;
+        bob.timeline_position = 0;
+        bob.timeline_running = true;
+    }
+    else if (bob.state == 2 and frank.state == 2)
+    {
+        bob.state = 3;
+        frank.state = 3;
+    }
+}
+if(bob.state == 2)
+{
+    frank.state = 2;
+    bob.new_x = 440;
+    bob.speed = 2;
+    frank.new_x = 160;
+    frank.speed = 2;
+}
+if(bob.state == 3 and frank.state == 3)
+{
+    bob.state = 4;
+    frank.state = 4;
+    instance_create(bob.x, bob.y, obj_block_rotator);
+    instance_create(frank.x, frank.y, obj_block_rotator);
 }
 </string>
           </argument>

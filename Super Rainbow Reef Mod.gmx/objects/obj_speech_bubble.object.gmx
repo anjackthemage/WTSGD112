@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-10</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -11,9 +11,9 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
         <exetype>2</exetype>
@@ -25,27 +25,40 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-angle_delta = 0.2;
-
-
-
-for (var a_index = 2; a_index &gt;= 0; a_index--)
-{
-    for (var item = 16; item &gt;= 1; item--)
-    {
-        temp_x = x + lengthdir_x(120 + (22 * a_index), item * 22.5);
-        temp_y = y + lengthdir_y(120 + (22 * a_index), item * 22.5);
-        
-        block_lists[a_index, item] = instance_create(temp_x, temp_y, script_get_block());
-    }
-}
-</string>
+            <string>dialog_text</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>""</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>dialog_direction</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>-1</string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -62,24 +75,21 @@ for (var a_index = 2; a_index &gt;= 0; a_index--)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(var a_index = 0; a_index &lt; array_height_2d(block_lists); a_index++)
-{
-    for(var b_index = 1; b_index &lt; array_length_2d(block_lists, a_index); b_index++)
-    {
-        if (instance_exists(block_lists[a_index, b_index]))
-        {
-            var angle = point_direction(x, y, block_lists[a_index, b_index].x, block_lists[a_index, b_index].y);
-                
-            var radius = 120 + (22 * a_index);
-            
-            angle += angle_delta * power(-1, a_index);
-                
-            block_lists[a_index, b_index].image_angle = angle - 100; // WHY DOES THIS WORK?!?!
-            block_lists[a_index, b_index].x = x + lengthdir_x(radius, angle);
-            block_lists[a_index, b_index].y = y + lengthdir_y(radius, angle);;
-        }
-    }
-}
+            <string>bubble_width = string_width_ext(dialog_text, -1, 250) + 90;
+bubble_height = string_height_ext(dialog_text, -1, 250) + 20;
+
+draw_set_color(c_white);
+draw_ellipse(x + (dialog_direction * bubble_width), y + (dialog_direction * bubble_height), x, y, false);
+draw_set_color(c_black);
+draw_ellipse(x + (dialog_direction * bubble_width), y + (dialog_direction * bubble_height), x, y, true);
+
+draw_set_font(fnt_body);
+
+draw_set_valign(fa_middle);
+draw_set_halign(fa_center);
+draw_text_ext(x + (dialog_direction * (bubble_width / 2)), y + (dialog_direction * (bubble_height / 2)), dialog_text, -1, 300);
+draw_set_valign(fa_top);
+draw_set_halign(fa_left);
 </string>
           </argument>
         </arguments>

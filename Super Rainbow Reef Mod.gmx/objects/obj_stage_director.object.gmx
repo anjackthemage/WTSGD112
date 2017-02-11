@@ -25,20 +25,48 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-angle_delta = 0.2;
+            <string>bob = instance_create(500, 500, obj_bigleg_small);
+frank = instance_create(100, 500, obj_bigleg_small);
 
-
-
-for (var a_index = 2; a_index &gt;= 0; a_index--)
+with(bob)
 {
-    for (var item = 16; item &gt;= 1; item--)
-    {
-        temp_x = x + lengthdir_x(120 + (22 * a_index), item * 22.5);
-        temp_y = y + lengthdir_y(120 + (22 * a_index), item * 22.5);
-        
-        block_lists[a_index, item] = instance_create(temp_x, temp_y, script_get_block());
-    }
+    path_start(path_bob_enter, 5, path_action_stop, true);
+}
+with(frank)
+{
+    path_start(path_frank_enter, 5, path_action_stop, true);
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(bob)
+{
+    path_start(path_bob_defense, 4, path_action_stop, true);
+}
+
+with(frank)
+{
+    path_start(path_frank_defense, 4, path_action_stop, true);
 }
 </string>
           </argument>
@@ -62,23 +90,36 @@ for (var a_index = 2; a_index &gt;= 0; a_index--)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(var a_index = 0; a_index &lt; array_height_2d(block_lists); a_index++)
+            <string>var path_finished = false;
+
+with(bob)
 {
-    for(var b_index = 1; b_index &lt; array_length_2d(block_lists, a_index); b_index++)
+    if (path_position == 1)
     {
-        if (instance_exists(block_lists[a_index, b_index]))
-        {
-            var angle = point_direction(x, y, block_lists[a_index, b_index].x, block_lists[a_index, b_index].y);
-                
-            var radius = 120 + (22 * a_index);
-            
-            angle += angle_delta * power(-1, a_index);
-                
-            block_lists[a_index, b_index].image_angle = angle - 100; // WHY DOES THIS WORK?!?!
-            block_lists[a_index, b_index].x = x + lengthdir_x(radius, angle);
-            block_lists[a_index, b_index].y = y + lengthdir_y(radius, angle);;
-        }
+        path_finished = true;
     }
+    else
+    {
+        path_finished = false;
+    }
+}
+
+with(frank)
+{
+    if(path_position == 1 and path_finished)
+    {
+        path_finished = true;
+    }
+    else
+    {
+        path_finished = false;
+    }
+}
+
+if(path_finished)
+{
+    alarm_set(3, 15);
+    var ted = 0;
 }
 </string>
           </argument>
