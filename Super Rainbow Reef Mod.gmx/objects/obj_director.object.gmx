@@ -146,6 +146,7 @@ if(bob.state == 3 and frank.state == 3)
 }
 if(bob.state == 4 and frank.state == 4)
 {
+    instance_create(260, 440, obj_katch);
     instance_create(obj_katch.x, obj_katch.y + 20, obj_pop);
     lives += 7;
     instance_destroy();

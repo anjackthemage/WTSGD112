@@ -21,7 +21,7 @@
             <kind>1</kind>
             <string>dialog = instance_create(x, y, obj_speech_bubble);
 dialog.dialog_direction = -1;
-dialog.dialog_text = "It has come, the destroyer...";
+dialog.dialog_text = "It has come, the adversary...";
 </string>
           </argument>
         </arguments>

@@ -8,6 +8,32 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>secret_level_complete</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>false</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -297,17 +323,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_black);
-draw_set_alpha(0.5);
-draw_rectangle(0, 0, room_width, room_height, false);
-draw_set_alpha(1);
-
-draw_set_color(c_white);
-draw_set_font(fnt_body);
-draw_set_halign(fa_center);
-draw_set_valign(fa_middle);
-end_text = "What have you done?#How many helpless creatures have perished?#Why?##Is this the end?";
-draw_text_ext(room_width / 2, room_height / 2, end_text, -1, 600);
+            <string>
+secret_level_complete = true;
 </string>
           </argument>
         </arguments>
@@ -407,6 +424,20 @@ draw_text_ext(room_width / 2, room_height / 2, end_text, -1, 600);
       </action>
       <action>
         <libid>1</libid>
+        <id>422</id>
+        <kind>1</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>224</id>
         <kind>0</kind>
         <userelative>0</userelative>
@@ -424,6 +455,44 @@ draw_text_ext(room_width / 2, room_height / 2, end_text, -1, 600);
             <room>room_main_menu</room>
           </argument>
         </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>211</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_sound</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>6</kind>
+            <sound>snd_music</sound>
+          </argument>
+          <argument>
+            <kind>3</kind>
+            <string>1</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>424</id>
+        <kind>2</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
       <action>
         <libid>1</libid>
@@ -531,6 +600,46 @@ draw_text_ext(room_width / 2, room_height / 2, end_text, -1, 600);
           <argument>
             <kind>0</kind>
             <string>true</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>408</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>room == secret_level</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>212</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_end_sound</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>6</kind>
+            <sound>snd_music</sound>
           </argument>
         </arguments>
       </action>
@@ -796,6 +905,57 @@ draw_text_ext(room_width / 2, room_height / 2, end_text, -1, 600);
         <relative>0</relative>
         <isnot>0</isnot>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>408</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>room == secret_level and secret_level_complete == true</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_color(c_black);
+draw_set_alpha(0.5);
+draw_rectangle(0, 0, room_width, room_height, false);
+draw_set_alpha(1);
+
+draw_set_color(c_white);
+draw_set_font(fnt_body);
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+end_text = "What have you done?#How many helpless creatures have perished?#Why?##Is this the end?";
+draw_text_ext(room_width / 2, room_height / 2, end_text, -1, 600);
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="9" enumb="83">
       <action>
@@ -858,6 +1018,20 @@ draw_text_ext(room_width / 2, room_height / 2, end_text, -1, 600);
     <event eventtype="9" enumb="80">
       <action>
         <libid>1</libid>
+        <id>225</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_previous_room</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>221</id>
         <kind>0</kind>
         <userelative>0</userelative>
@@ -872,6 +1046,20 @@ draw_text_ext(room_width / 2, room_height / 2, end_text, -1, 600);
       </action>
     </event>
     <event eventtype="9" enumb="78">
+      <action>
+        <libid>1</libid>
+        <id>226</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_next_room</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
       <action>
         <libid>1</libid>
         <id>222</id>

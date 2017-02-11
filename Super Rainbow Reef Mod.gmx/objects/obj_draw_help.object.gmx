@@ -167,6 +167,7 @@ draw_set_font(fnt_title);
 draw_text(center, y, game_title);
 var next_y = string_height(game_title) + y;
 draw_set_font(fnt_body);
+draw_text(center, y - 20, "Press ESCAPE key to return to menu.");
 draw_text(center, next_y, game_author);
 next_y += string_height(game_author) + 10;
 draw_text(center, next_y, mod_title);
@@ -248,6 +249,7 @@ enemy_2.y = next_y + (enemy_1.sprite_height / 2) - (enemy_2.sprite_height / 2);
 next_y += enemy_1.sprite_height + 10;
 draw_text_ext(center, next_y, enemy_text_2, -1, 600);
 next_y += string_height_ext(enemy_text_2, -1, 600);
+draw_text(center, next_y + 20, "Press ESCAPE key to return to menu.");
 help_bottom.x = center;
 help_bottom.y = next_y;
 </string>
