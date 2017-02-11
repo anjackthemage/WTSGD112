@@ -111,15 +111,15 @@
     <timeline>timelines\timeline_dialog</timeline>
   </timelines>
   <rooms name="rooms">
-    <room>rooms\room_help</room>
     <room>rooms\room_main_menu</room>
     <room>rooms\mod_level_1</room>
     <room>rooms\mod_level_2</room>
     <room>rooms\mod_level_3</room>
     <room>rooms\mod_level_4</room>
     <room>rooms\room_completed</room>
+    <room>rooms\room_help</room>
     <room>rooms\room_highscores</room>
-    <room>rooms\room_test</room>
+    <room>rooms\secret_level</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

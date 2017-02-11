@@ -144,6 +144,12 @@ if(bob.state == 3 and frank.state == 3)
     instance_create(bob.x, bob.y, obj_block_rotator);
     instance_create(frank.x, frank.y, obj_block_rotator);
 }
+if(bob.state == 4 and frank.state == 4)
+{
+    instance_create(obj_katch.x, obj_katch.y + 20, obj_pop);
+    lives += 7;
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>

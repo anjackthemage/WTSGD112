@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>10</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -46,16 +46,28 @@ blk_6 = instance_create(x,y, obj_block_6);
 blk_7 = instance_create(x,y, obj_block_7);
 special_block_text = "Look out for special blocks:";
 solid_block = instance_create(x, y, obj_block_solid);
+solid_block_text = "Indestructible. Ouch!";
 double_block = instance_create(x, y, obj_block_double);
+double_block_text = "Twice as tough as regular blocks.";
 split_block = instance_create(x, y, obj_block_split);
+split_block_text = "Spawn 2 additional Pops.";
 life_block = instance_create(x, y, obj_block_life);
+life_block_text = "An extra life! You'll need it.";
 coin_block = instance_create(x, y, obj_block_coin);
+coin_block_text = "Worth extra points.";
 speed_block = instance_create(x, y, obj_block_speed);
+speed_block_text = "Temporary speed boost.";
 slow_block = instance_create(x, y, obj_block_slow);
+slow_block_text = "Temporary speed penalty.";
 bomb_block = instance_create(x, y, obj_block_bomb);
+bomb_block_text = "BOOM! Hehehe!";
 enemy_text = "Enemies are cowering amongst the blocks! You must defeat them all, in order to advance to the next level. Just throw Pop at 'em!";
-enemy_1 = instance_create(x, y, obj_bigleg_move);
-enemy_2 = instance_create(x, y, obj_bigleg_move_small);
+enemy_1 = instance_create(x, y, obj_placeholder);
+enemy_1.sprite_index = spr_bigleg;
+enemy_2 = instance_create(x, y, obj_placeholder);
+enemy_2.sprite_index = spr_bigleg_small;
+enemy_text_2 = "Some enemies move in unexpected ways. Watch out for their vile trickery!";
+help_bottom = instance_create(x, y, obj_placeholder);
 </string>
           </argument>
         </arguments>
@@ -83,6 +95,46 @@ enemy_2 = instance_create(x, y, obj_bigleg_move_small);
           <argument>
             <kind>0</kind>
             <string>1</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>408</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>help_bottom.y &lt; 0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>224</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_another_room</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>11</kind>
+            <room>room_main_menu</room>
           </argument>
         </arguments>
       </action>
@@ -116,11 +168,11 @@ draw_text(center, y, game_title);
 var next_y = string_height(game_title) + y;
 draw_set_font(fnt_body);
 draw_text(center, next_y, game_author);
-next_y += string_height(game_author) + 5;
+next_y += string_height(game_author) + 10;
 draw_text(center, next_y, mod_title);
 next_y += string_height(mod_title) + 5;
 draw_text(center, next_y, mod_author);
-next_y += string_height(mod_author) + 5;
+next_y += string_height(mod_author) + 10;
 draw_set_halign(fa_left);
 draw_text(center - string_width(pop_label) - 20, next_y, pop_label);
 pop_placeholder.x = center - 10;
@@ -129,20 +181,75 @@ draw_text(center + 10, next_y, katch_label);
 katch_placeholder.x = center + 15 + string_width(katch_label);
 katch_placeholder.y = next_y + 10;
 draw_set_halign(fa_center);
-next_y += pop_placeholder.sprite_height + 5;
+next_y += pop_placeholder.sprite_height + 10;
 draw_text_ext(center, next_y, instruction_text, -1, 600);
 next_y += string_height_ext(instruction_text, -1, 600) + 5;
 draw_text_ext(center, next_y, instruction_text_2, -1, 600);
-next_y += string_height_ext(instruction_text_2, -1, 600);
-blk_1.x = room_width / 5;
+next_y += string_height_ext(instruction_text_2, -1, 600) + 10;
+blk_1.x = room_width / 5 - 20;
 blk_1.y = next_y;
-blk_2.x = (room_width / 5) * 2;
+blk_2.x = (room_width / 5) * 2 - 20;
 blk_2.y = next_y;
-blk_3.x = (room_width / 5) * 3;
+blk_3.x = (room_width / 5) * 3 - 20;
 blk_3.y = next_y;
-blk_4.x = (room_width / 5) * 4;
+blk_4.x = (room_width / 5) * 4 - 20;
 blk_4.y = next_y;
-
+next_y += 25;
+blk_5.x = room_width / 4 - 20;
+blk_5.y = next_y;
+blk_6.x = (room_width / 4) * 2 - 20;
+blk_6.y = next_y;
+blk_7.x = (room_width / 4) * 3 - 20;
+blk_7.y = next_y;
+next_y += 30;
+draw_text(center, next_y, special_block_text);
+next_y += string_height(special_block_text) + 10;
+var next_x = center - ((30 + string_width(split_block_text)/2));
+draw_set_halign(fa_left);
+solid_block.x = next_x;
+solid_block.y = next_y;
+draw_text(next_x + 50, next_y, solid_block_text);
+next_y += 25;
+double_block.x = next_x;
+double_block.y = next_y;
+draw_text(next_x + 50, next_y, double_block_text);
+next_y += 25;
+split_block.x = next_x;
+split_block.y = next_y;
+draw_text(next_x + 50, next_y, split_block_text);
+next_y += 25;
+life_block.x = next_x;
+life_block.y = next_y;
+draw_text(next_x + 50, next_y, life_block_text);
+next_y += 25;
+coin_block.x = next_x;
+coin_block.y = next_y;
+draw_text(next_x + 50, next_y, coin_block_text);
+next_y += 25;
+speed_block.x = next_x;
+speed_block.y = next_y;
+draw_text(next_x + 50, next_y, speed_block_text);
+next_y += 25;
+slow_block.x = next_x;
+slow_block.y = next_y;
+draw_text(next_x + 50, next_y, slow_block_text);
+next_y += 25;
+bomb_block.x = next_x;
+bomb_block.y = next_y;
+draw_text(next_x + 50, next_y, bomb_block_text);
+next_y += 30;
+draw_set_halign(fa_center);
+draw_text_ext(center, next_y, enemy_text, -1, 600);
+next_y += string_height_ext(enemy_text, -1, 600) + 10;
+enemy_1.x = room_width / 3 - 20;
+enemy_1.y = next_y;
+enemy_2.x = (room_width / 3) * 2 - 20;
+enemy_2.y = next_y + (enemy_1.sprite_height / 2) - (enemy_2.sprite_height / 2);
+next_y += enemy_1.sprite_height + 10;
+draw_text_ext(center, next_y, enemy_text_2, -1, 600);
+next_y += string_height_ext(enemy_text_2, -1, 600);
+help_bottom.x = center;
+help_bottom.y = next_y;
 </string>
           </argument>
         </arguments>
