@@ -24,10 +24,12 @@
       <sprite>sprites\spr_koaka_up</sprite>
       <sprite>sprites\spr_koala_down</sprite>
       <sprite>sprites\spr_koala_stand</sprite>
+      <sprite>sprites\spr_koala_dead</sprite>
     </sprites>
     <sprite>sprites\spr_exit1</sprite>
     <sprite>sprites\spr_exit2</sprite>
     <sprite>sprites\spr_rescued</sprite>
+    <sprite>sprites\spr_TNT</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bkgrnd_stone</background>
@@ -47,6 +49,8 @@
     <object>objects\obj_comptroller</object>
     <object>objects\obj_exit_red</object>
     <object>objects\obj_exit_blue</object>
+    <object>objects\obj_koala_corpse</object>
+    <object>objects\obj_TNT</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
