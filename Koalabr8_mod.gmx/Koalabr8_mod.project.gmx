@@ -10,17 +10,24 @@
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_title</sprite>
-    <sprite>sprites\spr_btn_start</sprite>
-    <sprite>sprites\spr_btn_load</sprite>
-    <sprite>sprites\spr_btn_help</sprite>
-    <sprite>sprites\spr_btn_quit</sprite>
     <sprite>sprites\spr_congrats</sprite>
     <sprite>sprites\spr_wall</sprite>
-    <sprite>sprites\spr_koala_left</sprite>
-    <sprite>sprites\spr_koala_right</sprite>
-    <sprite>sprites\spr_koaka_up</sprite>
-    <sprite>sprites\spr_koala_down</sprite>
-    <sprite>sprites\spr_koala_stand</sprite>
+    <sprites name="btn">
+      <sprite>sprites\spr_btn_start</sprite>
+      <sprite>sprites\spr_btn_load</sprite>
+      <sprite>sprites\spr_btn_help</sprite>
+      <sprite>sprites\spr_btn_quit</sprite>
+    </sprites>
+    <sprites name="player">
+      <sprite>sprites\spr_koala_left</sprite>
+      <sprite>sprites\spr_koala_right</sprite>
+      <sprite>sprites\spr_koaka_up</sprite>
+      <sprite>sprites\spr_koala_down</sprite>
+      <sprite>sprites\spr_koala_stand</sprite>
+    </sprites>
+    <sprite>sprites\spr_exit1</sprite>
+    <sprite>sprites\spr_exit2</sprite>
+    <sprite>sprites\spr_rescued</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bkgrnd_stone</background>
@@ -28,17 +35,24 @@
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\obj_title</object>
-    <object>objects\obj_btn_start</object>
-    <object>objects\obj_btn_load</object>
-    <object>objects\obj_btn_help</object>
-    <object>objects\obj_btn_quit</object>
     <object>objects\obj_congrats</object>
     <object>objects\obj_wall</object>
+    <object>objects\obj_koala</object>
+    <object>objects\obj_btn_quit</object>
+    <objects name="btn">
+      <object>objects\obj_btn_start</object>
+      <object>objects\obj_btn_load</object>
+      <object>objects\obj_btn_help</object>
+    </objects>
+    <object>objects\obj_comptroller</object>
+    <object>objects\obj_exit_red</object>
+    <object>objects\obj_exit_blue</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_help</room>
     <room>rooms\rm_menu</room>
+    <room>rooms\rm_test</room>
     <room>rooms\rm_complete</room>
+    <room>rooms\rm_help</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
