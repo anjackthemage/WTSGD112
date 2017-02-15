@@ -21,7 +21,7 @@
     <sprites name="player">
       <sprite>sprites\spr_koala_left</sprite>
       <sprite>sprites\spr_koala_right</sprite>
-      <sprite>sprites\spr_koaka_up</sprite>
+      <sprite>sprites\spr_koala_up</sprite>
       <sprite>sprites\spr_koala_down</sprite>
       <sprite>sprites\spr_koala_stand</sprite>
       <sprite>sprites\spr_koala_dead</sprite>
@@ -30,9 +30,19 @@
     <sprite>sprites\spr_exit2</sprite>
     <sprite>sprites\spr_rescued</sprite>
     <sprite>sprites\spr_TNT</sprite>
+    <sprite>sprites\spr_saw_horizontal</sprite>
+    <sprites name="locks_and_switches">
+      <sprite>sprites\spr_lock_blue</sprite>
+      <sprite>sprites\spr_switch_blue</sprite>
+      <sprite>sprites\spr_lock_red</sprite>
+      <sprite>sprites\spr_switch_red</sprite>
+      <sprite>sprites\spr_lock_yellow</sprite>
+      <sprite>sprites\spr_switch_yellow</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bkgrnd_stone</background>
+    <background>background\bkgrnd_tiles</background>
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
@@ -51,6 +61,15 @@
     <object>objects\obj_exit_blue</object>
     <object>objects\obj_koala_corpse</object>
     <object>objects\obj_TNT</object>
+    <object>objects\obj_saw</object>
+    <objects name="locks_and_switches">
+      <object>objects\obj_lock_blue</object>
+      <object>objects\obj_lock_yellow</object>
+      <object>objects\obj_lock_red</object>
+      <object>objects\obj_switch_blue</object>
+      <object>objects\obj_switch_yellow</object>
+      <object>objects\obj_switch_red</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
