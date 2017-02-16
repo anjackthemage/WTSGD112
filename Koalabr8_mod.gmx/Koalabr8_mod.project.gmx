@@ -39,6 +39,8 @@
       <sprite>sprites\spr_lock_yellow</sprite>
       <sprite>sprites\spr_switch_yellow</sprite>
     </sprites>
+    <sprite>sprites\spr_detonator</sprite>
+    <sprite>sprites\spr_rock</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bkgrnd_stone</background>
@@ -69,7 +71,10 @@
       <object>objects\obj_switch_blue</object>
       <object>objects\obj_switch_yellow</object>
       <object>objects\obj_switch_red</object>
+      <object>objects\obj_detonator</object>
     </objects>
+    <object>objects\obj_rock</object>
+    <object>objects\obj_switch_base</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
