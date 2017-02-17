@@ -8,6 +8,56 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>sound_playing</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>false</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>sound_played</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>null</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_switch_base">
       <action>
         <libid>1</libid>
@@ -101,6 +151,16 @@ with(instance_nearest(x, y, obj_koala))
             <string>
 if(place_free(x + lengthdir_x(other.speed, other.direction), y + lengthdir_y(other.speed, other.direction)) and !instance_place(x + lengthdir_x(other.speed, other.direction), y + lengthdir_y(other.speed, other.direction), obj_wall))
 {
+    if(!sound_playing)
+    {
+        sound_played = audio_play_sound(snd_rock, 10, false);
+        sound_playing = true;
+    }
+    else if (!audio_exists(sound_played))
+    {
+        sound_playing = false
+    }
+    
     x += lengthdir_x(other.speed, other.direction);
     y += lengthdir_y(other.speed, other.direction);
 }

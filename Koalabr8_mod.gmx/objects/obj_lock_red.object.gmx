@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>self</parentName>
+  <parentName>obj_lock_base</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -60,11 +60,10 @@ if (!solid)
     }
     else if(!place_meeting(x, y, obj_koala))
     {
-        with(obj_lock_red)
-        {
-            visible = true;
-            solid = true;
-        }
+        audio_play_sound(snd_lock, 11, false);
+        
+        visible = true;
+        solid = true;
         
         with(obj_switch_red)
         {
@@ -74,6 +73,7 @@ if (!solid)
 }
 else if(open_timer &gt; 0)
 {
+    audio_play_sound(snd_lock, 11, false);
     visible = false;
     solid = false;
 }
