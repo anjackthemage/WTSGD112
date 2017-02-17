@@ -33,7 +33,7 @@ speed = 4;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_lock_base">
+    <event eventtype="4" ename="obj_rock">
       <action>
         <libid>1</libid>
         <id>113</id>
@@ -63,7 +63,7 @@ speed = 4;
         <isnot>0</isnot>
       </action>
     </event>
-    <event eventtype="4" ename="obj_rock">
+    <event eventtype="4" ename="obj_lock_base">
       <action>
         <libid>1</libid>
         <id>113</id>
