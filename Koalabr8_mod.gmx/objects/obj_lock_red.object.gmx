@@ -58,7 +58,7 @@ if (!solid)
     {
         open_timer--;
     }
-    else if(!place_meeting(x, y, obj_koala))
+    else if(!place_meeting(x, y, obj_koala) and !place_meeting(x, y, obj_saw))
     {
         audio_play_sound(snd_lock, 11, false);
         
