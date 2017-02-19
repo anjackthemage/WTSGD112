@@ -51,20 +51,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>// Rather than moving the lock off screen, we can just make it incorporeal
+
+// Here we check to see if it should become solid again
 if (!solid)
 {
+    // If time isn't up, keep ticking
     if(open_timer &gt; 0)
     {
         open_timer--;
     }
     else if(!place_meeting(x, y, obj_koala) and !place_meeting(x, y, obj_saw))
     {
+        // If there's nothing in our space, let's pop back in
         audio_play_sound(snd_lock, 11, false);
         
         visible = true;
         solid = true;
         
+        // Here we reset the switch, to match our state
         with(obj_switch_red)
         {
             image_index = 0;
@@ -73,6 +78,7 @@ if (!solid)
 }
 else if(open_timer &gt; 0)
 {
+    // Lever pulled, vamoose!
     audio_play_sound(snd_lock, 11, false);
     visible = false;
     solid = false;

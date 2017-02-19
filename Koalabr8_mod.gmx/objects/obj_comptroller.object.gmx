@@ -213,7 +213,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(fade_alpha == 0 and string_pos("level", room_get_name(room)))
+            <string>// Start the ol' fade a-rollin
+if(fade_alpha == 0 and string_pos("level", room_get_name(room)))
 {
     fade_alpha = 0.02;
 }
@@ -279,7 +280,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(screen_shake - 1 &gt; 0)
+            <string>// This will ensure the shake ends somewhat abruptly, instead of 
+// gradually petering out (which would be a little weird)
+if(screen_shake - 1 &gt; 0)
 {
     screen_shake -= 0.1
 }
@@ -288,6 +291,7 @@ else
     screen_shake = 0;
 }
 
+// :D
 view_xview = random_range(-1 * screen_shake, screen_shake);
 view_yview = random_range(-1 * screen_shake, screen_shake);
 </string>
@@ -448,7 +452,9 @@ view_yview = random_range(-1 * screen_shake, screen_shake);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(0 &lt; fade_alpha and fade_alpha &lt; 1)
+            <string>// If we haven't reached full transparency or opacity,
+// draw the rectangle.
+if(0 &lt; fade_alpha and fade_alpha &lt; 1)
 {
     draw_set_color(c_black);
     draw_set_alpha(fade_alpha);
@@ -459,12 +465,14 @@ view_yview = random_range(-1 * screen_shake, screen_shake);
 }
 else if (fade_alpha &gt;= 1)
 {
+    // When we're fully opaque, turn the beat around. ;)
     fade_direction = -1;
     fade_alpha = 0.95;
     room_goto_next();
 }
 else
 {
+    // We must have hit (or passed) zero, so stop the train.
     fade_alpha = 0;
     fade_direction = 1;
 }

@@ -38,6 +38,7 @@
     <sprite>sprites\spr_rescued</sprite>
     <sprite>sprites\spr_TNT</sprite>
     <sprite>sprites\spr_saw_horizontal</sprite>
+    <sprite>sprites\spr_saw_vertical</sprite>
     <sprites name="locks_and_switches">
       <sprite>sprites\spr_lock_blue</sprite>
       <sprite>sprites\spr_switch_blue</sprite>

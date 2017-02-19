@@ -1100,8 +1100,10 @@
           <argument>
             <kind>1</kind>
             <string>///Me and my shaaaaaaaaadow
-script_draw_shadow(sprite_index, x, y, 20);
 
+script_draw_shadow(sprite_index, x, y, sprite_height, sprite_width);
+
+// Now draw the regular sprite (on top of the shadow)
 draw_self();
 </string>
           </argument>

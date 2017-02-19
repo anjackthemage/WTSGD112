@@ -89,7 +89,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// This is a dirty hack
+            <string>// This is a filthy hack.
 
 with(instance_nearest(x, y, obj_koala))
 {
@@ -148,9 +148,10 @@ with(instance_nearest(x, y, obj_koala))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>// For some reason, I have to over-complicate everything.
 if(place_free(x + lengthdir_x(other.speed, other.direction), y + lengthdir_y(other.speed, other.direction)) and !instance_place(x + lengthdir_x(other.speed, other.direction), y + lengthdir_y(other.speed, other.direction), obj_wall))
 {
+    // Check that the sound isn't already playing, so we don't destroy our eardrums.
     if(!sound_playing)
     {
         sound_played = audio_play_sound(snd_rock, 10, false);
@@ -161,6 +162,7 @@ if(place_free(x + lengthdir_x(other.speed, other.direction), y + lengthdir_y(oth
         sound_playing = false
     }
     
+    // Terrible movement code.
     x += lengthdir_x(other.speed, other.direction);
     y += lengthdir_y(other.speed, other.direction);
 }
@@ -168,6 +170,7 @@ else
 {
     with(other)
     {
+        // If we cannot move any further, neither can you.
         speed = 0;
         move_snap(40,40);
     }
@@ -195,8 +198,10 @@ else
           <argument>
             <kind>1</kind>
             <string>///Me and my shaaaaaaaaadow
-script_draw_shadow(sprite_index, x, y, 10);
 
+script_draw_shadow(sprite_index, x, y, sprite_height, sprite_width);
+
+// Now draw the regular sprite (on top of the shadow)
 draw_self();
 </string>
           </argument>

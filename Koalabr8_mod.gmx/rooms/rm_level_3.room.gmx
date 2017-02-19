@@ -54,6 +54,9 @@
     <instance objName="obj_koala" x="40" y="80" name="inst_49BFB61C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_koala" x="40" y="400" name="inst_C26B4026" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_koala" x="560" y="400" name="inst_14B97A36" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_saw" x="240" y="400" name="inst_981AC1C6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_saw" x="200" y="280" name="inst_CDD6514C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_saw" x="160" y="160" name="inst_905476AC" locked="0" code="direction = 90;&#xA;sprite_index = spr_saw_vertical;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="0" y="40" name="inst_DDEDB996" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="0" y="80" name="inst_A1CD0B5D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="0" y="120" name="inst_FD894182" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -119,12 +122,9 @@
     <instance objName="obj_TNT" x="320" y="160" name="inst_384606EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lock_red" x="440" y="360" name="inst_06101E07" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lock_red" x="40" y="360" name="inst_671466F5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_saw" x="240" y="400" name="inst_981AC1C6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_saw" x="200" y="280" name="inst_CDD6514C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_detonator" x="280" y="80" name="inst_5A8B784A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lock_yellow" x="560" y="120" name="inst_34900E51" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lock_yellow" x="40" y="120" name="inst_B1439213" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_saw" x="160" y="160" name="inst_905476AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
     <instance objName="obj_TNT" x="440" y="280" name="inst_D6410219" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_switch_red" x="440" y="80" name="inst_ACEB10E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_rock" x="120" y="320" name="inst_6BCB6E2A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

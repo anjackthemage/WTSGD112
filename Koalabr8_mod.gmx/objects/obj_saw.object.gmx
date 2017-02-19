@@ -3,7 +3,7 @@
   <spriteName>spr_saw_horizontal</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>11</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction = image_angle;
+            <string>// I'm not sure why I needed a code object for this.
 speed = 4;
 
 </string>
@@ -277,8 +277,29 @@ speed = 4;
           <argument>
             <kind>1</kind>
             <string>///Me and my shaaaaaaaaadow
-script_draw_shadow(sprite_index, x, y, 10);
 
+// These are the values for a non-rotated saw. Note that since the visible pixels 
+// only go about halfway up the sprite, I'm correcting down so the shadow isn't
+// skewed further than intended.
+var new_x = x;
+var new_y = y + (sprite_height / 2);
+var new_width = sprite_width;
+var new_height = sprite_height / 2;
+var rotated = false;
+
+// If it is rotated, massage the numbers a bit.
+if (direction == 90 or direction == 270)
+{
+    new_x = x + (sprite_width / 2);
+    new_y = y;
+    new_width = sprite_width / 2;
+    new_height = sprite_height;
+    rotated = true;
+}
+
+script_draw_shadow(sprite_index, new_x, new_y, new_width, new_height, rotated);
+
+// Now draw the regular sprite (on top of the shadow)
 draw_self();
 </string>
           </argument>
