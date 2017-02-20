@@ -162,7 +162,7 @@ if(place_free(x + lengthdir_x(other.speed, other.direction), y + lengthdir_y(oth
         sound_playing = false
     }
     
-    // Terrible movement code.
+    // Terrible movement codee
     x += lengthdir_x(other.speed, other.direction);
     y += lengthdir_y(other.speed, other.direction);
 }

@@ -125,6 +125,28 @@
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// How many koala's y'all got?
+ttl_koalas = instance_number(obj_koala);
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -378,66 +400,6 @@ view_yview = random_range(-1 * screen_shake, screen_shake);
       </action>
       <action>
         <libid>1</libid>
-        <id>501</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_draw_sprite</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>5</kind>
-            <sprite>spr_rescued</sprite>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>10</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>-1</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>714</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_draw_life_images</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>0</kind>
-            <string>150</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>5</kind>
-            <sprite>spr_koala_stand</sprite>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -452,7 +414,26 @@ view_yview = random_range(-1 * screen_shake, screen_shake);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// If we haven't reached full transparency or opacity,
+            <string>modifier_w = 0.75;
+modifier_h = 0.75;
+rescued_w = sprite_get_width(spr_rescued) * modifier_w;
+rescued_h = sprite_get_height(spr_rescued) * modifier_h;
+koala_w = sprite_get_width(spr_koala_stand) * modifier_w;
+koala_h = sprite_get_height(spr_koala_stand) * modifier_h;
+
+draw_set_color(c_dkgray);
+draw_rectangle(0, 0, (koala_w + 5) * ttl_koalas, 5 + rescued_h + koala_h, false);
+draw_set_color(c_white);
+draw_rectangle(0, 0, (koala_w + 5) * ttl_koalas, 5 + rescued_h + koala_h, true);
+
+draw_sprite_ext(spr_rescued, 0, 0, 0, modifier_w, modifier_h, 0, image_blend, image_alpha);
+
+for(var interval = 0; interval &lt; lives; interval++)
+{
+    draw_sprite_ext(spr_koala_stand, 0, 5 + (koala_w * interval), 5 + (rescued_h * modifier_h), modifier_w, modifier_h, 0, c_white, 1);
+}
+
+// If we haven't reached full transparency or opacity,
 // draw the rectangle.
 if(0 &lt; fade_alpha and fade_alpha &lt; 1)
 {

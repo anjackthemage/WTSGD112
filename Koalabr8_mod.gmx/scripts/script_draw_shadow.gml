@@ -33,13 +33,20 @@ shader_set_uniform_f(ualpha, 0.5);                          // We'll make the sh
 
 // This will skew the shadow so that the base of the shadow sprite and the base of the regular sprite will be the same, but the top of the
 // shadow sprite will be slightly above and to the left of the regular sprite. I think this is a good approximation of a shadow.
-if(rotated == 1)
+if(sprite != undefined)
 {
-    draw_sprite_pos(sprite, 0, shadow_x, shadow_y, start_x + s_width, start_y, start_x + s_width, start_y + s_height, start_x, start_y + s_height, 1);
+    if(rotated == 1)
+    {
+        draw_sprite_pos(sprite, 0, shadow_x, shadow_y, start_x + s_width, start_y, start_x + s_width, start_y + s_height, start_x, start_y + s_height, 1);
+    }
+    else
+    {
+        draw_sprite_pos(sprite, 0, shadow_x - 3, shadow_y - 3, shadow_x + s_width, shadow_y, start_x + s_width, start_y + s_height, start_x, start_y + s_height, 1);
+    }
 }
 else
 {
-    draw_sprite_pos(sprite, 0, shadow_x - 3, shadow_y - 3, shadow_x + s_width, shadow_y, start_x + s_width, start_y + s_height, start_x, start_y + s_height, 1);
+    show_debug_message("Missing sprite!!!");
 }
 // For dynamic shadows, we'd want to designate a ligth source object in the room and calculate the angle based off of that.
 // For these purposes, we can go with a sun-like light source (very big, very far away). This means the shadow angle won't

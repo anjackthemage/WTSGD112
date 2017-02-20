@@ -58,10 +58,14 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\script_draw_shadow.gml</script>
+    <script>scripts\script_get_sprite_from_subimage.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shader_shadow.shader</shader>
   </shaders>
+  <fonts name="fonts">
+    <font>fonts\font_title</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_title</object>
     <object>objects\obj_congrats</object>
@@ -92,6 +96,7 @@
       <object>objects\obj_switch_base</object>
     </objects>
     <object>objects\obj_rock</object>
+    <object>objects\obj_room_title</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
