@@ -97,6 +97,7 @@
     </objects>
     <object>objects\obj_rock</object>
     <object>objects\obj_room_title</object>
+    <object>objects\obj_draw_help</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
@@ -105,6 +106,7 @@
     <room>rooms\rm_level_3</room>
     <room>rooms\rm_complete</room>
     <room>rooms\rm_help</room>
+    <room>rooms\rm_story</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
