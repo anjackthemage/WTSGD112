@@ -33,7 +33,7 @@ help_state = 0;
 padding = 15;
 
 // Room title
-room_title = instance_create(x, 0, obj_room_title);
+room_title = instance_create(x, y, obj_room_title);
 room_title.title_text = "Game Information";
 
 // Define all of the text strings here
@@ -42,7 +42,7 @@ info_text_y = room_title.title_height;
 
 basic_story = "A group of telepathic, co-dependant koala's have been trapped in a torture factory by a poacher. You must guide the poor creatures to the exit. Unfortunately, due to their lack of free will, all the koala's will follow whatever order you give.";
 
-move_instructions = "Direct the koala's by pressing the up, down, left and right arrow keys. Remember, all of the koala's will move in whatever direction you press, so pay attention."
+move_instructions = "Direct the koala's by pressing the up, down, left and right arrow keys. Remember, all of the koala's will move in whatever direction you press, so pay attention. If you make a mistake, press the 'R' key (or click the 'Restart button') to restart the room."
 
 description_text = "Hover over an icon on the left, to learn more about it.";
 description_text_x = 380;
@@ -70,7 +70,7 @@ item_objects = ds_map_create();
 
 for (var interval = 0; interval &lt; ds_map_size(item_text); interval++)
 {
-    new_instance = instance_create(info_text_x, 0, obj_placeholder);
+    new_instance = instance_create(info_text_x, y, obj_placeholder);
     new_instance.sprite_index = item_sprites[| interval];
     
     switch(item_sprites[| interval])
@@ -140,13 +140,16 @@ for (var interval = 0; interval &lt; ds_map_size(item_text); interval++)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_aqua);
+            <string>
 draw_set_font(fnt_body);
-draw_set_halign(fa_left);
 
 var next_y = 0;
 var info_text_box_width = room_width - (padding * 2);
 var desc_text_box_width = (room_width - 120) - (padding * 2);
+
+draw_set_color(c_aqua);
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
 
 // Because we don't know the order in which things are being drawn
 if(info_text_y == 0)
@@ -180,7 +183,8 @@ with(obj_placeholder)
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_text_ext(description_text_x, description_text_y, description_text, 15, desc_text_box_width);
-
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
 </string>
           </argument>
         </arguments>
