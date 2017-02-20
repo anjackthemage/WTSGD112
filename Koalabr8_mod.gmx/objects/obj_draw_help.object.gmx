@@ -28,24 +28,158 @@
             <string>// Help state:
 //              0   -   First help page
 //              1   -   Second help page
-
+var new_instance = noone;
 help_state = 0;
+padding = 15;
 
+// Room title
+room_title = instance_create(x, 0, obj_room_title);
+room_title.title_text = "Game Information";
 
 // Define all of the text strings here
-var basic_story = "A group of telepathic, co-dependant koala's have been trapped in a torture factory by a poacher. You must guide the poor creatures to the exit. Unfortunately, due to their lack of free will, all the koala's will follow whatever order you give.";
+info_text_x = padding;
+info_text_y = room_title.title_height;
 
-var move_instructions = "Direct the koala's by pressing the up, down, left and right arrow keys. Remember, all of the koala's will move in whatever direction you press, so pay attention."
+basic_story = "A group of telepathic, co-dependant koala's have been trapped in a torture factory by a poacher. You must guide the poor creatures to the exit. Unfortunately, due to their lack of free will, all the koala's will follow whatever order you give.";
 
-var interactables = ds_map_create();
+move_instructions = "Direct the koala's by pressing the up, down, left and right arrow keys. Remember, all of the koala's will move in whatever direction you press, so pay attention."
 
-ds_map_add(interactables, spr_saw_horizontal, "Saws are mindless killing machines that move back and forth in a single, straight line. They will eliminate any koala who gets in their way.");
-ds_map_add(interactables, spr_TNT, "This stuff has been sitting around for a long time and has become quite volatile. The slightest touch will set if off.");
-ds_map_add(interactables, spr_detonator, "Someone has been kind enough to wire up all the unstable TNT so that touching this switch will set it all off at once. That doesn't seem safe.");
-ds_map_add(interactables, spr_lock_blue, "There are several locked gates in this abbatoir. Koalas cannot pass until the locks are removed.");
-ds_map_add(interactables, spr_switch_blue, "Switches will unlock gates of the corresponding color. Not all gates work the same, though. Watch for different behavior.");
-ds_map_add(interactables, spr_rock, "Years of neglect have caused the infrastruction to fail and allow boulders to fall into the death-traps. Use these to help you get past obstacles but be careful not to accidentally crush vital equipment.");
-ds_map_add(interactables, spr_exit1, "This is your goal. Every koala who makes it to one of these switches will (temporarily) escape the death trap. As with locks, there are differently-colored switches and each has unique behavior. Pay attention.");
+description_text = "Hover over an icon on the left, to learn more about it.";
+description_text_x = 380;
+description_text_y = 360;
+
+item_sprites = ds_list_create();
+
+ds_list_add(item_sprites, spr_koala_stand, spr_saw_horizontal, spr_TNT, spr_detonator, spr_lock_blue, spr_lock_yellow, spr_lock_red, spr_switch_blue, spr_rock, spr_exit1, spr_exit2);
+
+item_text = ds_map_create();
+
+ds_map_add(item_text, spr_koala_stand, "A telepathic koala who cannot make decisions for itself. You're responsible for getting the brainless little fuzz-ball to safety.");
+ds_map_add(item_text, spr_saw_horizontal, "Saws are mindless killing machines that move back and forth in a single, straight line. They will eliminate any koala who gets in their way.");
+ds_map_add(item_text, spr_TNT, "This stuff has been sitting around for a long time and has become quite volatile. The slightest touch will set if off.");
+ds_map_add(item_text, spr_detonator, "Someone has been kind enough to wire up all the unstable TNT so that touching this switch will set it all off at once. That doesn't seem safe.");
+ds_map_add(item_text, spr_lock_blue, "There are several locked gates in this abbatoir. Koalas cannot pass until the locks are removed. Blue locks are permanently disabled when the corresponding lever is pulled.");
+ds_map_add(item_text, spr_lock_yellow, "Unlike blue locks, yellow locks will re-appear a few seconds after the koalas stop pulling the levers.");
+ds_map_add(item_text, spr_lock_red, "Red locks work like yellow locks except they return immediately once no more red levers are being pulled.");
+ds_map_add(item_text, spr_switch_blue, "Levers will remove locks of the corresponding color. Levers reset if the corresponding gates re-appear.");
+ds_map_add(item_text, spr_rock, "Years of neglect have caused the infrastruction to fail and allow boulders to fall into the death-traps. Use these to help you get past obstacles but be careful not to accidentally crush vital equipment.");
+ds_map_add(item_text, spr_exit1, "This is your goal. Every koala who makes it to one of these switches will (temporarily) escape the death trap. Red exits can be used an unlimited number of times.");
+ds_map_add(item_text, spr_exit2, "Like red exits, these allow koalas to escape. However, blue exits can only be used once, each. So plan ahead.");
+
+item_objects = ds_map_create();
+
+for (var interval = 0; interval &lt; ds_map_size(item_text); interval++)
+{
+    new_instance = instance_create(info_text_x, 0, obj_placeholder);
+    new_instance.sprite_index = item_sprites[| interval];
+    
+    switch(item_sprites[| interval])
+    {
+        case spr_koala_stand:
+            new_instance.y = 240;
+            break;
+        case spr_saw_horizontal:
+            new_instance.x += 80;
+            new_instance.y = 240;
+            break;
+        case spr_rock:
+            new_instance.x += 40
+            new_instance.y = 280;
+        case spr_TNT:
+            new_instance.y = 320;
+            break;
+        case spr_detonator:
+            new_instance.image_speed = 0;
+            new_instance.x += 80;
+            new_instance.y = 320;
+            break;
+        case spr_lock_blue:
+            new_instance.y = 360;
+            break;
+        case spr_lock_yellow:
+            new_instance.x += 40;
+            new_instance.y = 360;
+            break;
+        case spr_lock_red:
+            new_instance.x += 80;
+            new_instance.y = 360;
+            break;
+        case spr_switch_blue:
+            new_instance.image_speed = 0;
+            new_instance.x += 40;
+            new_instance.y = 400;
+        case spr_exit1:
+            new_instance.y = 440;
+            break;
+        case spr_exit2:
+            new_instance.x += 80;
+            new_instance.y = 440;
+    }
+    
+    ds_map_add(item_objects, item_sprites[| interval], new_instance);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_color(c_aqua);
+draw_set_font(fnt_body);
+draw_set_halign(fa_left);
+
+var next_y = 0;
+var info_text_box_width = room_width - (padding * 2);
+var desc_text_box_width = (room_width - 120) - (padding * 2);
+
+// Because we don't know the order in which things are being drawn
+if(info_text_y == 0)
+{
+    info_text_y = room_title.title_height;
+}
+
+// Fit the first bit of text
+draw_text_ext(info_text_x, info_text_y, basic_story, 15, info_text_box_width);
+
+// Track delta y
+next_y = info_text_y + string_height_ext(basic_story, 15, info_text_box_width) + 20;
+
+// Fit the bit about controls
+draw_text_ext(info_text_x, next_y, move_instructions, 15, info_text_box_width);
+next_y += string_height_ext(basic_story, 15, info_text_box_width) + 20;
+
+// Remind user to hover over objects
+draw_text_ext(info_text_x, next_y, "Hover over an object on the left, to learn more about it.", 15, info_text_box_width);
+
+// Set description text
+with(obj_placeholder)
+{
+    if(position_meeting(mouse_x, mouse_y, id))
+    {
+        other.description_text = other.item_text[? sprite_index];
+    }
+}
+
+// Draw the description text
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+draw_text_ext(description_text_x, description_text_y, description_text, 15, desc_text_box_width);
 
 </string>
           </argument>

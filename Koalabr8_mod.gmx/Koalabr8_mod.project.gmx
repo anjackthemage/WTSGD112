@@ -64,7 +64,8 @@
     <shader type="GLSLES">shaders\shader_shadow.shader</shader>
   </shaders>
   <fonts name="fonts">
-    <font>fonts\font_title</font>
+    <font>fonts\fnt_title</font>
+    <font>fonts\fnt_body</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_title</object>
@@ -98,6 +99,7 @@
     <object>objects\obj_rock</object>
     <object>objects\obj_room_title</object>
     <object>objects\obj_draw_help</object>
+    <object>objects\obj_placeholder</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
