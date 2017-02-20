@@ -30,19 +30,20 @@
 //              1   -   Second help page
 var new_instance = noone;
 help_state = 0;
-padding = 15;
+x_padding = 15;
+y_padding = 20;
 
 // Room title
 room_title = instance_create(x, y, obj_room_title);
 room_title.title_text = "Game Information";
 
 // Define all of the text strings here
-info_text_x = padding;
+info_text_x = x_padding;
 info_text_y = room_title.title_height;
 
-basic_story = "A group of telepathic, co-dependant koala's have been trapped in a torture factory by a poacher. You must guide the poor creatures to the exit. Unfortunately, due to their lack of free will, all the koala's will follow whatever order you give.";
+basic_story = "A group of telepathic, co-dependant koalas have been trapped in a torture factory by a poacher. You must guide the poor creatures to the exit. Unfortunately, due to their lack of free will, all the koala's will follow whatever order you give.";
 
-move_instructions = "Direct the koala's by pressing the up, down, left and right arrow keys. Remember, all of the koala's will move in whatever direction you press, so pay attention. If you make a mistake, press the 'R' key (or click the 'Restart button') to restart the room."
+move_instructions = "Direct the koalas by pressing the up, down, left and right arrow keys. Remember, all of the koala's will move in whatever direction you press, so pay attention. If you make a mistake, press the 'R' key (or click the 'Restart button') to restart the room."
 
 description_text = "Hover over an icon on the left, to learn more about it.";
 description_text_x = 380;
@@ -144,8 +145,8 @@ for (var interval = 0; interval &lt; ds_map_size(item_text); interval++)
 draw_set_font(fnt_body);
 
 var next_y = 0;
-var info_text_box_width = room_width - (padding * 2);
-var desc_text_box_width = (room_width - 120) - (padding * 2);
+var info_text_box_width = room_width - (x_padding * 2);
+var desc_text_box_width = (room_width - 120) - (x_padding * 2);
 
 draw_set_color(c_aqua);
 draw_set_halign(fa_left);
@@ -158,17 +159,17 @@ if(info_text_y == 0)
 }
 
 // Fit the first bit of text
-draw_text_ext(info_text_x, info_text_y, basic_story, 15, info_text_box_width);
+script_draw_text_outlined_ext(info_text_x, info_text_y, basic_story, x_padding, info_text_box_width, c_black, 1);
 
 // Track delta y
-next_y = info_text_y + string_height_ext(basic_story, 15, info_text_box_width) + 20;
+next_y = info_text_y + string_height_ext(basic_story, x_padding, info_text_box_width) + 20;
 
 // Fit the bit about controls
-draw_text_ext(info_text_x, next_y, move_instructions, 15, info_text_box_width);
-next_y += string_height_ext(basic_story, 15, info_text_box_width) + 20;
+script_draw_text_outlined_ext(info_text_x, next_y, move_instructions, x_padding, info_text_box_width, c_black, 1);
+next_y += string_height_ext(basic_story, x_padding, info_text_box_width) + 20;
 
 // Remind user to hover over objects
-draw_text_ext(info_text_x, next_y, "Hover over an object on the left, to learn more about it.", 15, info_text_box_width);
+script_draw_text_outlined_ext(info_text_x, next_y, "Hover over an object on the left, to learn more about it.", x_padding, info_text_box_width, c_black, 1);
 
 // Set description text
 with(obj_placeholder)
@@ -182,7 +183,7 @@ with(obj_placeholder)
 // Draw the description text
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
-draw_text_ext(description_text_x, description_text_y, description_text, 15, desc_text_box_width);
+script_draw_text_outlined_ext(description_text_x, description_text_y, description_text, x_padding, desc_text_box_width, c_black, 1);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 </string>

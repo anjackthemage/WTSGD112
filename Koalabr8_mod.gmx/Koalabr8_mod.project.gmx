@@ -59,6 +59,7 @@
   <scripts name="scripts">
     <script>scripts\script_draw_shadow.gml</script>
     <script>scripts\script_get_sprite_from_subimage.gml</script>
+    <script>scripts\script_draw_text_outlined_ext.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shader_shadow.shader</shader>
