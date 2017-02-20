@@ -476,6 +476,36 @@ else
         <isnot>0</isnot>
       </action>
     </event>
+    <event eventtype="9" enumb="80">
+      <action>
+        <libid>1</libid>
+        <id>225</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_previous_room</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>222</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_next_room</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+    </event>
     <event eventtype="9" enumb="78">
       <action>
         <libid>1</libid>
@@ -524,6 +554,45 @@ else
           <argument>
             <kind>11</kind>
             <room>rm_menu</room>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Checking for cheat code
+var keyboard_history = keyboard_string;
+
+// Code is only 5 characters long
+if(keyboard_history &gt; 5)
+{
+    keyboard_history = string_copy(keyboard_history, 1, 5);
+}
+
+// "god" mode
+if(keyboard_history == "iddqd")
+{
+    with(obj_koala)
+    {
+        invulnerable = !invulnerable;
+    }
+}
+</string>
           </argument>
         </arguments>
       </action>
