@@ -25,11 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Help state:
-//              0   -   First help page
-//              1   -   Second help page
+            <string>// Variables
 var new_instance = noone;
-help_state = 0;
+// Buffer for text formatting
 x_padding = 15;
 y_padding = 20;
 
@@ -46,15 +44,18 @@ basic_story = "A group of telepathic, co-dependant koalas have been trapped in a
 move_instructions = "Direct the koalas by pressing the up, down, left and right arrow keys. Remember, all of the koala's will move in whatever direction you press, so pay attention. If you make a mistake, press the 'R' key (or click the 'Restart button') to restart the room."
 
 description_text = "Hover over an icon on the left, to learn more about it.";
+
+// Ugh, arbitrary numbers
 description_text_x = 380;
 description_text_y = 360;
 
+// Define lists
 item_sprites = ds_list_create();
-
+// First is the list of sprites
 ds_list_add(item_sprites, spr_koala_stand, spr_saw_horizontal, spr_TNT, spr_detonator, spr_lock_blue, spr_lock_yellow, spr_lock_red, spr_switch_blue, spr_rock, spr_exit1, spr_exit2);
 
 item_text = ds_map_create();
-
+// Now a list of text, associated with each sprite (common denominator)
 ds_map_add(item_text, spr_koala_stand, "A telepathic koala who cannot make decisions for itself. You're responsible for getting the brainless little fuzz-ball to safety.");
 ds_map_add(item_text, spr_saw_horizontal, "Saws are mindless killing machines that move back and forth in a single, straight line. They will eliminate any koala who gets in their way.");
 ds_map_add(item_text, spr_TNT, "This stuff has been sitting around for a long time and has become quite volatile. The slightest touch will set if off.");
@@ -68,12 +69,12 @@ ds_map_add(item_text, spr_exit1, "This is your goal. Every koala who makes it to
 ds_map_add(item_text, spr_exit2, "Like red exits, these allow koalas to escape. However, blue exits can only be used once, each. So plan ahead.");
 
 item_objects = ds_map_create();
-
+// Now we spawn instances of obj_placeholder and assign sprites
 for (var interval = 0; interval &lt; ds_map_size(item_text); interval++)
 {
     new_instance = instance_create(info_text_x, y, obj_placeholder);
     new_instance.sprite_index = item_sprites[| interval];
-    
+    // There's probably a better way to do this... :(
     switch(item_sprites[| interval])
     {
         case spr_koala_stand:
@@ -144,6 +145,7 @@ for (var interval = 0; interval &lt; ds_map_size(item_text); interval++)
             <string>
 draw_set_font(fnt_body);
 
+// Variables
 var next_y = 0;
 var info_text_box_width = room_width - (x_padding * 2);
 var desc_text_box_width = (room_width - 120) - (x_padding * 2);

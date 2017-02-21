@@ -11,22 +11,23 @@ if(argument_count == 6 and argument[5])
     rotated = 1;
 }
 
-// Blech, arbitrary numbers :(
+// Bleh, arbitrary numbers :(
 var shadow_angle = 20;
 
-var transform_x = lengthdir_x(s_height, shadow_angle - 90); // Delta x
-var transform_y = lengthdir_y(s_height, shadow_angle - 90); // Delta y
+// Configure offset for x and y to position the shadow's origin
+var transform_x = lengthdir_x(s_height, shadow_angle - 90);
+var transform_y = lengthdir_y(s_height, shadow_angle - 90);
 
 var shadow_x = start_x - transform_x;                       // Start the shadow to the left (-x) of the image
 var shadow_y = start_y - (s_height - transform_y);          // Start the shadow slightly above (-y) the image
 
 var shadow_tex_sampler =  shader_get_sampler_index(shader_shadow, "shadow_texture");
-
-var shadow_sprite = sprite_get_texture(sprite, 0); // Convert sprite to a texture we can pass to the shader
+// Convert sprite to a texture we can pass to the shader
+var shadow_sprite = sprite_get_texture(sprite, 0);
 
 shader_set(shader_shadow);                                  // My custom shader :D - Just draws black pixels in place of the sprite
 
-texture_set_stage(shadow_tex_sampler, shadow_sprite);  // So we can draw the correct "sub-image"
+texture_set_stage(shadow_tex_sampler, shadow_sprite);       // So we can draw the correct "sub-image"
 
 var ualpha = shader_get_uniform(shader_shadow, "alpha");    // This value is subtracted from the alpha of each pixel in the sprite
 shader_set_uniform_f(ualpha, 0.5);                          // We'll make the shadow 50% transparent, for now
@@ -35,6 +36,9 @@ shader_set_uniform_f(ualpha, 0.5);                          // We'll make the sh
 // shadow sprite will be slightly above and to the left of the regular sprite. I think this is a good approximation of a shadow.
 if(sprite != undefined)
 {
+    // For dynamic shadows, we'd want to designate a light source object in the room and calculate the angle based off of that.
+    // For these purposes, we can go with a sun-like light source (very big, very far away). This means the shadow angle won't
+    // noticeably change, so we can use a static parallelogram (rhomboid, in this case).
     if(rotated == 1)
     {
         draw_sprite_pos(sprite, 0, shadow_x, shadow_y, start_x + s_width, start_y, start_x + s_width, start_y + s_height, start_x, start_y + s_height, 1);
@@ -48,8 +52,5 @@ else
 {
     show_debug_message("Missing sprite!!!");
 }
-// For dynamic shadows, we'd want to designate a ligth source object in the room and calculate the angle based off of that.
-// For these purposes, we can go with a sun-like light source (very big, very far away). This means the shadow angle won't
-// noticeably change, so we can use a static parallelogram (rhomboid, in this case).
-
-shader_reset(); //Shut down the shader, otherwise everything would be drawn solid black
+//Shut down the shader, otherwise everything would be drawn solid black
+shader_reset();

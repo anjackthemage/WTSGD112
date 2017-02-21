@@ -414,13 +414,17 @@ view_yview = random_range(-1 * screen_shake, screen_shake);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>modifier_w = 0.75;
+            <string>/// UI-ish
+
+// Variables
+modifier_w = 0.75;
 modifier_h = 0.75;
 rescued_w = sprite_get_width(spr_rescued) * modifier_w;
 rescued_h = sprite_get_height(spr_rescued) * modifier_h;
 koala_w = sprite_get_width(spr_koala_stand) * modifier_w;
 koala_h = sprite_get_height(spr_koala_stand) * modifier_h;
 
+// Drawing the "rescued" display
 draw_set_color(c_dkgray);
 draw_rectangle(0, 0, (koala_w + 5) * ttl_koalas, 5 + rescued_h + koala_h, false);
 draw_set_color(c_white);
@@ -434,7 +438,7 @@ for(var interval = 0; interval &lt; lives; interval++)
 }
 
 // If we haven't reached full transparency or opacity,
-// draw the rectangle.
+// draw the rectangle and continue.
 if(0 &lt; fade_alpha and fade_alpha &lt; 1)
 {
     draw_set_color(c_black);
@@ -536,6 +540,37 @@ else
         <isnot>0</isnot>
       </action>
     </event>
+    <event eventtype="9" enumb="68">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Debug mode
+if(global.debug)
+{
+    show_debug_overlay(false);
+}
+else
+{
+    show_debug_overlay(true);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="9" enumb="27">
       <action>
         <libid>1</libid>
@@ -578,10 +613,10 @@ else
             <string>/// Checking for cheat code
 var keyboard_history = keyboard_string;
 
-// Code is only 5 characters long
-if(keyboard_history &gt; 5)
+// Code is only 5 characters long, so only grab the last 5 characters
+if(string_length(keyboard_history) &gt; 5)
 {
-    keyboard_history = string_copy(keyboard_history, 1, 5);
+    keyboard_history = string_copy(keyboard_history, string_length(keyboard_history) - 4, string_length(keyboard_history));
 }
 
 // "god" mode
@@ -589,7 +624,14 @@ if(keyboard_history == "iddqd")
 {
     with(obj_koala)
     {
-        invulnerable = !invulnerable;
+        if(!invulnerable)
+        {
+            invulnerable = true;
+        }
+        else
+        {
+            invulnerable = false;
+        }
     }
 }
 </string>
