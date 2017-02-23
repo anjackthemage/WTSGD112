@@ -26,7 +26,6 @@
   <scripts name="scripts">
     <script>scripts\script_explode.gml</script>
   </scripts>
-  <shaders name="shaders"/>
   <objects name="objects">
     <object>objects\obj_island</object>
     <object>objects\obj_plane_parent</object>
