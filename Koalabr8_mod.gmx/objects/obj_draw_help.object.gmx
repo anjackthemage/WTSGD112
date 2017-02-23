@@ -44,6 +44,7 @@ basic_story = "A group of telepathic, co-dependant koalas have been trapped in a
 move_instructions = "Direct the koalas by pressing the up, down, left and right arrow keys. Remember, all of the koala's will move in whatever direction you press, so pay attention. If you make a mistake, press the 'R' key (or click the 'Restart button') to restart the room."
 
 description_text = "Hover over an icon on the left, to learn more about it.";
+exit_text = "PRESS ANY KEY TO RETURN TO MENU";
 
 // Ugh, arbitrary numbers
 description_text_x = 380;
@@ -78,38 +79,38 @@ for (var interval = 0; interval &lt; ds_map_size(item_text); interval++)
     switch(item_sprites[| interval])
     {
         case spr_koala_stand:
-            new_instance.y = 240;
+            new_instance.y = 320;
             break;
         case spr_saw_horizontal:
             new_instance.x += 80;
-            new_instance.y = 240;
+            new_instance.y = 320;
             break;
         case spr_rock:
             new_instance.x += 40
-            new_instance.y = 280;
+            new_instance.y = 360;
         case spr_TNT:
-            new_instance.y = 320;
+            new_instance.y = 360;
             break;
         case spr_detonator:
             new_instance.image_speed = 0;
             new_instance.x += 80;
-            new_instance.y = 320;
+            new_instance.y = 360;
             break;
         case spr_lock_blue:
-            new_instance.y = 360;
+            new_instance.y = 400;
             break;
         case spr_lock_yellow:
             new_instance.x += 40;
-            new_instance.y = 360;
+            new_instance.y = 400;
             break;
         case spr_lock_red:
             new_instance.x += 80;
-            new_instance.y = 360;
+            new_instance.y = 400;
             break;
         case spr_switch_blue:
             new_instance.image_speed = 0;
             new_instance.x += 40;
-            new_instance.y = 400;
+            new_instance.y = 440;
         case spr_exit1:
             new_instance.y = 440;
             break;
@@ -160,18 +161,22 @@ if(info_text_y == 0)
     info_text_y = room_title.title_height;
 }
 
+script_draw_text_outlined_ext(info_text_x, info_text_y, "Game By: Habgood and Overmars#Mod By Gary Reif", x_padding, info_text_box_width, c_black, 1);
+
+next_y = info_text_y + string_height_ext("Game By: Habgood and Overmars#Mod By Gary Reif", x_padding, info_text_box_width) + 20;
+
 // Fit the first bit of text
-script_draw_text_outlined_ext(info_text_x, info_text_y, basic_story, x_padding, info_text_box_width, c_black, 1);
+script_draw_text_outlined_ext(info_text_x, next_y, basic_story, x_padding, info_text_box_width, c_black, 1);
 
 // Track delta y
-next_y = info_text_y + string_height_ext(basic_story, x_padding, info_text_box_width) + 20;
+next_y = next_y + string_height_ext(basic_story, x_padding, info_text_box_width) + 20;
 
 // Fit the bit about controls
 script_draw_text_outlined_ext(info_text_x, next_y, move_instructions, x_padding, info_text_box_width, c_black, 1);
-next_y += string_height_ext(basic_story, x_padding, info_text_box_width) + 20;
+next_y += string_height_ext(basic_story, x_padding, info_text_box_width) + 15;
 
 // Remind user to hover over objects
-script_draw_text_outlined_ext(info_text_x, next_y, "Hover over an object on the left, to learn more about it.", x_padding, info_text_box_width, c_black, 1);
+script_draw_text_outlined_ext(info_text_x, next_y, "Hover over an object on the bottom left, to learn more about it.##" + exit_text, x_padding, info_text_box_width, c_black, 1);
 
 // Set description text
 with(obj_placeholder)
@@ -189,6 +194,28 @@ script_draw_text_outlined_ext(description_text_x, description_text_y, descriptio
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>224</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_another_room</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>11</kind>
+            <room>rm_menu</room>
           </argument>
         </arguments>
       </action>
