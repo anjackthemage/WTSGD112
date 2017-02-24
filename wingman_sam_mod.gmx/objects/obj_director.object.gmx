@@ -74,8 +74,12 @@
           <argument>
             <kind>1</kind>
             <string>player_names = ds_list_create();
-player_names[| 1] = "";
-player_names[| 2] = "";
+player_names[| 1] = -1;
+player_names[| 2] = -1;
+
+player_scores = ds_list_create();
+player_scores[| 1] = 0;
+player_scores[| 2] = 0;
 </string>
           </argument>
         </arguments>
@@ -97,6 +101,30 @@ player_names[| 2] = "";
           <argument>
             <kind>1</kind>
             <string>input_got</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>false</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>names_entered</string>
           </argument>
           <argument>
             <kind>0</kind>
@@ -168,12 +196,15 @@ game_paused = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Spawn check boxes
+            <string>/// Spawn text boxes
 box_1 = instance_create(room_width / 2, room_height / 2 - 20, obj_text_box);
 box_1.player_num = 1;
 
 box_2 = instance_create(room_width / 2, room_height / 2 + 20, obj_text_box);
 box_2.player_num = 2;
+
+// Stop the game over message
+display_game_over = false;
 </string>
           </argument>
         </arguments>
@@ -197,9 +228,15 @@ box_2.player_num = 2;
           <argument>
             <kind>1</kind>
             <string>/// Check if all names have been entered
-if(player_names[| 1] != "" and player_names[| 2] != "")
+if(player_names[| 1] != -1 and player_names[| 2] != -1 and !names_entered)
 {
+    // Assign to highscore table
+    highscore_add(other.player_names[| 1], player_scores[| 1]);
+    highscore_add(other.player_names[| 2], player_scores[| 2]);
+    
     // Move on.
+    alarm_set(1, 30);
+    names_entered = true;
 }
 </string>
           </argument>
@@ -225,6 +262,11 @@ if(player_names[| 1] != "" and player_names[| 2] != "")
             <kind>1</kind>
             <string>/// "pause" via deactivating everything
 
+// First grab scores
+player_scores[| 1] = obj_panel.pl1_score;
+player_scores[| 2] = obj_panel.pl2_score;
+
+// "pause"
 instance_deactivate_all(true);
 </string>
           </argument>
