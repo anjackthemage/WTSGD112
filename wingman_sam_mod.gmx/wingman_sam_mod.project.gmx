@@ -41,9 +41,12 @@
     <object>objects\obj_director</object>
     <object>objects\obj_enemy_conn</object>
     <object>objects\obj_panel</object>
+    <object>objects\obj_draw_highscores</object>
+    <object>objects\obj_text_box</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_test</room>
+    <room>rooms\rm_highscores</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

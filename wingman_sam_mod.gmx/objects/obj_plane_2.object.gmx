@@ -283,13 +283,8 @@ with(obj_panel)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Shoot if we can
-if(can_shoot &gt;= 1)
-{
-    var new_bullet = instance_create(x, y - 16, obj_bullet);
-    new_bullet.fired_from = id;
-    can_shoot = -15;
-}
+            <string>/// Call event:other-&gt;user1 on parent to fire bullet
+event_perform(ev_other, ev_user1);
 </string>
           </argument>
         </arguments>
