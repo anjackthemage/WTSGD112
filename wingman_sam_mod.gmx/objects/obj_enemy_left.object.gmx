@@ -49,7 +49,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>damage_taken</string>
+            <string>plane_health</string>
           </argument>
           <argument>
             <kind>0</kind>

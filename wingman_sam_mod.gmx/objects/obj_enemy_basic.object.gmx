@@ -49,11 +49,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>damage_taken</string>
+            <string>plane_health</string>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>0</string>
+            <string>10</string>
           </argument>
         </arguments>
       </action>
@@ -124,7 +124,7 @@
           <argument>
             <kind>1</kind>
             <string>///Am I dead?
-if(damage_taken &gt;= 10)
+if(plane_health &lt;= 0)
 {
     event_perform(ev_other, ev_user0);
 }

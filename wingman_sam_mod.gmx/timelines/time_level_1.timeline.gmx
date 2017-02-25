@@ -32,7 +32,38 @@ for(var iterator = 0; iterator &lt; 5; iterator++)
     </event>
   </entry>
   <entry>
-    <step>200</step>
+    <step>120</step>
+    <event>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Throw a few more at 'em
+
+with(obj_enemy_conn)
+{
+    enemies_to_spawn += 5;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </entry>
+  <entry>
+    <step>250</step>
     <event>
       <action>
         <libid>1</libid>
@@ -57,8 +88,103 @@ with(obj_enemy_conn)
     ds_list_add(enemy_type_list, obj_enemy_right, obj_enemy_left);
     
     // You know, spawn a few
-    enemies_to_spawn += 10;
+    enemies_to_spawn += 5;
 }
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </entry>
+  <entry>
+    <step>400</step>
+    <event>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Another new enemy!
+
+with(obj_enemy_conn)
+{
+    ds_list_add(enemy_type_list, obj_enemy_up);
+    enemies_to_spawn += 5;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </entry>
+  <entry>
+    <step>530</step>
+    <event>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Introduce the next enemy type
+
+with(obj_enemy_conn)
+{
+    ds_list_add(enemy_type_list, obj_enemy_shoot, obj_enemy_target);
+    
+    // You know, spawn a few
+    enemies_to_spawn += 5;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </entry>
+  <entry>
+    <step>680</step>
+    <event>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Bossman
+instance_create(320, -80, obj_boss_1);
 </string>
           </argument>
         </arguments>

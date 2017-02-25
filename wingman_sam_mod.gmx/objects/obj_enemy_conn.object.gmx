@@ -89,32 +89,39 @@ ds_list_add(enemy_type_list, obj_enemy_basic);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Spawn enemies
+            <string>///Spawn enemies?
 
-// Choose from our list
 if(enemies_to_spawn &gt; 0)
 {
+    // Choose from our list
     next_enemy = enemy_type_list[| irandom(ds_list_size(enemy_type_list) - 1)];
-}
-// Let it live!
-switch(next_enemy)
-{
-    case obj_enemy_right:
-        new_x = random_range(room_width + 8, (room_width * 2) - 40);
-        new_y = random_range(8, room_height - 40);
-        break;
-    case obj_enemy_left:
-        new_x = random_range(-1 * (room_width - 8), -40);
-        new_x = random_range(8, room_height - 40);
-        break;
-    case obj_enemy_up:
-        new_x = random_range(8, room_width - 40);
-        new_y = random_range(room_height + 8, (room_height * 2) - 40);
-        break;
-    default:
-        new_x = random_range(8, room_width - 40);
-        new_y = random_range(-1 * (room_height -8), -40);
-        break;
+    
+    // Where to put it?
+    switch(next_enemy)
+    {
+        case obj_enemy_left:
+            new_x = random_range(room_width + 8, (room_width * 2) - 40);
+            new_y = random_range(8, room_height - 120);
+            break;
+        case obj_enemy_right:
+            new_x = random_range(-1 * (room_width - 8), -40);
+            new_y = random_range(8, room_height - 120);
+            break;
+        case obj_enemy_up:
+            new_x = random_range(8, room_width - 40);
+            new_y = random_range(room_height + 8, (room_height * 2) - 120);
+            break;
+        default:
+            new_x = random_range(8, room_width - 40);
+            new_y = random_range(-1 * (room_height -8), -40);
+            break;
+    }
+    
+    // Let it live!
+    instance_create(new_x, new_y, next_enemy);
+    
+    // DON'T FORGET THIS PART ;)
+    enemies_to_spawn--;
 }
 </string>
           </argument>

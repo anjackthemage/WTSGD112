@@ -25,11 +25,15 @@
     <sprite>sprites\spr_enemy_bullet</sprite>
     <sprite>sprites\spr_enemy_shoot</sprite>
     <sprite>sprites\spr_enemy_target</sprite>
+    <sprite>sprites\spr_obj_boss</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background</background>
   </backgrounds>
-  <paths name="paths"/>
+  <paths name="paths">
+    <path>paths\path_boss_1_enter</path>
+    <path>paths\path_boss_1_loop</path>
+  </paths>
   <scripts name="scripts">
     <script>scripts\script_explode.gml</script>
   </scripts>
@@ -57,6 +61,7 @@
     <object>objects\obj_enemy_bullet_aimed</object>
     <object>objects\obj_enemy_shoot</object>
     <object>objects\obj_enemy_target</object>
+    <object>objects\obj_boss_1</object>
   </objects>
   <timelines name="timelines">
     <timeline>timelines\time_level_1</timeline>
