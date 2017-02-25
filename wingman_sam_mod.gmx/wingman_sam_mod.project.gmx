@@ -58,6 +58,9 @@
     <object>objects\obj_enemy_shoot</object>
     <object>objects\obj_enemy_target</object>
   </objects>
+  <timelines name="timelines">
+    <timeline>timelines\time_level_1</timeline>
+  </timelines>
   <rooms name="rooms">
     <room>rooms\rm_test</room>
     <room>rooms\rm_highscores</room>

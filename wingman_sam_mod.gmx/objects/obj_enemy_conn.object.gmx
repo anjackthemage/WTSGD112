@@ -8,40 +8,38 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="3" enumb="0">
+    <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
-        <id>405</id>
+        <id>305</id>
         <kind>0</kind>
         <userelative>0</userelative>
-        <isquestion>-1</isquestion>
-        <useapplyto>0</useapplyto>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
         <exetype>1</exetype>
-        <functionname>action_if_dice</functionname>
+        <functionname>action_timeline_set</functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
+            <kind>14</kind>
+            <timeline>time_level_1</timeline>
+          </argument>
+          <argument>
             <kind>0</kind>
-            <string>20</string>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
           </argument>
         </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>422</id>
-        <kind>1</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
       </action>
       <action>
         <libid>1</libid>
@@ -59,26 +57,68 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Spawn enemy
+            <string>/// Set variables
 
-instance_create(random_range(8, room_width - 40), -40, obj_enemy_basic);
+// Count of enemies objects left to spawn
+enemies_to_spawn = 0;
+
+// List of enemy types from which to choose
+enemy_type_list = ds_list_create();
+
+// Start with basic enemies
+ds_list_add(enemy_type_list, obj_enemy_basic);
 </string>
           </argument>
         </arguments>
       </action>
+    </event>
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
-        <id>424</id>
-        <kind>2</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Spawn enemies
+
+// Choose from our list
+if(enemies_to_spawn &gt; 0)
+{
+    next_enemy = enemy_type_list[| irandom(ds_list_size(enemy_type_list) - 1)];
+}
+// Let it live!
+switch(next_enemy)
+{
+    case obj_enemy_right:
+        new_x = random_range(room_width + 8, (room_width * 2) - 40);
+        new_y = random_range(8, room_height - 40);
+        break;
+    case obj_enemy_left:
+        new_x = random_range(-1 * (room_width - 8), -40);
+        new_x = random_range(8, room_height - 40);
+        break;
+    case obj_enemy_up:
+        new_x = random_range(8, room_width - 40);
+        new_y = random_range(room_height + 8, (room_height * 2) - 40);
+        break;
+    default:
+        new_x = random_range(8, room_width - 40);
+        new_y = random_range(-1 * (room_height -8), -40);
+        break;
+}
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
   </events>
