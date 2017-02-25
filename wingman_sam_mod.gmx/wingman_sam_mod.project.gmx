@@ -19,6 +19,12 @@
     <sprite>sprites\spr_explosion_1</sprite>
     <sprite>sprites\spr_explosion_2</sprite>
     <sprite>sprites\spr_panel</sprite>
+    <sprite>sprites\spr_enemy_right</sprite>
+    <sprite>sprites\spr_enemy_left</sprite>
+    <sprite>sprites\spr_enemy_up</sprite>
+    <sprite>sprites\spr_enemy_bullet</sprite>
+    <sprite>sprites\spr_enemy_shoot</sprite>
+    <sprite>sprites\spr_enemy_target</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background</background>
@@ -38,11 +44,19 @@
     <object>objects\obj_plane_2</object>
     <object>objects\obj_bullet</object>
     <object>objects\obj_enemy_basic</object>
+    <object>objects\obj_enemy_right</object>
+    <object>objects\obj_enemy_left</object>
+    <object>objects\obj_enemy_up</object>
     <object>objects\obj_director</object>
     <object>objects\obj_enemy_conn</object>
     <object>objects\obj_panel</object>
     <object>objects\obj_draw_highscores</object>
     <object>objects\obj_text_box</object>
+    <object>objects\obj_placeholder</object>
+    <object>objects\obj_enemy_bullet</object>
+    <object>objects\obj_enemy_bullet_aimed</object>
+    <object>objects\obj_enemy_shoot</object>
+    <object>objects\obj_enemy_target</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_test</room>
