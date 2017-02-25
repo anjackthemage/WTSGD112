@@ -265,12 +265,18 @@ else if (has_focus and !was_clicked)
 draw_set_color(c_navy);
 draw_set_alpha(0.5);
 draw_rectangle(x - 100, y - 10, x + 100, y + 10, false);
-draw_set_alpha(1);
 
 if(!has_focus)
+{
     draw_set_alpha(0.5);
+    text_cursor = "";
+}
 else
+{
     draw_set_alpha(1);
+    text_cursor = "|";
+}
+
 draw_set_color(c_white);
 draw_rectangle(x - 100, y - 10, x + 100, y + 10, true);
 
