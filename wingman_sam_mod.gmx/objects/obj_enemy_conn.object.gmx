@@ -93,41 +93,7 @@ ds_list_add(enemy_type_list, obj_enemy_basic);
 
 if(enemies_to_spawn &gt; 0)
 {
-    // Choose from our list
-    next_enemy = enemy_type_list[| irandom(ds_list_size(enemy_type_list) - 1)];
-    
-    // Where to put it?
-    switch(next_enemy)
-    {
-        case obj_enemy_left:
-            new_x = room_width + ((room_width / 4) * choose(1, 2, 3));
-            new_y = (360 / 3) * choose(1, 2);
-            new_direction = 180;
-            break;
-        case obj_enemy_right:
-            new_x = -1 * ((room_width / 4) * choose(1, 2, 3));
-            new_y = (360 / 3) * choose(1, 2);
-            new_direction = 0;
-            break;
-        case obj_enemy_up:
-            new_x = (640 / 4) * choose(1, 2, 3);
-            new_y = room_height + ((room_height / 3) * choose(1, 2));
-            new_direction = 90;
-            break;
-        default:
-            new_x = (640 / 4) * choose(1, 2, 3);
-            new_y = -1 * ((room_height / 3) * choose(1, 2));
-            new_direction = 270;
-            break;
-    }
-    
-    // Let it live!
-    //instance_create(new_x, new_y, next_enemy);
-    //script_spawn_flying_v(new_x, new_y, next_enemy, new_direction);
-    script_spawn_follow_path(new_x, new_y, next_enemy, new_direction);
-    
-    // DON'T FORGET THIS PART ;)
-    enemies_to_spawn--;
+    enemies_to_spawn = script_spawn_random_group(enemies_to_spawn, enemy_type_list);
 }
 </string>
           </argument>

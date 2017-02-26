@@ -54,7 +54,7 @@ for(var iterator = 0; iterator &lt; 5; iterator++)
 
 with(obj_enemy_conn)
 {
-    enemies_to_spawn += 5;
+    enemies_to_spawn += 15;
 }
 </string>
           </argument>
@@ -88,7 +88,7 @@ with(obj_enemy_conn)
     ds_list_add(enemy_type_list, obj_enemy_right, obj_enemy_left);
     
     // You know, spawn a few
-    enemies_to_spawn += 5;
+    enemies_to_spawn += 15;
 }
 
 </string>
@@ -121,7 +121,7 @@ with(obj_enemy_conn)
 with(obj_enemy_conn)
 {
     ds_list_add(enemy_type_list, obj_enemy_up);
-    enemies_to_spawn += 5;
+    enemies_to_spawn += 15;
 }
 </string>
           </argument>
@@ -155,7 +155,7 @@ with(obj_enemy_conn)
     ds_list_add(enemy_type_list, obj_enemy_shoot, obj_enemy_target);
     
     // You know, spawn a few
-    enemies_to_spawn += 5;
+    enemies_to_spawn += 15;
 }
 
 </string>

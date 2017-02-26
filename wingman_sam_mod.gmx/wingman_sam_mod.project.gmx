@@ -43,6 +43,8 @@
     <script>scripts\script_explode.gml</script>
     <script>scripts\script_spawn_flying_v.gml</script>
     <script>scripts\script_spawn_follow_path.gml</script>
+    <script>scripts\script_spawn_random_group.gml</script>
+    <script>scripts\script_spawn_formation_groups.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_title</font>
