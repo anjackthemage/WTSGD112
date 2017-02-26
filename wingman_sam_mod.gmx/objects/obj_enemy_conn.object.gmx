@@ -100,33 +100,31 @@ if(enemies_to_spawn &gt; 0)
     switch(next_enemy)
     {
         case obj_enemy_left:
-            new_x = random_range(room_width + 8, (room_width * 2) - 40);
-            new_y = random_range(8, room_height - 120);
-            //script_spawn_flying_v(new_x, new_y, next_enemy, 180, choose(2, 3, 4));
-            script_spawn_follow_path(new_x, new_y, next_enemy, 180);
+            new_x = room_width + ((room_width / 4) * choose(1, 2, 3));
+            new_y = (360 / 3) * choose(1, 2);
+            new_direction = 180;
             break;
         case obj_enemy_right:
-            new_x = random_range(-1 * (room_width - 8), -40);
-            new_y = random_range(8, room_height - 120);
-            //script_spawn_flying_v(new_x, new_y, next_enemy, 0, choose(2, 3, 4));
-            script_spawn_follow_path(new_x, new_y, next_enemy, 0);
+            new_x = -1 * ((room_width / 4) * choose(1, 2, 3));
+            new_y = (360 / 3) * choose(1, 2);
+            new_direction = 0;
             break;
         case obj_enemy_up:
-            new_x = random_range(8, room_width - 40);
-            new_y = random_range(room_height + 8, (room_height * 2) - 120);
-            //script_spawn_flying_v(new_x, new_y, next_enemy, 90, choose(2, 3, 4));
-            script_spawn_follow_path(new_x, new_y, next_enemy, 90);
+            new_x = (640 / 4) * choose(1, 2, 3);
+            new_y = room_height + ((room_height / 3) * choose(1, 2));
+            new_direction = 90;
             break;
         default:
-            new_x = random_range(8, room_width - 40);
-            new_y = random_range(-1 * (room_height -8), -40);
-            //script_spawn_flying_v(new_x, new_y, next_enemy, 270, choose(2, 3, 4));
-            script_spawn_follow_path(new_x, new_y, next_enemy, 270);
+            new_x = (640 / 4) * choose(1, 2, 3);
+            new_y = -1 * ((room_height / 3) * choose(1, 2));
+            new_direction = 270;
             break;
     }
     
     // Let it live!
-    instance_create(new_x, new_y, next_enemy);
+    //instance_create(new_x, new_y, next_enemy);
+    //script_spawn_flying_v(new_x, new_y, next_enemy, new_direction);
+    script_spawn_follow_path(new_x, new_y, next_enemy, new_direction);
     
     // DON'T FORGET THIS PART ;)
     enemies_to_spawn--;

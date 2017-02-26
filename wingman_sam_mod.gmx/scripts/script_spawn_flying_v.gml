@@ -6,14 +6,15 @@
                 1   -   y coord for spawn
                 2   -   object to spawn
                 3   -   direction of flight
-                4   -   size of v (2, 3 or 4)
 **/
 // Set variables
 head_x = argument[0];
 head_y = argument[1];
 obj_ref = argument[2];
 flt_dir = argument[3];
-form_size = argument[4];
+
+// Random-size
+form_size = choose(2, 3, 4);
 
 // Direction of each wing
 top_wing_dir = flt_dir - 157.5;

@@ -23,21 +23,21 @@ switch(obj_dir)
 {
     case 0:
         new_path = path_left_curve_right;
-        new_object.y = path_get_point_y(new_path, 0);
+        new_object.x = path_get_point_x(new_path, 0);
         break;
     case 90:
         new_path = choose(path_top_curve_right, path_top_curve_left);
         new_path_position = 1;
         new_path_speed = -1 * new_path_speed;
-        new_object.x = path_get_point_x(new_path, 1);
+        new_object.y = path_get_point_y(new_path, 1);
         break;
     case 180:
         new_path = path_right_curve_left;
-        new_object.y = path_get_point_y(new_path, 0);
+        new_object.x = path_get_point_x(new_path, 0);
         break;
     default:
         new_path = choose(path_top_curve_right, path_top_curve_left);
-        new_object.x = path_get_point_x(new_path, 0);
+        new_object.y = path_get_point_y(new_path, 0);
         break;
 }
 

@@ -32,7 +32,7 @@ for(var iterator = 0; iterator &lt; 5; iterator++)
     </event>
   </entry>
   <entry>
-    <step>120</step>
+    <step>360</step>
     <event>
       <action>
         <libid>1</libid>
@@ -63,7 +63,7 @@ with(obj_enemy_conn)
     </event>
   </entry>
   <entry>
-    <step>250</step>
+    <step>660</step>
     <event>
       <action>
         <libid>1</libid>
@@ -98,7 +98,7 @@ with(obj_enemy_conn)
     </event>
   </entry>
   <entry>
-    <step>400</step>
+    <step>960</step>
     <event>
       <action>
         <libid>1</libid>
@@ -130,7 +130,7 @@ with(obj_enemy_conn)
     </event>
   </entry>
   <entry>
-    <step>530</step>
+    <step>1260</step>
     <event>
       <action>
         <libid>1</libid>
@@ -165,7 +165,7 @@ with(obj_enemy_conn)
     </event>
   </entry>
   <entry>
-    <step>680</step>
+    <step>1560</step>
     <event>
       <action>
         <libid>1</libid>
