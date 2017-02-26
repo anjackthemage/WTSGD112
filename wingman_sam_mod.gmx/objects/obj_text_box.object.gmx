@@ -129,6 +129,170 @@
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>box_label</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>""</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>301</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_set_alarm</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>25</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>2</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>612</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_variable</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>text_cursor</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>"|"</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>text_cursor</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>""</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>421</id>
+        <kind>3</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>text_cursor</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>"|"</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>301</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_set_alarm</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>25</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>2</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="5" enumb="1">
       <action>
@@ -262,29 +426,46 @@ else if (has_focus and !was_clicked)
             <kind>1</kind>
             <string>///Draw me like one of your French boxes
 
+draw_set_font(fnt_panel);
+draw_set_valign(fa_middle);
+// Total width is text string, plus padding, plus box width
+total_entity_width = string_width(box_label) + 210;
+
+// Set label origin
+label_x = x - (total_entity_width / 2);
+label_y = y;
+// Set box origin and dimensions
+box_x = label_x + string_width(box_label);
+box_y = y - 10;
+box_width = 200;
+box_height = 20;
+
+// Draw label
+draw_set_color(c_white);
+draw_text(label_x, label_y, box_label);
+
+// Draw box background (semi-transparent)
 draw_set_color(c_navy);
 draw_set_alpha(0.5);
-draw_rectangle(x - 100, y - 10, x + 100, y + 10, false);
-
+draw_rectangle(box_x, box_y, box_x + box_width, box_y + box_height, false);
+// Make the box border semi-transparent if not in focus
 if(!has_focus)
 {
     draw_set_alpha(0.5);
-    text_cursor = "";
+    cur_cursor = "";
 }
 else
 {
     draw_set_alpha(1);
-    text_cursor = "|";
+    cur_cursor = text_cursor;
 }
-
+// Draw the box border
 draw_set_color(c_white);
-draw_rectangle(x - 100, y - 10, x + 100, y + 10, true);
-
-draw_set_font(fnt_panel);
+draw_rectangle(box_x, box_y, box_x + box_width, box_y + box_height, true);
+// Draw text input
 draw_set_halign(fa_center);
-draw_set_valign(fa_middle);
-draw_text(x, y, text_input_string + text_cursor);
-
+draw_text(box_x + 100, y, text_input_string + cur_cursor);
+// Ensure alpha is reset
 draw_set_alpha(1);
 </string>
           </argument>
