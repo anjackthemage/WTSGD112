@@ -34,10 +34,15 @@
   <paths name="paths">
     <path>paths\path_boss_1_enter</path>
     <path>paths\path_boss_1_loop</path>
+    <path>paths\path_top_curve_right</path>
+    <path>paths\path_top_curve_left</path>
+    <path>paths\path_left_curve_right</path>
+    <path>paths\path_right_curve_left</path>
   </paths>
   <scripts name="scripts">
     <script>scripts\script_explode.gml</script>
     <script>scripts\script_spawn_flying_v.gml</script>
+    <script>scripts\script_spawn_follow_path.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_title</font>
