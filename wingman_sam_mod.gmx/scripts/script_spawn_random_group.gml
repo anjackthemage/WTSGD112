@@ -48,21 +48,24 @@ for(var interval = 0; interval < max_enemies; interval++)
     if(collision_rectangle(new_x, new_y, new_x + 32, new_y + 32, obj_enemy_basic, false, false) == noone)
     {
         // Pick a script
-        spawn_method = choose(0, 1, 2);
+        spawn_method = choose(0, 1, 2, 3);
         
         // Let there be life!
         switch(spawn_method)
         {
             case 1:
-                script_spawn_follow_path(new_x, new_y, next_enemy, new_direction)
+                script_spawn_follow_path(new_x, new_y, next_enemy, new_direction);
                 // Record the successful spawn
                 spawned_enemies++;
                 break;
             case 2:
-                spawned_enemies += script_spawn_flying_v(new_x, new_y, next_enemy, new_direction, max_enemies)
+                spawned_enemies += script_spawn_flying_v(new_x, new_y, next_enemy, new_direction, max_enemies);
+                break;
+            case 3:
+                spawned_enemies += script_spawn_line(new_x, new_y, next_enemy, new_direction, max_enemies);
                 break;
             default:
-                instance_create(new_x, new_y, next_enemy)
+                instance_create(new_x, new_y, next_enemy);
                 // Record the successful spawn
                 spawned_enemies++;
                 break;
