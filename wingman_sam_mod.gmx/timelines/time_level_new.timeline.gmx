@@ -54,6 +54,9 @@ with(obj_enemy_conn)
             <kind>1</kind>
             <string>/// Throw a few more at 'em
 
+// Change it up
+next_spawn_type = 0;
+
 with(obj_enemy_conn)
 {
     enemies_to_spawn += 15;
@@ -87,7 +90,10 @@ with(obj_enemy_conn)
 
 with(obj_enemy_conn)
 {
-    ds_list_add(enemy_type_list, obj_enemy_right, obj_enemy_left);
+    ds_list_add(enemy_type_list, obj_enemy_shoot);
+    
+    // Criss-cross applesauce
+    next_spawn_type = 1;
     
     // You know, spawn a few
     enemies_to_spawn += 15;
@@ -120,9 +126,12 @@ with(obj_enemy_conn)
             <kind>1</kind>
             <string>/// Another new enemy!
 
+// Scatter!
+next_spawn_type = 0;
+
 with(obj_enemy_conn)
 {
-    ds_list_add(enemy_type_list, obj_enemy_up);
+    ds_list_add(enemy_type_list, obj_enemy_target);
     enemies_to_spawn += 15;
 }
 </string>
@@ -150,12 +159,10 @@ with(obj_enemy_conn)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Introduce the next enemy type
+            <string>/// One last group before the big guy
 
 with(obj_enemy_conn)
 {
-    ds_list_add(enemy_type_list, obj_enemy_shoot, obj_enemy_target);
-    
     // You know, spawn a few
     enemies_to_spawn += 15;
 }

@@ -18,24 +18,25 @@ if(argument_count > 4)
 {
     var max_enemies = argument[4];
 }
+else
+{
+    // Random-size
+    var max_length = choose(2, 3, 4);
+}
 
 if(argument_count > 5)
 {
     var max_length = argument[5];
 }
+else
+{
+    var max_length = 0;
+}
 
 // Keep track of how many we spawn
 var enemies_spawned = 0;
 
-if(max_length == 0)
-{
-    // Random-size
-    var form_size = choose(2, 3, 4);
-}
-else
-{
-    form_size = max_length;
-}
+var form_size = max_length;
 
 // Direction of line
 spawn_dir = flt_dir + 180;
