@@ -255,6 +255,14 @@ if(sprite_index != spr_explosion_1)
             <string>/// If we're an explosion, we go bye-bye
 if(sprite_index == spr_explosion_1)
 {
+    /// Should we spawn an upgrade?
+    if(last_damaged_by != noone and last_damaged_by.point_score % 150 == 0)
+    {
+        new_upgrade = instance_create(x, y, obj_bonus_armor);
+        new_upgrade.direction = 270;
+        new_upgrade.speed =  4;
+    }
+
     instance_destroy();
 }
 </string>

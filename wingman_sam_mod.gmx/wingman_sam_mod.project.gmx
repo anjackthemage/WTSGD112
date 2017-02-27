@@ -40,6 +40,9 @@
       <sprite>sprites\spr_menu_quit</sprite>
       <sprite>sprites\spr_menu_arrow</sprite>
     </sprites>
+    <sprites name="upgrades">
+      <sprite>sprites\spr_armor_upgrade</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\background</background>
@@ -95,6 +98,10 @@
     <objects name="menu">
       <object>objects\obj_menu</object>
       <object>objects\obj_menu_btn</object>
+    </objects>
+    <objects name="upgrades">
+      <object>objects\obj_bonus_base</object>
+      <object>objects\obj_bonus_armor</object>
     </objects>
   </objects>
   <timelines name="timelines">
