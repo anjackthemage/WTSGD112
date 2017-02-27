@@ -84,7 +84,6 @@
     <objects name="enemies">
       <object>objects\obj_enemy_basic</object>
       <object>objects\obj_enemy_right</object>
-      <object>objects\obj_enemy_diag</object>
       <object>objects\obj_enemy_left</object>
       <object>objects\obj_enemy_up</object>
       <object>objects\obj_enemy_shoot</object>
