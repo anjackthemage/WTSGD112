@@ -45,7 +45,7 @@ for(var interval = 0; interval < max_enemies; interval++)
     }
     
     // Check for collisions
-    if(collision_rectangle(new_x, new_y, new_x + 32, new_y + 32, obj_enemy_basic, false, false) == noone)
+    if(collision_rectangle(new_x - 16, new_y - 16, new_x + 16, new_y + 16, obj_enemy_basic, false, false) == noone)
     {
         // Pick a script
         spawn_method = choose(0, 1, 2, 3);

@@ -4,12 +4,13 @@
     arguments:
                 0   -   number of enemies to spawn
                 1   -   enemy type list
+                2   -   length of formations (0 = random)
     
     formation types:
                 0   -   3 flying v from a single direction
                 1   -   2 - 3 straight lines from a single direction
                 2   -   4 path-followers (singletons) from 2 - 3 directions
-                3   -   2 path_followers (lines) from a single direction
+                3   -   2 path_followers (lines) from opposing directions
                 4   -   sine wave group from any single direction
                 5   -   2 flying v from 2 opposing directions (4 total)
     
@@ -33,13 +34,13 @@ for(var interval = 0; interval < max_enemies; interval++)
         
             break;
         case 1:
-        
+            
             break;
         case 2:
         
             break;
         case 3:
-        
+            
             break;
         case 4:
         

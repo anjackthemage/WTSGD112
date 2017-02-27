@@ -28,6 +28,7 @@
       <sprite>sprites\spr_enemy_up</sprite>
       <sprite>sprites\spr_enemy_shoot</sprite>
       <sprite>sprites\spr_enemy_target</sprite>
+      <sprite>sprites\spr_diag_plane</sprite>
       <sprite>sprites\spr_obj_boss</sprite>
       <sprite>sprites\spr_enemy_bullet</sprite>
     </sprites>
@@ -51,6 +52,10 @@
     <path>paths\path_top_curve_left</path>
     <path>paths\path_left_curve_right</path>
     <path>paths\path_right_curve_left</path>
+    <path>paths\path_TL_BR</path>
+    <path>paths\path_BL_TR</path>
+    <path>paths\path_TR_BL</path>
+    <path>paths\path_BR_TL</path>
   </paths>
   <scripts name="scripts">
     <script>scripts\script_explode.gml</script>
@@ -58,7 +63,7 @@
     <script>scripts\script_spawn_line.gml</script>
     <script>scripts\script_spawn_follow_path.gml</script>
     <script>scripts\script_spawn_random_group.gml</script>
-    <script>scripts\script_spawn_formation_groups.gml</script>
+    <script>scripts\script_spawn_diags.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_title</font>
@@ -79,6 +84,7 @@
     <objects name="enemies">
       <object>objects\obj_enemy_basic</object>
       <object>objects\obj_enemy_right</object>
+      <object>objects\obj_enemy_diag</object>
       <object>objects\obj_enemy_left</object>
       <object>objects\obj_enemy_up</object>
       <object>objects\obj_enemy_shoot</object>
@@ -94,8 +100,10 @@
   </objects>
   <timelines name="timelines">
     <timeline>timelines\time_level_1</timeline>
+    <timeline>timelines\time_level_new</timeline>
   </timelines>
   <rooms name="rooms">
+    <room>rooms\rm_new</room>
     <room>rooms\rm_title</room>
     <room>rooms\rm_test</room>
     <room>rooms\rm_highscores</room>
