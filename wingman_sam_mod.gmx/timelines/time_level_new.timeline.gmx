@@ -21,6 +21,8 @@
             <kind>1</kind>
             <string>/// Opening salvo
 
+timeline_loop = false;
+
 with(obj_enemy_conn)
 {
     enemies_to_spawn += 15;

@@ -11,6 +11,20 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
+        <id>307</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_timeline_pause</functionname>
+        <codestring></codestring>
+        <whoName>obj_enemy_conn</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>119</id>
         <kind>0</kind>
         <userelative>0</userelative>
@@ -141,6 +155,20 @@
     <event eventtype="1" enumb="0">
       <action>
         <libid>1</libid>
+        <id>306</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_timeline_start</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -155,11 +183,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Initiate game over
+            <string>/// Game over?
 
-with(obj_director)
+if(!endless_mode)
 {
-    event_perform(ev_other, ev_user0);
+    with(obj_director)
+    {
+        event_perform(ev_other, ev_user0);
+    }
 }
 </string>
           </argument>
@@ -381,7 +412,7 @@ if(path_index == path_boss_1_enter and path_position == 1)
             <kind>1</kind>
             <string>/// Change phase?
 
-if(boss_phase == 1 and plane_health &lt;= 400)
+if(boss_phase == 1 and plane_health &lt;= 300)
 {
     alarm_set(1, 1);
     boss_phase = 2;
@@ -465,7 +496,7 @@ other.damage_taken += 101;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw health bar
+            <string>/// Draw health bar and potentially explosions
 
 if(plane_health &gt; 0)
 {

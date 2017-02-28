@@ -107,6 +107,7 @@
     </objects>
     <object>objects\obj_draw_help</object>
     <object>objects\obj_room_title</object>
+    <object>objects\obj_draw_option</object>
   </objects>
   <timelines name="timelines">
     <timeline>timelines\time_level_1</timeline>

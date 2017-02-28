@@ -2,7 +2,7 @@
         0   -   x coordinate
         1   -   y coordinate
         2   -   string to draw
-        3   -   seperation distance between lines
+        3   -   separation distance between lines
         4   -   maximum width (pixels) before line break
         5   -   outline color
         6   -   outline width (pixels)

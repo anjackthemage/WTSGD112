@@ -21,6 +21,8 @@
             <kind>1</kind>
             <string>/// Opening salvo
 
+timeline_loop = false;
+
 for(var iterator = 0; iterator &lt; 5; iterator++)
 {
     instance_create(((room_width / 5) * iterator) + 80, -40, obj_enemy_basic);
