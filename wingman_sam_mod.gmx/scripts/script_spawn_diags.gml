@@ -67,4 +67,4 @@ for(var interval = 0; interval < max_enemies; interval++)
     }
 }
 
-return max_enemies - spawned_enemies;
+return spawned_enemies;

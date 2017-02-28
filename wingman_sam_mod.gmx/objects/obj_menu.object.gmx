@@ -84,6 +84,9 @@ selected_item.selected = true;
             <kind>1</kind>
             <string>/// More dirty hax
 
+// Play a sound
+audio_play_sound(snd_gunfire, 0, false);
+
 switch(selected_item.sprite_index)
 {
     case spr_menu_play:

@@ -287,6 +287,7 @@ if(can_shoot &gt;= 1)
 
 if(sprite_index != spr_explosion_2)
 {
+    audio_play_sound(snd_explosion_2, 0, false);
     sprite_index = spr_explosion_2;
     image_index = 0;
     image_speed = 1;

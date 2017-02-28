@@ -7,7 +7,8 @@
   <sounds name="sound">
     <sound>sound\snd_explosion_1</sound>
     <sound>sound\snd_explosion_2</sound>
-    <sound>sound\sound2</sound>
+    <sound>sound\snd_music</sound>
+    <sound>sound\snd_gunfire</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_plane_1</sprite>

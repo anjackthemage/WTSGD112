@@ -63,7 +63,7 @@ if(enemies_to_spawn &gt; 0 and (room == rm_new or room == rm_test))
     }
     else if (next_spawn_type == 1)
     {
-        enemies_to_spawn = script_spawn_diags(enemies_to_spawn, enemy_type_list, form_length);
+        enemies_to_spawn -= script_spawn_diags(enemies_to_spawn, enemy_type_list, form_length);
     }
 }
 </string>

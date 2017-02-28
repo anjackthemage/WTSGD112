@@ -48,7 +48,7 @@ for(var interval = 0; interval < max_enemies; interval++)
     if(collision_rectangle(new_x - 16, new_y - 16, new_x + 16, new_y + 16, obj_enemy_basic, false, false) == noone)
     {
         // Pick a script
-        spawn_method = choose(0, 1, 2, 3);
+        spawn_method = choose(0, 1, 2, 3, 4);
         
         // Let there be life!
         switch(spawn_method)
@@ -63,6 +63,9 @@ for(var interval = 0; interval < max_enemies; interval++)
                 break;
             case 3:
                 spawned_enemies += script_spawn_line(new_x, new_y, next_enemy, new_direction, max_enemies);
+                break;
+            case 4:
+                spawned_enemies += script_spawn_diags(max_enemies/2, enemy_types, choose(3, 4));
                 break;
             default:
                 instance_create(new_x, new_y, next_enemy);
