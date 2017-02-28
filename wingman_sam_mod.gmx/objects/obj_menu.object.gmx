@@ -38,7 +38,7 @@ var new_x = x + 66 ;
 var new_y = y + 10;
 
 menu_sprites = ds_list_create();
-ds_list_add(menu_sprites, spr_menu_play, spr_menu_options, spr_menu_score, spr_menu_credits, spr_menu_quit);
+ds_list_add(menu_sprites, spr_menu_play, spr_menu_options, spr_menu_info, spr_menu_credits, spr_menu_quit);
 
 menu_options = ds_list_create();
 
@@ -93,7 +93,7 @@ switch(selected_item.sprite_index)
     case spr_menu_options:
         room_goto(rm_options);
         break;
-    case spr_menu_score:
+    case spr_menu_info:
         room_goto(rm_help);
         break;
     case spr_menu_credits:

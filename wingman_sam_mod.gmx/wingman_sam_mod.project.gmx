@@ -36,7 +36,7 @@
       <sprite>sprites\spr_menu_play</sprite>
       <sprite>sprites\spr_menu_options</sprite>
       <sprite>sprites\spr_menu_credits</sprite>
-      <sprite>sprites\spr_menu_score</sprite>
+      <sprite>sprites\spr_menu_info</sprite>
       <sprite>sprites\spr_menu_quit</sprite>
       <sprite>sprites\spr_menu_arrow</sprite>
     </sprites>
