@@ -41,8 +41,8 @@ info_text_y = room_title.title_height;
 
 
 
-move_instructions_p1 = "Player 1 controls: Move your airplane with the WASD keys. Shoot with the spacebar.";
-move_instructions_p2 = "Player 2 controls: Move your airplane with the arrow keys. Shoot with the Enter/Return key";
+move_instructions_p1 = "Player 1 controls: W - up, A - down, S - left, D - right. Shoot with the spacebar.";
+move_instructions_p2 = "Player 2 controls: Arrow Up - up, Arrow Down - down, Arrow Right - right, Arrow Left - left. Shoot with the Enter/Return key";
 
 description_text = "Hover over an icon on the left, to learn more about it.";
 exit_text = "PRESS ANY KEY TO RETURN TO MENU";
@@ -54,57 +54,59 @@ description_text_y = 360;
 // Define lists
 item_sprites = ds_list_create();
 // First is the list of sprites
-ds_list_add(item_sprites, spr_plane_1, spr_plane_2, spr_enemy_basic, spr_enemy_right, spr_enemy_up, spr_enemy_shoot, spr_enemy_target, spr_obj_boss);
+ds_list_add(item_sprites, spr_plane_1, spr_plane_2, spr_enemy_basic, spr_enemy_shoot, spr_enemy_target, spr_obj_boss);
 
 item_text = ds_map_create();
 // Now a list of text, associated with each sprite (common denominator)
-ds_map_add(item_text, spr_plane_1, "Player One");
-ds_map_add(item_text, spr_plane_2, "Player Two");
-ds_map_add(item_text, spr_enemy_basic, "Enemy plane.");
-ds_map_add(item_text, spr_enemy_right, "Enemy plane.");
-ds_map_add(item_text, spr_enemy_up, "Enemy plane.");
-ds_map_add(item_text, spr_enemy_shoot, "Enemy plane that shoots forward.");
-ds_map_add(item_text, spr_enemy_target, "Enemy plane that shoots at players.");
-ds_map_add(item_text, spr_obj_boss, "Large enemy plane. Boss.");
+ds_map_add(item_text, spr_plane_1, "This is the avatar for Player One, it matches the GREEN 'damage' bar in the panel.");
+ds_map_add(item_text, spr_plane_2, "This is the avatar for Player Two, it matches the RED 'damage' bar in the panel.");
+ds_map_add(item_text, spr_enemy_basic, "This is the basic enemy plane. It can fly at you from nearly any direction and it comes in many colors.");
+ds_map_add(item_text, spr_enemy_shoot, "This is a slightly more advanced enemy plane which shoots bullets. Luckily, it can only shoot in a straight line, directly forward. However, when the screen is full of enemies, those bullets are difficult to spot.");
+ds_map_add(item_text, spr_enemy_target, "When this plane shoots, it actually aims at the closest player! The bullets won't seek their target but they still hurt, if you don't move quickly.");
+ds_map_add(item_text, spr_obj_boss, "This is the boss of each level. He has two phases: In phase one, he just fires bursts of bullets in multiple directions. In phase two, he'll release smaller planes which also shoot at you. Good luck!");
 
 item_objects = ds_map_create();
 // Now we spawn instances of obj_placeholder and assign sprites
 for (var interval = 0; interval &lt; ds_map_size(item_text); interval++)
 {
-    new_instance = instance_create(info_text_x, y, obj_placeholder);
-    new_instance.sprite_index = item_sprites[| interval];
+    if(item_sprites[| interval] != spr_enemy_basic)
+    {
+        new_instance = instance_create(info_text_x, y, obj_placeholder);
+        new_instance.sprite_index = item_sprites[| interval];
+    }
+    else
+    {
+        new_instance = instance_create(info_text_x, y, obj_animated_icon);
+        new_instance.sprite_index = item_sprites[| interval];
+        ds_list_add(new_instance.sprite_list, spr_enemy_basic, spr_enemy_right, spr_enemy_up);
+    }
+    
     // There's probably a better way to do this... :(
     switch(item_sprites[| interval])
     {
         case spr_plane_1:
-            new_instance.y = 320;
+            new_instance.x += 25;
+            new_instance.y = 280;
             break;
         case spr_plane_2:
-            new_instance.x += 80;
-            new_instance.y = 320;
+            new_instance.x += 95;
+            new_instance.y = 280;
             break;
         case spr_enemy_basic:
-            new_instance.x += 40
-            new_instance.y = 360;
-            break
-        case spr_enemy_right:
-            new_instance.y = 360;
-            break;
-        case spr_enemy_up:
-            new_instance.image_speed = 0;
-            new_instance.x += 80;
-            new_instance.y = 360;
+            new_instance.x += 10;
+            new_instance.y = 340;
             break;
         case spr_enemy_shoot:
-            new_instance.y = 400;
+            new_instance.x += 50;
+            new_instance.y = 340;
             break;
         case spr_enemy_target:
-            new_instance.x += 40;
-            new_instance.y = 400;
+            new_instance.x += 90;
+            new_instance.y = 340;
             break;
         case spr_obj_boss:
-            new_instance.x += 80;
-            new_instance.y = 400;
+            new_instance.x += 70;
+            new_instance.y = 420;
             break;
     }
     
@@ -133,7 +135,7 @@ for (var interval = 0; interval &lt; ds_map_size(item_text); interval++)
           <argument>
             <kind>1</kind>
             <string>
-draw_set_font(fnt_panel);
+draw_set_font(fnt_regular);
 
 // Variables
 var next_y = 0;

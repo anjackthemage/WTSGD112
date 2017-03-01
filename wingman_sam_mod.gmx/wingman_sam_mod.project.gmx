@@ -69,10 +69,12 @@
     <script>scripts\script_spawn_random_group.gml</script>
     <script>scripts\script_spawn_diags.gml</script>
     <script>scripts\script_draw_text_outlined_ext.gml</script>
+    <script>scripts\script_spawn_formation_group.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_title</font>
     <font>fonts\fnt_panel</font>
+    <font>fonts\fnt_regular</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_island</object>
@@ -109,6 +111,7 @@
     <object>objects\obj_draw_help</object>
     <object>objects\obj_room_title</object>
     <object>objects\obj_draw_option</object>
+    <object>objects\obj_cheater</object>
   </objects>
   <timelines name="timelines">
     <timeline>timelines\time_level_1</timeline>

@@ -57,14 +57,22 @@ selected_timeline = -1;
 
 if(enemies_to_spawn &gt; 0 and (room == rm_new or room == rm_test))
 {
-    if(next_spawn_type == 0)
+    switch(next_spawn_type)
     {
-        enemies_to_spawn = script_spawn_random_group(enemies_to_spawn, enemy_type_list);
+        case 0:
+            enemies_to_spawn -= script_spawn_random_group(enemies_to_spawn, enemy_type_list);
+            break;
+        case 1:
+            enemies_to_spawn -= script_spawn_diags(enemies_to_spawn, enemy_type_list, form_length);
+            break;
+        case 2:
+            enemies_to_spawn -= script_spawn_formation_group(enemies_to_spawn, enemy_type_list, form_length);
+            break;
     }
-    else if (next_spawn_type == 1)
-    {
-        enemies_to_spawn -= script_spawn_diags(enemies_to_spawn, enemy_type_list, form_length);
-    }
+}
+else if (enemies_to_spawn &lt; 0)
+{
+    enemies_to_spawn = 0;
 }
 </string>
           </argument>

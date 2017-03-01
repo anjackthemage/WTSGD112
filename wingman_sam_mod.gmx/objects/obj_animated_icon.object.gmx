@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_placeholder</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -34,6 +34,20 @@ alarm_set(0, 60);
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
     </event>
     <event eventtype="2" enumb="0">
       <action>
@@ -56,13 +70,13 @@ alarm_set(0, 60);
 
 if(ds_list_size(sprite_list) &gt; 0)
 {
-    if(sprite_displayed &lt; ds_list_size(sprite_list))
+    if(sprite_displayed &lt; ds_list_size(sprite_list) - 1)
     {
         sprite_displayed++;
     }
     else
     {
-        sprite_displayed = sprite_list[| 0];
+        sprite_displayed = 0;
     }
 }
 

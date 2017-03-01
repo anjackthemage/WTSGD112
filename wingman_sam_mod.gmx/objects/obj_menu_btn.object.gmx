@@ -58,10 +58,7 @@ with(obj_menu_btn)
     selected = false;
 }
 
-with(obj_menu)
-{
-    selected_item = other;
-}
+obj_menu.selected_item = id;
 
 selected = true;
 </string>

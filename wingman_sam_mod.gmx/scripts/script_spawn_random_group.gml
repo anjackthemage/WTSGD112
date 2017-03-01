@@ -1,5 +1,4 @@
 // Script to spawn a group of enemies without a pre-set pattern
-// TODO: Prevent spawning multiple enemies in the same position
 
 /**
     Arguments:
@@ -83,4 +82,4 @@ for(var interval = 0; interval < max_enemies; interval++)
 }
 
 // Return the difference
-return max_enemies - spawned_enemies;
+return spawned_enemies;

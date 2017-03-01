@@ -187,9 +187,16 @@
 
 if(!endless_mode)
 {
-    with(obj_director)
+    if(room == rm_test)
     {
-        event_perform(ev_other, ev_user0);
+        with(obj_director)
+        {
+            event_perform(ev_other, ev_user0);
+        }
+    }
+    else if(room == rm_new)
+    {
+        room_goto(rm_test);
     }
 }
 </string>

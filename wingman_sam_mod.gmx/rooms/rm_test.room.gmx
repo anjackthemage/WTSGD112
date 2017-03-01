@@ -56,7 +56,6 @@
     <instance objName="obj_island" x="544" y="384" name="inst_815083AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_plane_1" x="512" y="352" name="inst_7D16E0D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_plane_2" x="128" y="352" name="inst_3A50C59B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_panel" x="0" y="403" name="inst_47FC863F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
