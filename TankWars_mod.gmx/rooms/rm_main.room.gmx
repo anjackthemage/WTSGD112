@@ -120,6 +120,9 @@
     <instance objName="obj_wall_1" x="0" y="64" name="inst_E824B4BA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tank_1" x="96" y="192" name="inst_C5C703A5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tank_2" x="448" y="192" name="inst_EACD3655" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pickup" x="224" y="288" name="inst_1A0E3465" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pickup" x="448" y="352" name="inst_22AE2FD8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pickup" x="288" y="96" name="inst_DE7586BB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -33,6 +33,10 @@ fired_from = noone;
 // Damage amt and type
 damage_amount = 0;
 damage_type = "";
+
+// For funsies
+my_health = 10;
+speed = 12;
 </string>
           </argument>
         </arguments>
@@ -41,34 +45,17 @@ damage_type = "";
     <event eventtype="4" ename="obj_projectile_base">
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
+        <id>203</id>
+        <kind>0</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
+        <exetype>1</exetype>
+        <functionname>action_kill_object</functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Hurt 'em
-
-other.my_health -= damage_amount;
-other.last_damaged_by = fired_from
-
-
-// If I'm impacting a solid object, say goodbye
-if(other.solid)
-{
-    instance_destroy();
-}
-</string>
-          </argument>
-        </arguments>
       </action>
     </event>
     <event eventtype="4" ename="obj_tank_parent">

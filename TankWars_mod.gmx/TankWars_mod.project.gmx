@@ -15,6 +15,9 @@
     <sprite>sprites\spr_explosion_large</sprite>
     <sprite>sprites\spr_explosion_small</sprite>
     <sprite>sprites\spr_shell</sprite>
+    <sprite>sprites\spr_pickup</sprite>
+    <sprite>sprites\spr_secondary</sprite>
+    <sprite>sprites\spr_rocket</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bkgrnd</background>
@@ -25,6 +28,7 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_score</font>
+    <font>fonts\fnt_hud</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_wall_1</object>
@@ -36,6 +40,8 @@
     <object>objects\obj_draw_score</object>
     <object>objects\obj_projectile_base</object>
     <object>objects\obj_shell</object>
+    <object>objects\obj_pickup</object>
+    <object>objects\obj_rocket</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_main</room>

@@ -50,13 +50,17 @@
 // Health
 my_health = 100;
 
+// Secondary item
+secondary_type = -1;
+secondary_amt = 0;
+
 // Which one y'all hit me?
 last_damaged_by = noone;
 
 // Set my sprite
 my_sprite = sprite_index;
 my_subimage = 0;
-image_speed = 0;
+my_image_speed = 0;
 
 // Add me to the global score list
 ds_map_add(global.tank_scores, object_get_name(object_index), 0);
@@ -85,16 +89,21 @@ ds_map_add(global.tank_scores, object_get_name(object_index), 0);
             <kind>1</kind>
             <string>/// Check for explosion, adjust sprite appropriately
 
-if(my_health &gt;= 0)
+if(string_pos("explo", sprite_get_name(my_sprite)) == 0)
 {
-    if(string_pos("explo", sprite_get_name(my_sprite)) == 0)
+    if(my_health &gt; 0)
     {
         my_subimage = direction / 6;
     }
+    else
+    {
+        event_perform(ev_other, ev_user1);
+    }
 }
-else
+else if(image_index == sprite_get_number(my_sprite) - 1)
 {
-    event_perform(ev_other, ev_user1);
+    // Apparently, if you want something done correctly, don't rely upon GMS :(
+    event_perform(ev_other, ev_animation_end);
 }
 </string>
           </argument>
@@ -173,6 +182,44 @@ else
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// We received a new pickup! What is it? What do we do with it!?
+
+switch(secondary_type)
+{
+    case 0:
+        break;
+    case 1:
+        break;
+    case 2:
+        break;
+    case 3:
+        my_health = min(100, my_health + (secondary_amt * 5));
+        break;
+    default:
+        break;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
@@ -194,8 +241,8 @@ else
 
 // Animate your death-splosion
 my_sprite = spr_explosion_large;
-my_subimage = 0;
-image_speed = 1;
+my_subimage = -1;
+my_image_speed = 1;
 
 // Award points to the bastard what shot ya
 global.tank_scores[? object_get_name(last_damaged_by.object_index)] += 1;
@@ -223,8 +270,10 @@ global.tank_scores[? object_get_name(last_damaged_by.object_index)] += 1;
             <kind>1</kind>
             <string>/// If we're done exploding, let's leave quietly
 
-if(string_pos("explo", sprite_get_name(sprite_index)))
+if(string_pos("explo", sprite_get_name(my_sprite)) != 0)
 {
+    image_index = image_number - 1;
+    image_speed = 0;
     instance_destroy();
 }
 </string>
@@ -249,12 +298,21 @@ if(string_pos("explo", sprite_get_name(sprite_index)))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw me and my health
+            <string>/// Draw me and mine
 
 draw_sprite(my_sprite, my_subimage, x, y);
+image_speed = my_image_speed;
+
 
 draw_healthbar(x - 20, y - 35, x + 20, y - 30, my_health, c_black, c_red, c_green, 0, true, false);
 
+if(secondary_type &gt;= 0 and secondary_type &lt; 3)
+{
+    draw_sprite(spr_secondary, secondary_type, x - 17, y + 25);
+    draw_set_font(fnt_hud);
+    draw_set_color(c_black);
+    draw_text(x + 17, y + 25, string(secondary_amt));
+}
 </string>
           </argument>
         </arguments>
