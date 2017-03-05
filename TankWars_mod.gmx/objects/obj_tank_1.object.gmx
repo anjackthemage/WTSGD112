@@ -212,11 +212,9 @@ projectile.direction = direction;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Rocket away!
+            <string>/// Fire the fire event
 
-var projectile = instance_create(x + lengthdir_x(32, direction), y + lengthdir_y(32, direction), obj_rocket);
-projectile.fired_from = id;
-projectile.direction = direction;
+event_perform(ev_other, ev_user3);
 </string>
           </argument>
         </arguments>

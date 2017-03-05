@@ -43,6 +43,9 @@
 
 damage_amount = 10;
 speed = 8;
+
+direction_to_target = 0;
+closest_target = noone;
 </string>
           </argument>
         </arguments>
@@ -66,24 +69,69 @@ speed = 8;
           <argument>
             <kind>1</kind>
             <string>/// Nudge me toward the nearest tank
-var closest_target = instance_nearest(x, y, obj_tank_parent);
+closest_target = instance_nearest(x, y, obj_tank_parent);
 
 if(closest_target != noone and closest_target != fired_from)
 {
-    direction_adjust = dot_product(lengthdir_x(1, direction), lengthdir_y(1, direction), closest_target.x - x, closest_target.y - y);
+    direction_to_target = point_direction(x, y, closest_target.x, closest_target.y);
+    
+    direction_adjust = angle_difference(direction, direction_to_target);
+    
+    if(direction_adjust &lt; 0)
+    {
+        direction += 4;
+    }
+    else if(direction_adjust &gt; 0)
+    {
+        direction -= 4;
+    }
 }
-else
-{
-    direction_adjust = 0;
-}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Debug overlay
 
-if(direction_adjust &lt; 0)
+if(closest_target != noone)
 {
-    direction -= 6;
-}
-else if(direction_adjust &gt; 0)
-{
-    direction += 6;
+    draw_set_color(c_red);
+    draw_arrow(x, y, closest_target.x, closest_target.y, 10);
+    draw_set_color(c_blue);
+    draw_arrow(x, y, x + lengthdir_x(80, direction), y + lengthdir_y(80, direction), 10);
+    draw_set_color(c_green);
+    draw_arrow(x, y, x + lengthdir_x(40, direction + 10), y + lengthdir_y(40, direction + 10), 10);
 }
 </string>
           </argument>
