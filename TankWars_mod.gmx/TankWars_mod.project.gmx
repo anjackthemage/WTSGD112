@@ -6,6 +6,8 @@
   <NewExtensions/>
   <sounds name="sound">
     <sound>sound\snd_music</sound>
+    <sound>sound\snd_explosion_large</sound>
+    <sound>sound\snd_explosion_small</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_wall_1</sprite>
@@ -22,7 +24,15 @@
     <sprite>sprites\spr_shield</sprite>
     <sprite>sprites\spr_title</sprite>
     <sprite>sprites\spr_wall_3</sprite>
-    <sprite>sprites\sprite14</sprite>
+    <sprite>sprites\spr_wall_4</sprite>
+    <sprites name="mud">
+      <sprite>sprites\spr_mud</sprite>
+      <sprite>sprites\spr_mud_1</sprite>
+      <sprite>sprites\spr_mud_2</sprite>
+      <sprite>sprites\spr_mud_3</sprite>
+      <sprite>sprites\spr_mud_4</sprite>
+      <sprite>sprites\spr_mud_5</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bkgrnd</background>
@@ -51,7 +61,16 @@
     <object>objects\obj_bouncing_bomb</object>
     <object>objects\obj_draw_title</object>
     <object>objects\obj_wall3</object>
+    <object>objects\obj_wall_4</object>
     <object>objects\obj_explosion</object>
+    <objects name="mud">
+      <object>objects\obj_mud_base</object>
+      <object>objects\obj_mud_1</object>
+      <object>objects\obj_mud_5</object>
+      <object>objects\obj_mud_4</object>
+      <object>objects\obj_mud_3</object>
+      <object>objects\obj_mud_2</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_main</room>
