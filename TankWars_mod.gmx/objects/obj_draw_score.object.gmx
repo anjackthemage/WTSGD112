@@ -31,8 +31,11 @@ draw_set_valign(fa_top);
 
 draw_set_color(c_maroon);
 
+// Reset x position
+var next_x = view_xview[view_current] + 400;
+
 // Reset y position and padding
-var next_y = y;
+var next_y = view_yview[view_current] + 10;
 var padd_y = 10;
 
 // TODO: Need a legend for the score display
@@ -43,12 +46,14 @@ var cur_score_display = "";
 // Get the first item in the score map
 var cur_score = ds_map_find_first(global.tank_scores);
 
+
+
 for(var interval = 0; interval &lt; ds_map_size(global.tank_scores); interval++)
 {
     if(!is_undefined(cur_score))
     {
         cur_score_display = string(cur_score) + ": " + string(global.tank_scores[? cur_score]);
-        draw_text_outlined_ext(x, next_y, cur_score_display, -1, 200, c_white, 1);
+        draw_text_outlined_ext(next_x, next_y, cur_score_display, -1, 200, c_white, 1);
         next_y += string_height(cur_score_display) + padd_y;
     }
     else

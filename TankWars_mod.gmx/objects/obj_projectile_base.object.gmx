@@ -42,6 +42,28 @@ speed = 12;
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_wall3">
+      <action>
+        <libid>1</libid>
+        <id>605</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>Just keep flying</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_projectile_base">
       <action>
         <libid>1</libid>
@@ -77,8 +99,7 @@ speed = 12;
             <kind>1</kind>
             <string>/// Hurt 'em
 
-other.my_health -= damage_amount;
-other.last_damaged_by = fired_from;
+handle_damage(self, other, damage_amount);
 
 
 // If I'm impacting a solid object, say goodbye

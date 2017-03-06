@@ -18,6 +18,11 @@
     <sprite>sprites\spr_pickup</sprite>
     <sprite>sprites\spr_secondary</sprite>
     <sprite>sprites\spr_rocket</sprite>
+    <sprite>sprites\spr_b_bounce</sprite>
+    <sprite>sprites\spr_shield</sprite>
+    <sprite>sprites\spr_title</sprite>
+    <sprite>sprites\spr_wall_3</sprite>
+    <sprite>sprites\sprite14</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bkgrnd</background>
@@ -25,6 +30,7 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\draw_text_outlined_ext.gml</script>
+    <script>scripts\handle_damage.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_score</font>
@@ -42,9 +48,14 @@
     <object>objects\obj_shell</object>
     <object>objects\obj_pickup</object>
     <object>objects\obj_rocket</object>
+    <object>objects\obj_bouncing_bomb</object>
+    <object>objects\obj_draw_title</object>
+    <object>objects\obj_wall3</object>
+    <object>objects\obj_explosion</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_main</room>
+    <room>rooms\rm_title</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
