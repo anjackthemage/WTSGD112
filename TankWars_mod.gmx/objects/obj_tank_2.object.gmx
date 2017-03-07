@@ -8,6 +8,83 @@
   <parentName>obj_tank_parent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Detect controller function
+
+if(gamepad_is_connected(1))
+{
+    /**
+    image_angle -= gamepad_axis_value(1, gp_axislh) * 6;
+    if(speed &lt; max_speed and speed &gt; -max_speed)
+    {
+        speed -= (gamepad_axis_value(1, gp_axislv));
+        clamp(speed, -max_speed, max_speed);
+    }
+    **/
+    
+    var h_axis_pos = gamepad_axis_value(1, gp_axislh);
+    var v_axis_pos = gamepad_axis_value(1, gp_axislv);
+    
+    if(h_axis_pos != 0 or v_axis_pos != 0)
+    {
+        image_angle += median(-10, angle_difference(point_direction(x, y, x + h_axis_pos, y + v_axis_pos), image_angle), 10);
+        if(speed &lt; max_speed)
+        {
+            speed += point_distance(x, y, x + h_axis_pos, y + v_axis_pos) * 1;
+            clamp(speed, -max_speed, max_speed);
+        }
+    }
+    
+    var button_a = gamepad_button_check_pressed(1, gp_face1);
+    var button_b = gamepad_button_check_pressed(1, gp_face2);
+    
+    if(button_a)
+    {
+        var projectile = instance_create(x + lengthdir_x(32, image_angle), y + lengthdir_y(32, image_angle), obj_shell);
+        projectile.fired_from = id;
+        projectile.direction = image_angle;
+    }
+    
+    if(button_b)
+    {
+        event_perform(ev_other, ev_user3);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="5" enumb="40">
       <action>
         <libid>1</libid>
@@ -212,8 +289,8 @@ event_perform(ev_other, ev_user3);
             <kind>1</kind>
             <string>/// Shoot it!
 
-var projectile = instance_create(x + lengthdir_x(32, direction), y + lengthdir_y(32, direction), obj_shell);
-projectile.direction = direction;
+var projectile = instance_create(x + lengthdir_x(32, image_angle), y + lengthdir_y(32, image_angle), obj_shell);
+projectile.direction = image_angle;
 projectile.speed = 12;
 </string>
           </argument>

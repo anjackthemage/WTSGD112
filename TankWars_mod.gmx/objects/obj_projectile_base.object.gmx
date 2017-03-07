@@ -130,14 +130,22 @@ if(other.solid)
             <kind>1</kind>
             <string>/// Hurt 'em
 
-handle_damage(self, other, damage_amount);
-
-
-// If I'm impacting a solid object, say goodbye
-if(other.solid)
+if(other.id != fired_from)
 {
-    event_perform(ev_other, ev_user0);
-    instance_destroy();
+    handle_damage(self, other, damage_amount);
+    
+    
+    // If I'm impacting a solid object, say goodbye
+    if(other.solid)
+    {
+        event_perform(ev_other, ev_user0);
+        instance_destroy();
+    }
+}
+else
+{
+    hspeed *= -1;
+    vspeed *= -1;
 }
 </string>
           </argument>

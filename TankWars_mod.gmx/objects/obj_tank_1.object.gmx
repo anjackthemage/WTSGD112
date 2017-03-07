@@ -64,6 +64,21 @@ if(gamepad_is_connected(0))
             clamp(speed, -max_speed, max_speed);
         }
     }
+    
+    var button_a = gamepad_button_check_pressed(0, gp_face1);
+    var button_b = gamepad_button_check_pressed(0, gp_face2);
+    
+    if(button_a)
+    {
+        var projectile = instance_create(x + lengthdir_x(32, image_angle), y + lengthdir_y(32, image_angle), obj_shell);
+        projectile.fired_from = id;
+        projectile.direction = image_angle;
+    }
+    
+    if(button_b)
+    {
+        event_perform(ev_other, ev_user3);
+    }
 }
 </string>
           </argument>
@@ -249,9 +264,9 @@ if(gamepad_is_connected(0))
             <kind>1</kind>
             <string>/// Shoot it!
 
-var projectile = instance_create(x + lengthdir_x(32, direction), y + lengthdir_y(32, direction), obj_shell);
+var projectile = instance_create(x + lengthdir_x(32, image_angle), y + lengthdir_y(32, image_angle), obj_shell);
 projectile.fired_from = id;
-projectile.direction = direction;
+projectile.direction = image_angle;
 </string>
           </argument>
         </arguments>

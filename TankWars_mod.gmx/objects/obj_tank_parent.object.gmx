@@ -275,16 +275,16 @@ if(secondary_amt &gt; 0)
     switch(secondary_type)
     {
         case 0: // Rockets
-            projectile = instance_create(x + lengthdir_x(34, direction), y + lengthdir_y(34, direction), obj_rocket);
+            projectile = instance_create(x + lengthdir_x(34, image_angle), y + lengthdir_y(34, image_angle), obj_rocket);
             break;
         case 1: // Bouncing bombs
-            projectile = instance_create(x + lengthdir_x(34, direction), y + lengthdir_y(34, direction), obj_bouncing_bomb);
+            projectile = instance_create(x + lengthdir_x(34, image_angle), y + lengthdir_y(34, image_angle), obj_bouncing_bomb);
             break;
     }
     if(projectile != noone)
     {
         projectile.fired_from = id;
-        projectile.direction = direction;
+        projectile.direction = image_angle;
         secondary_amt--;
     }
 }
@@ -442,15 +442,6 @@ if(shield_health &gt; 0)
 {
     draw_sprite(spr_shield, 0, x, y);
 }
-
-
-// Debug
-draw_set_color(c_red);
-draw_arrow(x, y, x + lengthdir_x(64, direction), y + lengthdir_y(64, direction), 10);
-draw_text(x + lengthdir_x(64, direction), y + lengthdir_y(64, direction), abs(angle_diff));
-draw_set_color(c_blue);
-draw_arrow(x, y, x + lengthdir_x(64, image_angle), y + lengthdir_y(64, image_angle), 10);
-draw_text(x + lengthdir_x(64, image_angle), y + lengthdir_y(64, image_angle), turn_radius);
 </string>
           </argument>
         </arguments>
