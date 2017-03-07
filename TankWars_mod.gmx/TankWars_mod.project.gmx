@@ -46,6 +46,7 @@
   <scripts name="scripts">
     <script>scripts\draw_text_outlined_ext.gml</script>
     <script>scripts\handle_damage.gml</script>
+    <script>scripts\gamepad_debug.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_score</font>
