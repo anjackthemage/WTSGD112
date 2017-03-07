@@ -25,13 +25,18 @@
     <sprite>sprites\spr_title</sprite>
     <sprite>sprites\spr_wall_3</sprite>
     <sprite>sprites\spr_wall_4</sprite>
-    <sprites name="mud">
+    <sprites name="mud &amp; ice">
       <sprite>sprites\spr_mud</sprite>
       <sprite>sprites\spr_mud_1</sprite>
       <sprite>sprites\spr_mud_2</sprite>
       <sprite>sprites\spr_mud_3</sprite>
       <sprite>sprites\spr_mud_4</sprite>
       <sprite>sprites\spr_mud_5</sprite>
+      <sprite>sprites\spr_ice_1</sprite>
+      <sprite>sprites\spr_ice_2</sprite>
+      <sprite>sprites\spr_ice_3</sprite>
+      <sprite>sprites\spr_ice_4</sprite>
+      <sprite>sprites\spr_ice_5</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -63,8 +68,14 @@
     <object>objects\obj_wall3</object>
     <object>objects\obj_wall_4</object>
     <object>objects\obj_explosion</object>
-    <objects name="mud">
+    <objects name="mud &amp; ice">
       <object>objects\obj_mud_base</object>
+      <object>objects\obj_ice_base</object>
+      <object>objects\obj_ice_1</object>
+      <object>objects\obj_ice_5</object>
+      <object>objects\obj_ice_4</object>
+      <object>objects\obj_ice_3</object>
+      <object>objects\obj_ice_2</object>
       <object>objects\obj_mud_1</object>
       <object>objects\obj_mud_5</object>
       <object>objects\obj_mud_4</object>

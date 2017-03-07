@@ -29,6 +29,8 @@
 
 // Physics!
 friction = 0.5;
+max_speed = 8;
+turn_radius = 6;
 
 // Health
 my_health = 100;
@@ -79,7 +81,37 @@ if(string_pos("explo", sprite_get_name(my_sprite)) == 0)
 {
     if(my_health &gt; 0)
     {
-        my_subimage = direction / 6;
+        if(image_angle &gt;= 360)
+        {
+            image_angle -= 360;
+        }
+        else if(image_angle &lt; 0)
+        {
+            image_angle += 360;
+        }
+        if(direction &gt;= 360)
+        {
+            direction -= 360;
+        }
+        else if(direction &lt; 0)
+        {
+            direction += 360;
+        }
+        
+        angle_diff = angle_difference(image_angle, direction);
+        
+        if(abs(angle_diff) &lt;= turn_radius)
+        {
+            direction = image_angle;
+        }
+        else if(angle_diff &gt; 0)
+        {
+            direction += turn_radius;
+        }
+        else if(angle_diff &lt; 0)
+        {
+            direction -= turn_radius;
+        }
     }
     else
     {
@@ -120,10 +152,22 @@ if(position_meeting(x, y, obj_mud_base))
     {
         speed = 3;
     }
+    max_speed = 3;
+}
+else if(position_meeting(x, y, obj_ice_base))
+{
+    friction = 0.1;
+    max_speed = 10;
+    turn_radius = 2;
 }
 else
 {
     friction = 0.5;
+    max_speed = 8;
+    if(abs(angle_diff) &gt; 24)
+        turn_radius = abs(angle_diff) / 2;
+    else
+        turn_radius = 6;
 }
 </string>
           </argument>
@@ -372,6 +416,7 @@ if(string_pos("explo", sprite_get_name(my_sprite)) != 0)
             <kind>1</kind>
             <string>/// Draw me and mine
 
+my_subimage = image_angle / 6;
 draw_sprite(my_sprite, my_subimage, x, y);
 image_speed = my_image_speed;
 
@@ -385,7 +430,7 @@ if(secondary_type &gt;= 0 and secondary_type &lt; 3)
     draw_set_color(c_black);
     if(secondary_type == 2)
     {
-        draw_text(x + 17, y + 25, string(shield_health));
+        draw_text(x + 1+7, y + 25, string(shield_health));
     }
     else
     {
@@ -397,6 +442,15 @@ if(shield_health &gt; 0)
 {
     draw_sprite(spr_shield, 0, x, y);
 }
+
+
+// Debug
+draw_set_color(c_red);
+draw_arrow(x, y, x + lengthdir_x(64, direction), y + lengthdir_y(64, direction), 10);
+draw_text(x + lengthdir_x(64, direction), y + lengthdir_y(64, direction), abs(angle_diff));
+draw_set_color(c_blue);
+draw_arrow(x, y, x + lengthdir_x(64, image_angle), y + lengthdir_y(64, image_angle), 10);
+draw_text(x + lengthdir_x(64, image_angle), y + lengthdir_y(64, image_angle), turn_radius);
 </string>
           </argument>
         </arguments>
