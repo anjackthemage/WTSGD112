@@ -51,6 +51,7 @@
   <fonts name="fonts">
     <font>fonts\fnt_score</font>
     <font>fonts\fnt_hud</font>
+    <font>fonts\fnt_menu</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_wall_1</object>
@@ -86,8 +87,10 @@
     <object>objects\obj_draw_menu</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_main</room>
     <room>rooms\rm_title</room>
+    <room>rooms\rm_main</room>
+    <room>rooms\rm_help</room>
+    <room>rooms\rm_options</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
