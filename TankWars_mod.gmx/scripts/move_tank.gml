@@ -8,16 +8,16 @@ var angle_adjust = 0;
 
 switch(control_activated)
 {
-    case "forward":
+    case "Forward":
         speed_adjust = 1;
         break;
-    case "reverse":
+    case "Reverse":
         speed_adjust = -1;
         break;
-    case "turnleft":
+    case "Turn Left":
         angle_adjust = 6;
         break;
-    case "turnright":
+    case "Turn Right":
         angle_adjust = -6;
         break;
     default:

@@ -45,6 +45,72 @@ ds_map_add(object_descriptions, "obj_ice_parent", "Ice capades! Gracefully glide
         </arguments>
       </action>
     </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw informative text
+
+// Find the mid point of the view
+var mid_x = view_xview[0] + (view_wview[0] / 2);
+var mid_y = view_yview[0] + (view_hview[0] / 2);
+
+// Always draw tank controls in the bottom half of the view
+draw_set_font(fnt_score);
+draw_set_halign(fa_center);
+draw_text(mid_x, mid_y + 6, "Movement Controls:");
+
+var low_x = view_wview[0] / 4;
+var low_y = mid_y + (view_hview[0] / 4);
+
+draw_set_color(c_white);
+draw_set_font(fnt_hud);
+
+var next_x = low_x;
+var next_y = low_y - 25;
+
+var tank_controls = obj_tank_controller.tank_controls;
+var controls_title = ds_list_create();
+ds_list_add(controls_title, "Left Tank", "Right Tank");
+
+for(var interval = 0; interval &lt; 2; interval++)
+{
+    draw_text(next_x, next_y, controls_title[| interval]);
+    
+    // Cycle through controls for tanks
+    var cur_tank = obj_tank_controller.tanks[| interval];
+    var cur_control_set = tank_controls[| interval];
+    var cur_control = ds_map_find_first(cur_control_set);
+
+    do
+    {
+        next_y += 16;
+        draw_text(next_x, next_y, cur_control + ": " + get_key_common_name(cur_control_set[? cur_control]));
+        
+        cur_control = ds_map_find_next(cur_control_set, cur_control);
+    }
+    until(is_undefined(cur_control))
+    next_x *= 3;
+    next_y = low_y - 25;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
   </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>

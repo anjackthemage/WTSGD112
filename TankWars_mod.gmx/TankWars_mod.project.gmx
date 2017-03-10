@@ -48,6 +48,7 @@
     <script>scripts\handle_damage.gml</script>
     <script>scripts\gamepad_debug.gml</script>
     <script>scripts\move_tank.gml</script>
+    <script>scripts\get_key_common_name.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_score</font>

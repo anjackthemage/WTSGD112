@@ -27,26 +27,29 @@
             <kind>1</kind>
             <string>/// initialize things
 
+// All the tanks
 tanks = ds_list_create();
 ds_list_add(tanks, obj_tank_1, obj_tank_2);
 
 // Local player: tank 1
 tank_one_control = ds_map_create();
 
-ds_map_add(tank_one_control, "forward", 'W');
-ds_map_add(tank_one_control, "reverse", 'S');
-ds_map_add(tank_one_control, "turnleft", 'A');
-ds_map_add(tank_one_control, "turnright", 'D');
+ds_map_add(tank_one_control, "Forward", 'W');
+ds_map_add(tank_one_control, "Reverse", 'S');
+ds_map_add(tank_one_control, "Turn Left", 'A');
+ds_map_add(tank_one_control, "Turn Right", 'D');
 
 // Local player: tank 2
 tank_two_control = ds_map_create();
 
-ds_map_add(tank_two_control, "forward", 'vk_up');
-ds_map_add(tank_two_control, "reverse", 'vk_down');
-ds_map_add(tank_two_control, "turnleft", 'vk_left');
-ds_map_add(tank_two_control, "turnright", 'vk_right');
+ds_map_add(tank_two_control, "Forward", 'vk_up');
+ds_map_add(tank_two_control, "Reverse", 'vk_down');
+ds_map_add(tank_two_control, "Turn Left", 'vk_left');
+ds_map_add(tank_two_control, "Turn Right", 'vk_right');
 
-
+// All the controls
+tank_controls = ds_list_create();
+ds_list_add(tank_controls, tank_one_control, tank_two_control);
 </string>
           </argument>
         </arguments>
@@ -71,34 +74,37 @@ ds_map_add(tank_two_control, "turnright", 'vk_right');
             <kind>1</kind>
             <string>/// Move the appropriate tank based upon key being pressed
 
-
-
-// Cycle through controls for tank one
-var cur_tank = obj_tank_1;
-
-var cur_control = ds_map_find_first(tank_one_control);
-
-do
+for(var interval = 0; interval &lt; 2; interval++)
 {
-    if (string_length(tank_one_control[? cur_control]) &gt; 1)
+
+    // Cycle through controls for tanks
+    var cur_tank = tanks[| interval];
+    
+    var cur_control_set = tank_controls[| interval];
+    var cur_control = ds_map_find_first(cur_control_set);
+
+    do
     {
-        // This is a special key (non-alphanumeric)
-        if(keyboard_check(tank_one_control[? cur_control]))
+        if (string_length(cur_control_set[? cur_control]) &gt; 1)
         {
-            move_tank(cur_tank, cur_control);
+            // This is a special key (non-alphanumeric)
+            if(keyboard_check(cur_control_set[? cur_control]))
+            {
+                move_tank(cur_tank, cur_control);
+            }
         }
-    }
-    else
-    {
-        // This is a regular alphanumeric key
-        if(keyboard_check(ord(tank_one_control[? cur_control])))
+        else
         {
-            move_tank(cur_tank, cur_control);
+            // This is a regular alphanumeric key
+            if(keyboard_check(ord(cur_control_set[? cur_control])))
+            {
+                move_tank(cur_tank, cur_control);
+            }
         }
+        cur_control = ds_map_find_next(cur_control_set, cur_control);
     }
-    cur_control = ds_map_find_next(tank_one_control, cur_control);
+    until(is_undefined(cur_control))
 }
-until(is_undefined(cur_control))
 </string>
           </argument>
         </arguments>
