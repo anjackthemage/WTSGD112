@@ -3,8 +3,8 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-100</depth>
-  <persistent>-1</persistent>
+  <depth>0</depth>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,42 +25,77 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Set global variables
+            <string>/// Assign tank controls
 
-// Let there be entropy!
-randomize();
+// Local player: tank 1
+tank_one_control = ds_map_create();
 
-// To hold the score for each tank
-global.tank_scores = ds_map_create();
+ds_map_add(tank_one_control, "forward", 'w');
+ds_map_add(tank_one_control, "reverse", 's');
+ds_map_add(tank_one_control, "turnleft", 'a');
+ds_map_add(tank_one_control, "turnright", 'd');
 
-// Gamepad
-for(var interval = 0; interval &lt; 5; interval ++)
-{
-    if(gamepad_is_connected(interval))
-    {
-        gamepad_set_axis_deadzone(interval, 0.5);
-        gamepad_set_button_threshold(interval, 0.1);
-    }
-}
+// Local player: tank 2
+tank_two_control = ds_map_create();
+
+ds_map_add(tank_two_control, "forward", 'vk_up');
+ds_map_add(tank_two_control, "reverse", 'vk_down');
+ds_map_add(tank_two_control, "turnleft", 'vk_left');
+ds_map_add(tank_two_control, "turnright", 'vk_right');
+
+
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="9" enumb="82">
+    <event eventtype="5" enumb="1">
       <action>
         <libid>1</libid>
-        <id>223</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_current_room</functionname>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Move the appropriate tank based upon key being pressed
+
+// Cycle through controls for tank one
+var cur_tank = obj_tank_1;
+
+var cur_control = ds_map_find_first(tank_one_control);
+
+do
+{
+    if (string_length(cur_control) &gt; 1)
+    {
+        // This is a special key (non-alphanumeric)
+        if(keyboard_check(tank_one_control[? cur_control]))
+        {
+            move_tank(cur_tank, cur_control);
+        }
+    }
+    else
+    {
+        // This is a regular alphanumeric key
+        if(keyboard_check(ord(tank_one_control[? cur_control])))
+        {
+            move_tank(cur_tank, cur_control);
+        }
+    }
+}
+until(is_undefined(cur_control))
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
   </events>

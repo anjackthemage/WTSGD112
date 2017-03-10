@@ -47,6 +47,7 @@
     <script>scripts\draw_text_outlined_ext.gml</script>
     <script>scripts\handle_damage.gml</script>
     <script>scripts\gamepad_debug.gml</script>
+    <script>scripts\move_tank.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_score</font>
@@ -85,11 +86,13 @@
       <object>objects\obj_mud_2</object>
     </objects>
     <object>objects\obj_draw_menu</object>
+    <object>objects\obj_draw_help</object>
+    <object>objects\obj_tank_controller</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_help</room>
     <room>rooms\rm_title</room>
     <room>rooms\rm_main</room>
-    <room>rooms\rm_help</room>
     <room>rooms\rm_options</room>
   </rooms>
   <help>

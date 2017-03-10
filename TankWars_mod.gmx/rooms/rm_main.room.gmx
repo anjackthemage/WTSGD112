@@ -41,9 +41,9 @@
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="-1" objName="obj_tank_1" xview="0" yview="0" wview="400" hview="480" xport="0" yport="0" wport="400" hport="480" hborder="200" vborder="240" hspeed="-1" vspeed="-1"/>
-    <view visible="-1" objName="obj_tank_2" xview="0" yview="0" wview="400" hview="480" xport="420" yport="0" wport="400" hport="480" hborder="200" vborder="240" hspeed="-1" vspeed="-1"/>
-    <view visible="-1" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1280" hview="1280" xport="350" yport="355" wport="120" hport="120" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="obj_tank_1" xview="0" yview="0" wview="315" hview="480" xport="0" yport="0" wport="315" hport="480" hborder="200" vborder="240" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="obj_tank_2" xview="0" yview="0" wview="315" hview="480" xport="325" yport="0" wport="315" hport="480" hborder="200" vborder="240" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1280" hview="1280" xport="260" yport="355" wport="120" hport="120" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>

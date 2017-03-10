@@ -156,7 +156,7 @@ if(gamepad_is_connected(1))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction</string>
+            <string>image_angle</string>
           </argument>
           <argument>
             <kind>0</kind>
@@ -236,7 +236,7 @@ if(gamepad_is_connected(1))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction</string>
+            <string>image_angle</string>
           </argument>
           <argument>
             <kind>0</kind>

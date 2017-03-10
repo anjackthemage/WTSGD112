@@ -52,7 +52,6 @@ my_image_speed = 0;
 
 // Add me to the global score list
 ds_map_add(global.tank_scores, object_get_name(object_index), 0);
-// TODO: Change this to support multi-threaded application 
 </string>
           </argument>
         </arguments>
