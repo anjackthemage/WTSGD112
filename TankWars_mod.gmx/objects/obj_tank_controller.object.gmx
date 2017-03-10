@@ -25,15 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Assign tank controls
+            <string>/// initialize things
+
+tanks = ds_list_create();
+ds_list_add(tanks, obj_tank_1, obj_tank_2);
 
 // Local player: tank 1
 tank_one_control = ds_map_create();
 
-ds_map_add(tank_one_control, "forward", 'w');
-ds_map_add(tank_one_control, "reverse", 's');
-ds_map_add(tank_one_control, "turnleft", 'a');
-ds_map_add(tank_one_control, "turnright", 'd');
+ds_map_add(tank_one_control, "forward", 'W');
+ds_map_add(tank_one_control, "reverse", 'S');
+ds_map_add(tank_one_control, "turnleft", 'A');
+ds_map_add(tank_one_control, "turnright", 'D');
 
 // Local player: tank 2
 tank_two_control = ds_map_create();
@@ -68,6 +71,8 @@ ds_map_add(tank_two_control, "turnright", 'vk_right');
             <kind>1</kind>
             <string>/// Move the appropriate tank based upon key being pressed
 
+
+
 // Cycle through controls for tank one
 var cur_tank = obj_tank_1;
 
@@ -75,7 +80,7 @@ var cur_control = ds_map_find_first(tank_one_control);
 
 do
 {
-    if (string_length(cur_control) &gt; 1)
+    if (string_length(tank_one_control[? cur_control]) &gt; 1)
     {
         // This is a special key (non-alphanumeric)
         if(keyboard_check(tank_one_control[? cur_control]))
@@ -91,6 +96,7 @@ do
             move_tank(cur_tank, cur_control);
         }
     }
+    cur_control = ds_map_find_next(tank_one_control, cur_control);
 }
 until(is_undefined(cur_control))
 </string>

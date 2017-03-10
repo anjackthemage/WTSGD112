@@ -1,9 +1,12 @@
 /// move_tank(tank_obj, control_activated)
 
+var tank_obj = argument[0];
+var control_activated = argument[1];
+
 var speed_adjust = 0;
 var angle_adjust = 0;
 
-switch(direction_entered)
+switch(control_activated)
 {
     case "forward":
         speed_adjust = 1;
@@ -25,5 +28,8 @@ switch(direction_entered)
 with(tank_obj)
 {
     image_angle += angle_adjust;
-    speed += speed_adjust;
+    if(speed < max_speed)
+    {
+        speed += speed_adjust;
+    }
 }
