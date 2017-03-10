@@ -1,3 +1,4 @@
+/// draw_text_outlined_ext(x, y, string, sep, max_w, outline_color, outline_w)
 /** Arguments:
         0   -   x coordinate
         1   -   y coordinate

@@ -29,17 +29,20 @@
 
 object_descriptions = ds_map_create();
 
-ds_map_add(object_descriptions, "obj_wall_1", "This is a standard, impassable wall. However, this wall is apparently made of rubber, because your tank will bounce off (sometimes awarkdly) when impacting it. This type of wall cannot be destroyed.");
-ds_map_add(object_descriptions, "obj_wall_2", "This is one of them 'trick' walls. You can destroy it with shells or rockets but it will just reappear a few seconds later.");
-ds_map_add(object_descriptions, "obj_tank_parent", "This is your, or your opponent's, tank. Drive it around with the assigned controls (see below).");
-ds_map_add(object_descriptions, "obj_shell", "This little guy is your primary weapon. Hitting the appropriate button (see below) will fire one of these guys for each keypress. Use them to destroy your opponent's tank!");
-ds_map_add(object_descriptions, "obj_rocket", "Tank-seeking rockets! Better than shells but limited ammo. When you have appropriate ammo, fire rockets with the alternate fire key (see below).");
-ds_map_add(object_descriptions, "obj_bouncing_bomb", "Follow the bouncing bomb! Just not too closely, because they're dangerous. These bombs will bounce off of most walls, to help you get that sweet trick shot!");
-ds_map_add(object_descriptions, "obj_pickup", "A repair kit, for when you've narrowly escaped defeat. Pick it up to restore up to 50% of your tank's health.");
-ds_map_add(object_descriptions, "obj_mud_parent", "Road hazards! Mud will slow down your tank, so don't get caught in this stuff during a firefight.");
-ds_map_add(object_descriptions, "obj_ice_parent", "Ice capades! Gracefully glide across this particular hazard when your tank loses traction. Or just fumble about, bouncing off of walls uncontrollably. Whatever works for you.");
+ds_map_add(object_descriptions, "spr_wall_1", "This is a standard, impassable wall. However, this wall is apparently made of rubber, because your tank will bounce off (sometimes awarkdly) when impacting it. This type of wall cannot be destroyed.");
+ds_map_add(object_descriptions, "spr_wall_2", "This is one of them 'trick' walls. You can destroy it with shells or rockets but it will just reappear a few seconds later.");
+ds_map_add(object_descriptions, "spr_wall_3", "This is another tricky wall. A type of force-field which only allows rockets and shells through. Tanks cannot pass and bouncing bombs are simply absorbed.");
+ds_map_add(object_descriptions, "spr_tank_1", "This is your, or your opponent's, tank. Drive it around with the assigned controls (see below).");
+ds_map_add(object_descriptions, "spr_shell", "This little guy is your primary weapon. Hitting the appropriate button (see below) will fire one of these guys for each keypress. Use them to destroy your opponent's tank!");
+ds_map_add(object_descriptions, "spr_rocket", "Tank-seeking rockets! Better than shells but limited ammo. When you have appropriate ammo, fire rockets with the alternate fire key (see below).");
+ds_map_add(object_descriptions, "spr_b_bounce", "Follow the bouncing bomb! Just not too closely, because they're dangerous. These bombs will bounce off of most walls, to help you get that sweet trick shot!");
+ds_map_add(object_descriptions, "spr_pickup", "A repair kit, for when you've narrowly escaped defeat. Pick it up to restore up to 50% of your tank's health.");
+ds_map_add(object_descriptions, "spr_mud_1", "Road hazards! Mud will slow down your tank, so don't get caught in this stuff during a firefight.");
+ds_map_add(object_descriptions, "spr_ice_1", "Ice capades! Gracefully glide across this particular hazard when your tank loses traction. Or just fumble about, bouncing off of walls uncontrollably. Whatever works for you.");
 
-
+legend_text = "Move toward an object, to learn more about it.";
+cur_sprite = spr_tank_1;
+cur_text = object_descriptions[? sprite_get_name(cur_sprite)];
 </string>
           </argument>
         </arguments>
@@ -71,24 +74,25 @@ var mid_y = view_yview[0] + (view_hview[0] / 2);
 // Always draw tank controls in the bottom half of the view
 draw_set_font(fnt_score);
 draw_set_halign(fa_center);
-draw_text(mid_x, mid_y + 6, "Movement Controls:");
+draw_text_outlined_ext(mid_x, mid_y + 6, "Movement Controls:", 4, string_width("Movement Controls:"), c_black, 1);
 
 var low_x = view_wview[0] / 4;
 var low_y = mid_y + (view_hview[0] / 4);
 
 draw_set_color(c_white);
-draw_set_font(fnt_hud);
+draw_set_font(fnt_help);
 
 var next_x = low_x;
 var next_y = low_y - 25;
 
 var tank_controls = obj_tank_controller.tank_controls;
 var controls_title = ds_list_create();
-ds_list_add(controls_title, "Left Tank", "Right Tank");
+var control_string = "";
+ds_list_add(controls_title, "Left Tank:", "Right Tank:");
 
 for(var interval = 0; interval &lt; 2; interval++)
 {
-    draw_text(next_x, next_y, controls_title[| interval]);
+    draw_text_outlined_ext(next_x, next_y, controls_title[| interval], 4, string_width(controls_title[| interval]), c_black, 1);
     
     // Cycle through controls for tanks
     var cur_tank = obj_tank_controller.tanks[| interval];
@@ -98,7 +102,8 @@ for(var interval = 0; interval &lt; 2; interval++)
     do
     {
         next_y += 16;
-        draw_text(next_x, next_y, cur_control + ": " + get_key_common_name(cur_control_set[? cur_control]));
+        control_string = cur_control + ": " + get_key_common_name(cur_control_set[? cur_control]);
+        draw_text_outlined_ext(next_x, next_y, control_string, 4, string_width(control_string), c_black, 1);
         
         cur_control = ds_map_find_next(cur_control_set, cur_control);
     }
@@ -106,6 +111,15 @@ for(var interval = 0; interval &lt; 2; interval++)
     next_x *= 3;
     next_y = low_y - 25;
 }
+
+// Draw variable info text in the top half of the view
+
+var high_x = mid_x;
+var high_y = mid_y - (view_hview[0] / 4);
+var higher_y = view_yview[0] + (view_hview[0] / 4) - 32;
+
+draw_sprite(cur_sprite, 0, high_x, higher_y);
+draw_text_outlined_ext(high_x, high_y, cur_text, string_height(cur_text) + 2, view_wview[0] - 4, c_black, 1);
 </string>
           </argument>
         </arguments>

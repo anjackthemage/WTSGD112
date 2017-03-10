@@ -54,6 +54,7 @@
     <font>fonts\fnt_score</font>
     <font>fonts\fnt_hud</font>
     <font>fonts\fnt_menu</font>
+    <font>fonts\fnt_help</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_wall_1</object>
@@ -89,6 +90,18 @@
     <object>objects\obj_draw_menu</object>
     <object>objects\obj_draw_help</object>
     <object>objects\obj_tank_controller</object>
+    <objects name="info_boxes">
+      <object>objects\obj_info_box</object>
+      <object>objects\obj_wall_1_info</object>
+      <object>objects\obj_wall_2_info</object>
+      <object>objects\obj_shell_info</object>
+      <object>objects\obj_rocket_info</object>
+      <object>objects\obj_bounce_info</object>
+      <object>objects\obj_wall_3_info</object>
+      <object>objects\obj_mud_info</object>
+      <object>objects\obj_ice_info</object>
+      <object>objects\obj_pickup_info</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_help</room>

@@ -34,18 +34,22 @@ ds_list_add(tanks, obj_tank_1, obj_tank_2);
 // Local player: tank 1
 tank_one_control = ds_map_create();
 
-ds_map_add(tank_one_control, "Forward", 'W');
-ds_map_add(tank_one_control, "Reverse", 'S');
-ds_map_add(tank_one_control, "Turn Left", 'A');
-ds_map_add(tank_one_control, "Turn Right", 'D');
+ds_map_add(tank_one_control, "Forward", "W");
+ds_map_add(tank_one_control, "Reverse", "S");
+ds_map_add(tank_one_control, "Turn Left", "A");
+ds_map_add(tank_one_control, "Turn Right", "D");
+ds_map_add(tank_one_control, "Weapon", vk_space);
+ds_map_add(tank_one_control, "Alternate", vk_control);
 
 // Local player: tank 2
 tank_two_control = ds_map_create();
 
-ds_map_add(tank_two_control, "Forward", 'vk_up');
-ds_map_add(tank_two_control, "Reverse", 'vk_down');
-ds_map_add(tank_two_control, "Turn Left", 'vk_left');
-ds_map_add(tank_two_control, "Turn Right", 'vk_right');
+ds_map_add(tank_two_control, "Forward", vk_up);
+ds_map_add(tank_two_control, "Reverse", vk_down);
+ds_map_add(tank_two_control, "Turn Left", vk_left);
+ds_map_add(tank_two_control, "Turn Right", vk_right);
+ds_map_add(tank_two_control, "Weapon", vk_enter);
+ds_map_add(tank_two_control, "Alternate", vk_delete);
 
 // All the controls
 tank_controls = ds_list_create();
@@ -85,20 +89,39 @@ for(var interval = 0; interval &lt; 2; interval++)
 
     do
     {
-        if (string_length(cur_control_set[? cur_control]) &gt; 1)
+        if (is_string(cur_control_set[? cur_control]))
         {
-            // This is a special key (non-alphanumeric)
-            if(keyboard_check(cur_control_set[? cur_control]))
+            // This is a regular alphanumeric key
+            if(keyboard_check(ord(cur_control_set[? cur_control])))
             {
                 move_tank(cur_tank, cur_control);
             }
         }
         else
         {
-            // This is a regular alphanumeric key
-            if(keyboard_check(ord(cur_control_set[? cur_control])))
+            // This is a special key (non-alphanumeric)
+            if(keyboard_check(cur_control_set[? cur_control]))
             {
-                move_tank(cur_tank, cur_control);
+                if(cur_control == "Alternate")
+                {
+                    with(cur_tank)
+                    {
+                        event_perform(ev_other, ev_user3);
+                    }
+                }
+                else if (cur_control == "Weapon")
+                {
+                    with(cur_tank)
+                    {
+                        var projectile = instance_create(x + lengthdir_x(32, image_angle), y + lengthdir_y(32, image_angle), obj_shell);
+                        projectile.fired_from = id;
+                        projectile.direction = image_angle;
+                    }
+                }
+                else
+                {
+                    move_tank(cur_tank, cur_control);
+                }
             }
         }
         cur_control = ds_map_find_next(cur_control_set, cur_control);
