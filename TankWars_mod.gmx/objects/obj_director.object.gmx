@@ -85,7 +85,7 @@ for(var interval = 0; interval &lt; 5; interval ++)
             <kind>1</kind>
             <string>/// Check if round won.
 
-if(instance_number(obj_tank_parent) == 1 and winner == noone)
+if(instance_number(obj_tank_parent) == 1 and winner == noone and room == rm_main)
 {
     winner = obj_tank_parent.id;
     alarm_set(0, 60);
