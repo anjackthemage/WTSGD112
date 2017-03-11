@@ -32,7 +32,7 @@ draw_set_valign(fa_top);
 draw_set_color(c_maroon);
 
 // Reset x position
-var next_x = view_xview[view_current] + 400;
+var next_x = view_xview[view_current] + 315;
 
 // Reset y position and padding
 var next_y = view_yview[view_current] + 10;

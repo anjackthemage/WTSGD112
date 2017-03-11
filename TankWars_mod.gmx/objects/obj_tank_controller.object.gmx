@@ -76,7 +76,7 @@ ds_list_add(tank_controls, tank_one_control, tank_two_control);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Move the appropriate tank based upon key being pressed
+            <string>/// Actuate the appropriate tank based upon key being pressed
 
 for(var interval = 0; interval &lt; 2; interval++)
 {
@@ -113,9 +113,7 @@ for(var interval = 0; interval &lt; 2; interval++)
                 {
                     with(cur_tank)
                     {
-                        var projectile = instance_create(x + lengthdir_x(32, image_angle), y + lengthdir_y(32, image_angle), obj_shell);
-                        projectile.fired_from = id;
-                        projectile.direction = image_angle;
+                        event_perform(ev_other, ev_user4);
                     }
                 }
                 else

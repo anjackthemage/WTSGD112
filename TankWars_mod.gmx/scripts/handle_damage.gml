@@ -5,24 +5,10 @@ var target_obj = argument[1];
 var dmg_amt = argument[2];
 var dmg_diff = 0;
 
-if(instance_exists(target_obj))
+if(instance_exists(target_obj) and !target_obj.shielded)
 {
-    if(target_obj.shield_health > 0)
-    {
-        dmg_diff = dmg_amt - target_obj.shield_health;
-    }
-    else
-    {
-        dmg_diff = dmg_amt;
-    }
+    dmg_diff = dmg_amt;
     
-    if(dmg_diff > 0)
-    {
-        target_obj.my_health -= dmg_diff;
-        target_obj.last_damaged_by = projectile_obj.fired_from;
-    }
-    else
-    {
-        target_obj.shield_health -= dmg_amt;
-    }
+    target_obj.my_health -= dmg_diff;
+    target_obj.last_damaged_by = projectile_obj.fired_from;
 }

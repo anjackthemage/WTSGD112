@@ -28,7 +28,7 @@
             <string>/// Initialize variables
 
 my_health = 10;
-shield_health = 0;
+shielded = false;
 last_damaged_by = noone;
 </string>
           </argument>
