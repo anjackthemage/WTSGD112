@@ -120,7 +120,34 @@ var higher_y = view_yview[0] + (view_hview[0] / 4) - 32;
 
 draw_sprite(cur_sprite, 0, high_x, higher_y);
 draw_text_outlined_ext(high_x, high_y, cur_text, string_height(cur_text) + 2, view_wview[0] - 4, c_black, 1);
+
+
+
+// Let people know how to leave
+draw_text_outlined_ext(mid_x, y + 3, "Pres ESCAPE to return to menu.", 16, view_wview[0] - 4, c_black, 1);
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="27">
+      <action>
+        <libid>1</libid>
+        <id>224</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_another_room</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>11</kind>
+            <room>rm_title</room>
           </argument>
         </arguments>
       </action>

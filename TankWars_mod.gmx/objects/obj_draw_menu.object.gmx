@@ -31,7 +31,7 @@ menu_buttons = ds_map_create();
 // TODO: Change this back to a list, since we're not even using the value
 ds_map_add(menu_buttons, "Start", false);
 ds_map_add(menu_buttons, "Help", false);
-ds_map_add(menu_buttons, "Options", false);
+//ds_map_add(menu_buttons, "Options", false);
 ds_map_add(menu_buttons, "Quit", false);
 
 num_buttons = ds_map_size(menu_buttons);
@@ -62,8 +62,9 @@ selected_item = ds_map_find_first(menu_buttons);
             <string>/// Draw menu
 
 draw_set_font(fnt_hud);
+draw_set_halign(fa_left);
 
-total_menu_height = string_height(ds_map_find_first(menu_buttons)) * num_buttons;
+total_menu_height = (string_height(ds_map_find_first(menu_buttons)) + 4) * num_buttons;
 total_menu_width = 0;
 
 var next_item = ds_map_find_first(menu_buttons);
@@ -94,10 +95,10 @@ var next_item = ds_map_find_first(menu_buttons);
 var count = 0;
 do
 {
-    draw_text(x - (total_menu_width / 2) + 5, (y - (total_menu_height / 2)) + ((total_menu_height / 5) * count) + 5, next_item);
+    draw_text(x - (total_menu_width / 2) + 5, (y - (total_menu_height / 2)) + ((string_height(next_item) + 4) * count) + 5, next_item);
     if(next_item == selected_item)
     {
-        draw_rectangle(x - (total_menu_width / 2) + 2, (y - (total_menu_height / 2)) + ((total_menu_height / 5) * count) + 3, x + (total_menu_width / 2) - 2, (y - (total_menu_height / 2)) + ((total_menu_height / 5) * count) + string_height(next_item) + 3, true);
+        draw_rectangle(x - (total_menu_width / 2) + 2, (y - (total_menu_height / 2)) + ((string_height(next_item) + 4) * count) + 3, x + (total_menu_width / 2) - 2, (y - (total_menu_height / 2)) + ((string_height(next_item) + 4) * count) + string_height(next_item) + 3, true);
     }
     next_item = ds_map_find_next(menu_buttons, next_item);
     count++;

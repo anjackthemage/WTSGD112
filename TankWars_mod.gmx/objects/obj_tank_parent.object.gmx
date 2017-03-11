@@ -656,7 +656,7 @@ if(secondary_type != 2)
             <kind>1</kind>
             <string>/// Raise shield, if we have enough "ammo"
 
-if(secondary_amt &gt; 0)
+if(secondary_amt &gt; 0 and secondary_type == 2)
 {
     shield_charge = 40;
     secondary_amt--;
