@@ -37,6 +37,9 @@ hit_points_max = 100;
 hit_points = hit_points_max;
 atk_pwr = 10;
 def_pwr = 10;
+
+// Is it me you're looking for?
+selected = false;
 </string>
           </argument>
         </arguments>
@@ -88,6 +91,12 @@ else if (hspeed &lt; 0)
 else if (hspeed &gt; 0)
 {
     sprite_index = spr_right;
+}
+
+if(selected)
+{
+    draw_set_color(c_green);
+    draw_rectangle(x - (sprite_width / 2), y - (sprite_height / 2), x + (sprite_width / 2), y + (sprite_height / 2), true);
 }
 
 draw_sprite(sprite_index, image_index, x, y);

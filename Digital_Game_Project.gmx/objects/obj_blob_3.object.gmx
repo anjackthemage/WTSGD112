@@ -35,6 +35,9 @@ event_inherited();
 
 // Custom HP
 hit_points = 30;
+
+// Who am I?
+name = "Green Slime";
 </string>
           </argument>
         </arguments>
