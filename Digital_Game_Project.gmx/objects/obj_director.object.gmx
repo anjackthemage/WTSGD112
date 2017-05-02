@@ -30,6 +30,10 @@
 character_inventory = ds_list_create();
 
 reliquary_list = ds_list_create();
+
+in_order = false;
+
+prev_room = room;
 </string>
           </argument>
         </arguments>
@@ -53,6 +57,7 @@ reliquary_list = ds_list_create();
           <argument>
             <kind>1</kind>
             <string>next_room = room_next(room);
+
 
 if(room == rm_level_3)
     room_goto(rm_game_won)
@@ -164,6 +169,10 @@ if(room == rm_puzzle)
     room_goto(next_room)
 else if (room == rm_game_won)
     game_end();
+else if (room == rm_puzzle)
+{
+    room_goto(prev_room);
+}
 </string>
           </argument>
         </arguments>

@@ -3,7 +3,7 @@
   <spriteName>spr_reliquary</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>10</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -112,7 +112,6 @@
           <argument>
             <kind>1</kind>
             <string>var roman_numeral = "";
-element_number;
 
 draw_set_color(c_white);
 draw_set_halign(fa_middle);
