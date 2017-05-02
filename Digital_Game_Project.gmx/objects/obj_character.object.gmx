@@ -96,7 +96,7 @@ with(obj_enemy)
 
 if(hit_points &lt;= 0)
 {
-    instance_destroy();
+    //instance_destroy();
 }
 </string>
           </argument>

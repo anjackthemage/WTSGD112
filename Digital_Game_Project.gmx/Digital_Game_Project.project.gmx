@@ -60,6 +60,7 @@
     <sprite>sprites\spr_sword_1</sprite>
     <sprite>sprites\spr_elements</sprite>
     <sprite>sprites\spr_reliquary</sprite>
+    <sprite>sprites\spr_scroll</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bkgrnd_grass</background>
@@ -72,6 +73,8 @@
     <background>background\bk_instructions</background>
     <background>background\bk_floor</background>
     <background>background\bk_puzzle</background>
+    <background>background\bk_puzzle_complete</background>
+    <background>background\bk_game_won</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -108,6 +111,7 @@
     <object>objects\obj_sword_slash</object>
     <object>objects\obj_element</object>
     <object>objects\obj_reliquary</object>
+    <object>objects\obj_scroll</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
@@ -116,6 +120,8 @@
     <room>rooms\rm_level_2</room>
     <room>rooms\rm_level_3</room>
     <room>rooms\rm_puzzle</room>
+    <room>rooms\rm_puzzle_complete</room>
+    <room>rooms\rm_game_won</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
