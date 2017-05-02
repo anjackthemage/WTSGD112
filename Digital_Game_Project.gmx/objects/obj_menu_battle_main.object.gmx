@@ -31,10 +31,15 @@
 char_select_mode = 0;
 action_select_mode = 1;
 target_select_mode = 2;
+battle_won_mode = 3;
 wait_mode = -1;
 
+// Set initial mode
 mode = wait_mode;
-next_mode = char_select_mode;
+next_mode = action_select_mode;
+
+// Set timer to switch modes
+alarm_set(0, 4);
 
 // Selected entities
 selected_enemy = undefined;
@@ -55,6 +60,101 @@ ds_map_add(char_hp, obj_doctor, obj_doctor.hit_points);
 // Action list
 action_list = ds_list_create();
 ds_list_add(action_list, "Attack", "Alchemy", "Item", "Escape")
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Cycle through enemies for actions
+
+if(instance_number(obj_enemy) == 0)
+{
+    
+}
+else
+{
+    if(is_undefined(selected_enemy))
+    {
+        for(var interval = 0; interval &lt; ds_list_size(obj_battle_director.mob_list); interval++)
+        {
+            selected_enemy = obj_battle_director.mob_list[| interval];
+            if(!is_undefined(selected_enemy))
+            {
+                break;
+            }
+        }
+        if(is_undefined(selected_enemy))
+        {
+            mode = battle_won_mode;
+            alarm_set(3, 4);
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Cycle through characters for their actions.
+
+show_debug_message("TEST ALARM 0");
+
+if(is_undefined(selected_character))
+{
+    obj_hunter.selected = true;
+    selected_character = obj_hunter;
+    mode = action_select_mode;
+}
+else if (selected_character == obj_doctor)
+{
+    alarm_set(1, 4);
+    mode = wait_mode;
+    selected_enemy.selected = false;
+    selected_enemy = undefined;
+    selected_action = undefined;
+    selected_character.selected = false;
+    selected_character = undefined;
+}
+else
+{
+    selected_character = char_list[| ds_list_find_index(char_list, selected_character) + 1];
+    mode = action_select_mode;
+}
+
 </string>
           </argument>
         </arguments>
@@ -145,6 +245,20 @@ up_key = ord("W");
 down_key = ord("S");
 left_key = ord("A");
 right_key = ord("D");
+action_key = vk_space;
+
+if(keyboard_check(action_key))
+{
+    if(mode == action_select_mode)
+    {
+        mode = target_select_mode;
+    }
+    
+    if(mode = target_select_mode)
+    {
+        alarm_set(0, 3);
+    }
+}
 
 switch(mode)
 {
@@ -174,7 +288,6 @@ switch(mode)
             if(!is_undefined(selected_character))
             {
                 selected_character.selected = true;
-                show_debug_message(selected_character.name);
             }
         }
         else if(keyboard_check(up_key))
@@ -263,7 +376,6 @@ switch(mode)
             if(!is_undefined(selected_enemy))
             {
                 selected_enemy.selected = true;
-                show_debug_message(object_get_name(selected_enemy));
             }
         }
         else if(keyboard_check(up_key))

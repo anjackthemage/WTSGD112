@@ -27,9 +27,6 @@
             <kind>1</kind>
             <string>/// Initialize Variables
 
-// Don't spawn higher-level mobs
-max_enemy_type = 0;
-mob_type_list = obj_battle_director.blobs;
 
 event_inherited();
 

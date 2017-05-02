@@ -27,12 +27,7 @@
             <kind>1</kind>
             <string>/// Initialize Variables
 
-// Don't spawn higher-level mobs
-max_enemy_type = 3;
-mob_type_list = obj_battle_director.orcs;
-
 event_inherited();
-
 // Custom HP
 hit_points = 60;
 </string>
